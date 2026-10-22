@@ -1,0 +1,195 @@
+<section id="s-10" class="slide" data-part="mcp" data-label="Why that gets out of hand" aria-labelledby="s10-title">
+  <div class="wrap">
+    <div class="s10-flow">
+      <div class="s10-head stack" style="--stack:16px">
+        <p class="secnum"><b>10</b> Count the plugs</p>
+        <h2 id="s10-title" class="h2">Why that gets out of hand.</h2>
+      </div>
+
+      <div class="s10-steppers">
+        <div class="s10-step" role="group" aria-labelledby="s10-lab-ai">
+          <span class="s10-steplabel"><span id="s10-lab-ai">How many AI apps?</span></span>
+          <div class="s10-ctl">
+            <button type="button" class="btn btn--secondary s10-btn" id="s10-ai-minus" aria-label="Fewer AI apps" aria-disabled="false"><svg class="icon icon--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+            <span class="s10-val" id="s10-ai-val">5</span>
+            <button type="button" class="btn btn--secondary s10-btn" id="s10-ai-plus" aria-label="More AI apps" aria-disabled="false"><svg class="icon icon--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+          </div>
+        </div>
+        <div class="s10-step" role="group" aria-labelledby="s10-lab-sv">
+          <span class="s10-steplabel"><span id="s10-lab-sv">How many services?</span><span class="note s10-hint">Like Email or Calendar</span></span>
+          <div class="s10-ctl">
+            <button type="button" class="btn btn--secondary s10-btn" id="s10-sv-minus" aria-label="Fewer services" aria-disabled="false"><svg class="icon icon--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+            <span class="s10-val" id="s10-sv-val">20</span>
+            <button type="button" class="btn btn--secondary s10-btn" id="s10-sv-plus" aria-label="More services" aria-disabled="false"><svg class="icon icon--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="s10-stats tagged">
+        <span class="tag tag--corner">For illustration</span>
+        <div class="s10-stat">
+          <p class="s10-k">Without a shared plug</p>
+          <p class="s10-big"><span id="s10-n-pairs">100</span> <span class="s10-unit" id="s10-u-pairs">custom builds</span></p>
+          <p class="note s10-how"><span id="s10-f-pairs">5 × 20</span>. A custom build for every pair.</p>
+          <p class="s10-axes" aria-hidden="true"><span>AI apps</span><span>Services</span></p>
+          <svg class="s10-art" id="s10-art-a" role="img" aria-label=""></svg>
+        </div>
+        <div class="s10-stat s10-stat--mcp">
+          <p class="s10-k">With MCP</p>
+          <p class="s10-big"><span id="s10-n-plugs">25</span> <span class="s10-unit" id="s10-u-plugs">plugs</span></p>
+          <p class="note s10-how"><span id="s10-f-plugs">5 + 20</span>. <span id="s10-h-plugs">Each side builds one plug.</span></p>
+          <p class="s10-axes" aria-hidden="true"><span>AI apps</span><span>Services</span></p>
+          <svg class="s10-art" id="s10-art-b" role="img" aria-label=""></svg>
+        </div>
+      </div>
+
+      <div class="s10-resultbox" aria-live="polite" aria-atomic="true">
+        <p class="keyline s10-result" id="s10-result"></p>
+      </div>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s10-i-ai" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    </defs>
+  </svg>
+  <style>
+    #s-10 .s10-flow { display: flex; flex-direction: column; gap: clamp(12px, 2.1vh, 24px); }
+    #s-10 .s10-steppers { display: flex; flex-wrap: wrap; gap: 16px clamp(28px, 4vw, 64px); align-items: center; }
+    #s-10 .s10-step { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    #s-10 .s10-steplabel { display: flex; flex-direction: column; font-size: var(--fs-body); font-weight: 500; color: var(--ink-heading); }
+    #s-10 .s10-hint { margin-top: 0; line-height: 1.3; }
+    #s-10 .s10-ctl { display: flex; align-items: center; gap: 8px; }
+    #s-10 .s10-btn { width: 60px; min-height: 60px; padding: 0; }
+    #s-10 .s10-btn[aria-disabled="true"]:hover { background: var(--surface-muted); border-color: var(--border); }
+    #s-10 .s10-val { min-width: 2.2ch; text-align: center; font-family: var(--font-sans); font-weight: 500; font-size: clamp(40px, 3.4vw, 56px); line-height: 1; color: var(--ink-heading); font-variant-numeric: tabular-nums; }
+    #s-10 .s10-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #s-10 .s10-stat { min-width: 0; padding: 14px 24px 14px 0; }
+    #s-10 .s10-stat + .s10-stat { padding: 14px 0 14px 24px; border-left: 1px solid var(--border); }
+    #s-10 .s10-k { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4; color: var(--ink-label); }
+    #s-10 .s10-big { margin-top: 4px; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; max-width: none; font-family: var(--font-sans); font-weight: 400; font-size: clamp(52px, 4.6vw, 76px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    #s-10 .s10-stat--mcp .s10-big { color: var(--dragonfly); }
+    #s-10 .s10-unit { font-family: var(--font-sans); font-size: var(--fs-lead); letter-spacing: 0; color: var(--ink-heading); }
+    #s-10 .s10-how { max-width: none; }
+    #s-10 .s10-axes { display: flex; justify-content: space-between; margin-top: 10px; max-width: none; font-size: var(--fs-ui); font-weight: 500; line-height: 1.3; color: var(--ink-label); }
+    #s-10 .s10-art { display: block; width: 100%; height: min(30vh, 270px); margin-top: 2px; }
+    #s-10 .s10-hubt { font-family: var(--font-mono); font-size: 28px; font-weight: 600; letter-spacing: 0.06em; fill: var(--surface-card); text-anchor: middle; }
+    #s-10 .s10-result { max-width: none; }
+    #s-10 .s10-em { font-weight: 500; color: var(--ink-heading); }
+    @media (max-height: 860px) and (min-width: 640px) {
+      #s-10 .s10-flow { gap: 10px; }
+      #s-10 .s10-big { font-size: clamp(44px, 4.2vw, 56px); }
+      #s-10 .s10-art { height: 21vh; }
+      #s-10 .s10-stat, #s-10 .s10-stat + .s10-stat { padding-top: 10px; padding-bottom: 10px; }
+    }
+    @media (max-width: 639px) {
+      #s-10 .s10-stats { grid-template-columns: 1fr; padding-top: 52px; }
+      #s-10 .s10-stat { padding: 16px 0; }
+      #s-10 .s10-axes { margin-top: 6px; }
+      #s-10 .s10-stat + .s10-stat { padding: 16px 0; border-left: 0; border-top: 1px solid var(--border); }
+      #s-10 .s10-art { height: auto; aspect-ratio: 360 / 300; }
+    }
+  </style>
+  <script>(() => {
+  const root = document.getElementById('s-10');
+  const $ = id => root.querySelector('#' + id);
+  const artA = $('s10-art-a'), artB = $('s10-art-b'), result = $('s10-result');
+  const LIM = { ai: [1, 6], sv: [1, 20] };
+  const state = { ai: 5, sv: 20 };
+  const ctl = {
+    ai: { minus: $('s10-ai-minus'), plus: $('s10-ai-plus'), val: $('s10-ai-val') },
+    sv: { minus: $('s10-sv-minus'), plus: $('s10-sv-plus'), val: $('s10-sv-val') }
+  };
+  let narrow = null;
+  const f = n => Math.round(n * 10) / 10;
+
+  function positions(count, maxPitch, top, bot) {
+    const pitch = count > 1 ? Math.min(maxPitch, (bot - top) / (count - 1)) : 0;
+    const start = (top + bot) / 2 - pitch * (count - 1) / 2;
+    return { pitch, y: i => start + i * pitch };
+  }
+  function nodes(n, m, W, H) {
+    const top = 22, bot = H - 22;
+    const a = positions(n, 44, top, bot), s = positions(m, 28, top, bot);
+    const rA = Math.min(17, Math.max(8, a.pitch * 0.38 || 17));
+    const rS = Math.min(10, Math.max(3.5, s.pitch * 0.36 || 10));
+    return { a, s, rA, rS, aiX: 34, svX: W - 34 };
+  }
+  function aiNode(x, y, r) {
+    let h = '<rect x="' + f(x - r) + '" y="' + f(y - r) + '" width="' + f(2 * r) + '" height="' + f(2 * r) + '" rx="5" fill="var(--dragonfly-dark)"/>';
+    if (r >= 11) h += '<g fill="none" style="stroke:var(--dragonfly-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#s10-i-ai" x="' + f(x - r * 0.62) + '" y="' + f(y - r * 0.62) + '" width="' + f(r * 1.24) + '" height="' + f(r * 1.24) + '"/></g>';
+    return h;
+  }
+  function drawTangle(W, H) {
+    const n = state.ai, m = state.sv, g = nodes(n, m, W, H);
+    const op = Math.max(0.25, Math.min(0.6, 3 / Math.sqrt(n * m)));
+    let lines = '', dots = '';
+    for (let j = 0; j < m; j++) {
+      for (let i = 0; i < n; i++) lines += '<line x1="' + g.aiX + '" y1="' + f(g.a.y(i)) + '" x2="' + g.svX + '" y2="' + f(g.s.y(j)) + '" />';
+      dots += '<circle cx="' + g.svX + '" cy="' + f(g.s.y(j)) + '" r="' + f(g.rS) + '" style="fill:var(--surface-card);stroke:var(--ink-muted)" stroke-width="2"/>';
+    }
+    let ais = '';
+    for (let i = 0; i < n; i++) ais += aiNode(g.aiX, g.a.y(i), g.rA);
+    artA.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    artA.innerHTML = '<g stroke-width="1.3" stroke-opacity="' + f(op) + '" stroke-linecap="round" style="stroke:var(--ink-muted)">' + lines + '</g>' + dots + ais;
+    artA.setAttribute('aria-label', 'Without a shared plug: ' + n + (n === 1 ? ' AI app' : ' AI apps') + ' each joined to every one of ' + m + (m === 1 ? ' service' : ' services') + ', ' + (n * m) + (n * m === 1 ? ' separate line.' : ' separate lines, tangled together.'));
+  }
+  function drawHub(W, H) {
+    const n = state.ai, m = state.sv, g = nodes(n, m, W, H), hx = W / 2, hy = H / 2, hr = 40;
+    let lines = '', dots = '', ais = '';
+    for (let i = 0; i < n; i++) { lines += '<line x1="' + g.aiX + '" y1="' + f(g.a.y(i)) + '" x2="' + hx + '" y2="' + hy + '"/>'; ais += aiNode(g.aiX, g.a.y(i), g.rA); }
+    for (let j = 0; j < m; j++) {
+      lines += '<line x1="' + hx + '" y1="' + hy + '" x2="' + g.svX + '" y2="' + f(g.s.y(j)) + '"/>';
+      dots += '<circle cx="' + g.svX + '" cy="' + f(g.s.y(j)) + '" r="' + f(g.rS) + '" style="fill:var(--surface-card);stroke:var(--dragonfly)" stroke-width="2"/>';
+    }
+    artB.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    artB.innerHTML = '<g stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" style="stroke:var(--dragonfly)">' + lines + '</g>' + dots + ais +
+      '<circle cx="' + hx + '" cy="' + hy + '" r="' + hr + '" style="fill:var(--dragonfly)"/><text class="s10-hubt" x="' + hx + '" y="' + (hy + 9) + '">MCP</text>';
+    artB.setAttribute('aria-label', 'With MCP: ' + n + (n === 1 ? ' AI app' : ' AI apps') + ' and ' + m + (m === 1 ? ' service' : ' services') + ' all joined through one central MCP hub, ' + (n + m) + ' tidy lines.');
+  }
+  function sentence() {
+    const n = state.ai, m = state.sv, pairs = n * m, plugs = n + m;
+    const a = n === 1 ? '1 AI app' : n + ' AI apps', s = m === 1 ? '1 service' : m + ' services';
+    const builds = pairs === 1 ? '1 custom build' : pairs + ' custom builds';
+    const head = 'With ' + a + ' and ' + s + ', that\u2019s <span class="s10-em">' + builds + '</span>, or ';
+    if (pairs > plugs) return [head + 'just <span class="s10-em">' + plugs + ' plugs</span>.', ''];
+    if (pairs === plugs) return [head + '<span class="s10-em">' + plugs + ' plugs</span>.', 'No saving yet.'];
+    const only = n === 1 && m === 1 ? 'one AI app and one service' : n === 1 ? 'one AI app' : 'one service';
+    return [head + '<span class="s10-em">' + plugs + ' plugs</span>.', 'With only ' + only + ', a shared plug doesn\u2019t save anything yet.'];
+  }
+  let lastW = 0;
+  function draw() {
+    const H = 300, r = artA.getBoundingClientRect();
+    /* Fit the drawing to the box so nothing is letterboxed and the HTML axis labels line up with the columns. */
+    const W = (narrow || !r.width || !r.height) ? (narrow ? 360 : 560) : Math.max(380, Math.round(H * r.width / r.height));
+    lastW = W;
+    drawTangle(W, H); drawHub(W, H);
+    const g = nodes(state.ai, state.sv, W, H), sc = r.width ? r.width / W : 1;
+    root.querySelectorAll('.s10-axes').forEach(el => { el.style.paddingLeft = Math.max(0, (g.aiX - g.rA) * sc) + 'px'; el.style.paddingRight = Math.max(0, (W - g.svX - g.rS) * sc) + 'px'; });
+  }
+  function update() {
+    const n = state.ai, m = state.sv, pairs = n * m, plugs = n + m;
+    ctl.ai.val.textContent = n; ctl.sv.val.textContent = m;
+    $('s10-n-pairs').textContent = pairs; $('s10-u-pairs').textContent = pairs === 1 ? 'custom build' : 'custom builds';
+    $('s10-n-plugs').textContent = plugs; $('s10-u-plugs').textContent = 'plugs';
+    $('s10-f-pairs').textContent = n + ' × ' + m; $('s10-f-plugs').textContent = n + ' + ' + m;
+    ['ai', 'sv'].forEach(k => {
+      const c = ctl[k], v = state[k];
+      c.minus.setAttribute('aria-disabled', v <= LIM[k][0] ? 'true' : 'false');
+      c.plus.setAttribute('aria-disabled', v >= LIM[k][1] ? 'true' : 'false');
+    });
+    draw();
+    const sen = sentence(); result.innerHTML = sen[0]; $('s10-h-plugs').textContent = sen[1] || 'Each side builds one plug.';
+  }
+  ['ai', 'sv'].forEach(k => {
+    ctl[k].minus.addEventListener('click', () => { if (state[k] > LIM[k][0]) { state[k]--; update(); } });
+    ctl[k].plus.addEventListener('click', () => { if (state[k] < LIM[k][1]) { state[k]++; update(); } });
+  });
+  const mq = window.matchMedia('(max-width: 639px)');
+  const apply = () => { const n = mq.matches; if (n !== narrow) { narrow = n; update(); } };
+  if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  if ('ResizeObserver' in window) new ResizeObserver(() => { if (narrow !== null) { const r = artA.getBoundingClientRect(); if (!narrow && r.height && Math.abs(Math.round(300 * r.width / r.height) - lastW) > 6) draw(); } }).observe(artA);
+  apply();
+  if (narrow === null) { narrow = mq.matches; update(); }
+  })();</script>
+</section>

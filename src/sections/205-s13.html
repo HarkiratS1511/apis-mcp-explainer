@@ -1,0 +1,295 @@
+<section id="s-13" class="slide" data-part="mcp" data-label="Follow a request" aria-labelledby="s13-title">
+  <div class="wrap">
+    <div class="s13-in">
+      <p class="secnum"><b>13</b> Follow a request</p>
+      <h2 id="s13-title" class="h2">Follow a request all the way through.</h2>
+
+      <div class="s13-chain" id="s13-chain">
+        <ol class="s13-stations" id="s13-stations" aria-label="The five stations a request passes through">
+          <li class="s13-st" data-i="0">
+            <span class="s13-ic"><svg class="icon" aria-hidden="true"><use href="#i-user-check"/></svg></span>
+            <span class="term"><span class="term__word">You</span></span>
+            <span class="s13-done" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="s13-st" data-i="1">
+            <span class="s13-ic"><svg class="icon" aria-hidden="true"><use href="#s13-i-chat"/></svg></span>
+            <span class="term"><span class="term__word">The AI app</span><span class="term__tech">Host</span></span>
+            <span class="s13-done" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="s13-st" data-i="2">
+            <span class="s13-ic"><svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg></span>
+            <span class="term"><span class="term__word">The adapter</span><span class="term__tech">MCP server</span></span>
+            <span class="s13-done" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="s13-st" data-i="3">
+            <span class="s13-ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <span class="term"><span class="term__word">The ordering counter</span><span class="term__tech">API</span></span>
+            <span class="s13-done" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="s13-st" data-i="4">
+            <span class="s13-ic"><svg class="icon" aria-hidden="true"><use href="#s13-i-server"/></svg></span>
+            <span class="term"><span class="term__word">The calendar app</span><span class="term__tech">Service</span></span>
+            <span class="s13-done" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </li>
+        </ol>
+        <svg class="s13-track" id="s13-track" aria-hidden="true" focusable="false">
+          <g id="s13-g">
+            <g id="s13-base"></g>
+            <g id="s13-token" class="s13-token">
+              <circle r="19"/>
+              <use id="s13-tokico" href="#s13-i-q" x="-11" y="-11" width="22" height="22"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="s13-cap">
+        <div class="s13-cap__text" aria-live="polite" aria-atomic="true">
+          <p class="s13-stepno" id="s13-stepno">Ready</p>
+          <p class="s13-sentence" id="s13-sentence">Press Next step to follow one question along the chain.</p>
+        </div>
+        <div class="s13-bubble card">
+          <span class="tag tag--corner">Example</span>
+          <p class="s13-bubble__top"><span class="s13-bubble__label" id="s13-blabel">Your request</span></p>
+          <p class="s13-bubble__text" id="s13-btext">What’s on my calendar next week?</p>
+        </div>
+      </div>
+
+      <div class="s13-ctl">
+        <div class="btn-row">
+          <button type="button" class="btn btn--secondary" id="s13-back" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Back</button>
+          <button type="button" class="btn btn--primary" id="s13-next">Next step<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <button type="button" class="btn-reset" id="s13-reset" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+        </div>
+        <p class="keyline s13-close">MCP sits on top of the API. It doesn’t replace it.</p>
+      </div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s13-i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+      <symbol id="s13-i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></symbol>
+      <symbol id="s13-i-q" viewBox="0 0 24 24"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 19h.01"/></symbol>
+      <symbol id="s13-i-ok" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    </defs>
+  </svg>
+
+  <style>
+    #s-13 .h2 { max-width: none; }
+    #s-13 .s13-bubble:has(> .tag--corner) { padding-top: 14px; }
+    #s-13 .s13-bubble__top { min-height: 36px; align-items: center; }
+    #s-13 .s13-in { display: flex; flex-direction: column; gap: clamp(14px, 2.2vh, 28px); }
+
+    /* Chain */
+    #s-13 .s13-chain { position: relative; padding-bottom: 56px; margin-top: clamp(4px, 1vh, 12px); }
+    #s-13 .s13-stations { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 28px); }
+    #s-13 .s13-st {
+      position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; min-width: 0;
+      background: var(--surface-card); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: clamp(14px, 1.4vw, 22px) 12px;
+      transition: border-color var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease);
+    }
+    #s-13 .s13-st[aria-current="step"] { border: 2px solid var(--dragonfly); padding: calc(clamp(14px, 1.4vw, 22px) - 1px) 11px; }
+    @media (max-height: 900px) and (min-width: 720px) {
+      #s-13 .s13-in { gap: 12px; }
+      #s-13 .s13-chain { padding-bottom: 44px; }
+      #s-13 .s13-st { padding: 10px 8px; gap: 8px; }
+      #s-13 .s13-st[aria-current="step"] { padding: 9px 7px; }
+      #s-13 .s13-ic { width: 44px; height: 44px; font-size: 22px; }
+      #s-13 .term__word { font-size: 21px; }
+      #s-13 .s13-cap { padding: 14px 20px; }
+      #s-13 .s13-sentence { margin-top: 4px; min-height: 2.7em; }
+      #s-13 .s13-bubble { padding-bottom: 10px; gap: 4px; }
+    }
+    #s-13 .s13-ic {
+      display: grid; place-items: center; width: clamp(52px, 4.2vw, 68px); height: clamp(52px, 4.2vw, 68px); flex: none; border-radius: var(--radius-full);
+      background: var(--surface-muted); color: var(--ink-heading); border: 2px solid var(--border-strong); font-size: clamp(26px, 2vw, 34px);
+      transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+    }
+    #s-13 .s13-st[aria-current="step"] .s13-ic { background: var(--ink); color: var(--ink-on-dark); border-color: var(--ink); }
+    #s-13 .term { min-width: 0; }
+    #s-13 .term__word { display: block; font-size: clamp(21px, 1.5vw, 27px); max-width: none; }
+    #s-13 .term__tech { display: block; font-size: var(--fs-label); letter-spacing: 0.08em; }
+    #s-13 :is(.btn, .btn-reset)[aria-disabled="true"], #s-13 :is(.btn, .btn-reset)[aria-disabled="true"]:hover, #s-13 :is(.btn, .btn-reset)[aria-disabled="true"]:active { background: var(--surface-muted); color: var(--ink-secondary); border-color: var(--border); cursor: not-allowed; }
+    #s-13 .s13-done {
+      position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--radius-full);
+      background: var(--dragonfly); color: var(--ink-on-dark); font-size: 16px; opacity: 0; transition: opacity var(--dur-2) var(--ease);
+    }
+        #s-13 .s13-st.is-done .s13-done { opacity: 1; }
+
+    #s-13 .s13-track { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    #s-13 .s13-seg { fill: none; stroke: var(--border-strong); stroke-width: 4; stroke-linecap: round; transition: stroke var(--dur-2) var(--ease); }
+    #s-13 .s13-seg.is-done { stroke: var(--dragonfly); }
+    #s-13 .s13-stem { fill: none; stroke: var(--border-strong); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; }
+    #s-13 .s13-stop { fill: var(--surface-page); stroke: var(--border-strong); stroke-width: 4; transition: stroke var(--dur-2) var(--ease); }
+    #s-13 .s13-stop.is-done { stroke: var(--dragonfly); }
+    #s-13 .s13-token circle { fill: var(--dragonfly); stroke: var(--surface-page); stroke-width: 4; }
+    #s-13 .s13-token use { fill: none; stroke: var(--ink-on-dark); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-13 .s13-token.is-answer circle { fill: var(--ink); }
+
+    /* Caption */
+    #s-13 .s13-cap { display: grid; gap: clamp(16px, 2vw, 32px); align-items: stretch; background: var(--surface-muted); border-radius: var(--radius-lg); padding: clamp(16px, 1.8vw, 28px); }
+    @media (min-width: 900px) { #s-13 .s13-cap { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; } }
+    #s-13 .s13-cap__text { min-width: 0; }
+    #s-13 .s13-stepno { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-13 .s13-sentence { margin-top: 8px; max-width: 32ch; font-size: var(--fs-lead); line-height: 1.35; color: var(--ink-heading); min-height: 2.7em; text-wrap: balance; }
+    #s-13 .s13-bubble { display: flex; flex-direction: column; gap: 10px; }
+    #s-13 .s13-bubble__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; max-width: none; }
+    #s-13 .s13-bubble__label { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-13 .s13-bubble__text { min-height: 2.8em; font-size: var(--fs-body); line-height: 1.4; color: var(--ink); white-space: pre-line; }
+
+    #s-13 .s13-ctl { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(14px, 2vh, 24px); }
+
+    /* Phone: a vertical chain with the track down the left */
+    @media (max-width: 719px) {
+      #s-13 .s13-chain { padding-bottom: 0; padding-left: 56px; }
+      #s-13 .s13-stations { grid-template-columns: 1fr; gap: 14px; }
+      #s-13 .s13-st { flex-direction: row; text-align: left; gap: 16px; padding: 14px 16px; }
+      #s-13 .s13-st[aria-current="step"] { padding: 13px 15px; }
+      #s-13 .s13-ic { width: 52px; height: 52px; font-size: 26px; }
+      #s-13 .s13-done { top: 8px; right: 8px; }
+      #s-13 .s13-ctl { align-items: stretch; }
+      #s-13 .s13-ctl .btn-row .btn, #s-13 .s13-ctl .btn-row .btn-reset { flex: 1 1 100%; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-13');
+    const chain = root.querySelector('#s13-chain');
+    const cards = [...root.querySelectorAll('.s13-st')];
+    const track = root.querySelector('#s13-track');
+    const base = root.querySelector('#s13-base');
+    const routeG = root.querySelector('#s13-g');
+    const token = root.querySelector('#s13-token');
+    const tokIco = root.querySelector('#s13-tokico');
+    const stepNo = root.querySelector('#s13-stepno');
+    const sentence = root.querySelector('#s13-sentence');
+    const bLabel = root.querySelector('#s13-blabel');
+    const bText = root.querySelector('#s13-btext');
+    const back = root.querySelector('#s13-back');
+    const next = root.querySelector('#s13-next');
+    const reset = root.querySelector('#s13-reset');
+    const NS = 'http://www.w3.org/2000/svg';
+
+    const QUESTION = 'What’s on my calendar next week?';
+    const ANSWER = 'Tuesday: coffee with a friend\nThursday: dentist';
+    const STEPS = [
+      { st: 0, text: 'You ask your AI a question in plain words.' },
+      { st: 1, text: 'The AI app works out that it needs your calendar, and how to ask for it.' },
+      { st: 2, text: "The MCP adapter speaks the AI’s language and turns it into an order the service understands." },
+      { st: 3, text: 'The API takes the order, as in Part 1.' },
+      { st: 4, text: 'The service does the work. It looks up your calendar.' },
+      { st: 0, text: 'The answer travels back along the same road to you.', answer: true }
+    ];
+    const N = STEPS.length;
+    let step = 0, run = 0, pts = [], segs = [], stops = [], phone = false, active = null, at = 0, moving = false;
+
+    const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+
+    /* Work out where each stop sits, in the chain's own pixel space. */
+    function layout() {
+      const cr = chain.getBoundingClientRect();
+      const w = Math.round(cr.width), h = Math.round(cr.height);
+      phone = window.matchMedia('(max-width: 719px)').matches;
+      track.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      pts = cards.map(c => {
+        const r = c.getBoundingClientRect();
+        return phone
+          ? { x: 28, y: r.top - cr.top + r.height / 2, ex: r.left - cr.left, ey: r.top - cr.top + r.height / 2 }
+          : { x: r.left - cr.left + r.width / 2, y: h - 26, ex: r.left - cr.left + r.width / 2, ey: r.bottom - cr.top };
+      });
+      base.replaceChildren();
+      segs = []; stops = [];
+      pts.forEach((p, i) => {
+        base.appendChild(mk('line', { class: 's13-stem', x1: p.x, y1: p.y, x2: p.ex, y2: p.ey }));
+      });
+      for (let i = 0; i < pts.length - 1; i++) {
+        const s = mk('line', { class: 's13-seg', x1: pts[i].x, y1: pts[i].y, x2: pts[i + 1].x, y2: pts[i + 1].y });
+        base.appendChild(s); segs.push(s);
+      }
+      pts.forEach(p => { const c = mk('circle', { class: 's13-stop', cx: p.x, cy: p.y, r: 9 }); base.appendChild(c); stops.push(c); });
+      paint();
+      if (!moving) placeToken(at);
+    }
+    function placeToken(i) {
+      if (!pts[i]) return;
+      token.setAttribute('transform', `translate(${pts[i].x} ${pts[i].y})`);
+    }
+    function tokenPos() {
+      const m = /translate\(([-\d.e]+)[ ,]+([-\d.e]+)\)/.exec(token.getAttribute('transform') || '');
+      return m ? { x: +m[1], y: +m[2] } : pts[0];
+    }
+
+    /* Everything that depends only on the step, not on the token's travel. */
+    function paint() {
+      cards.forEach((c, i) => {
+        c.classList.toggle('is-done', step >= i + 2);
+        if (active === i) c.setAttribute('aria-current', 'step'); else c.removeAttribute('aria-current');
+      });
+      segs.forEach((s, j) => s.classList.toggle('is-done', step >= j + 2));
+      stops.forEach((s, i) => s.classList.toggle('is-done', step >= i + 1));
+      const answer = step === N;
+      token.classList.toggle('is-answer', answer);
+      tokIco.setAttribute('href', answer ? '#s13-i-ok' : '#s13-i-q');
+    }
+    function caption() {
+      sentence.textContent = '';
+      if (step === 0) {
+        stepNo.textContent = 'Ready';
+        sentence.textContent = 'Press Next step to follow one question along the chain.';
+        bLabel.textContent = 'Your request'; bText.textContent = QUESTION;
+      } else {
+        const s = STEPS[step - 1];
+        stepNo.textContent = `Step ${step} of ${N}`;
+        sentence.textContent = s.text;
+        if (s.answer) {
+          const sr = document.createElement('span');
+          sr.className = 'sr-only';
+          sr.textContent = ' Example answer: Tuesday, coffee with a friend. Thursday, dentist.';
+          sentence.appendChild(sr);
+        }
+        bLabel.textContent = s.answer ? 'The answer' : 'Your request';
+        bText.textContent = s.answer ? ANSWER : QUESTION;
+      }
+      back.setAttribute('aria-disabled', step <= 1 ? 'true' : 'false');
+      next.setAttribute('aria-disabled', step >= N ? 'true' : 'false');
+      reset.setAttribute('aria-disabled', step === 0 ? 'true' : 'false');
+    }
+
+    async function go(to) {
+      to = Math.max(0, Math.min(N, to));
+      const target = to === 0 ? 0 : STEPS[to - 1].st;
+      const id = ++run;
+      step = to; active = null; at = target; moving = true;
+      caption();
+      paint();
+      const cur = tokenPos(), dest = pts[target];
+      const dist = Math.hypot(dest.x - cur.x, dest.y - cur.y);
+      let ok = true;
+      if (dist > 1) {
+        /* A fresh path each time, so its length is never stale. */
+        const route = mk('path', { fill: 'none', stroke: 'none', d: `M${cur.x} ${cur.y} L${dest.x} ${dest.y}` });
+        routeG.insertBefore(route, token);
+        ok = await DT.travel(token, route, Math.min(1600, 450 + dist * 0.85));
+        route.remove();
+      } else {
+        placeToken(target);
+      }
+      if (!ok || id !== run) return;
+      moving = false;
+      active = step === 0 ? null : target;
+      paint();
+    }
+
+    next.addEventListener('click', () => { if (next.getAttribute('aria-disabled') !== 'true') go(step + 1); });
+    back.addEventListener('click', () => { if (back.getAttribute('aria-disabled') !== 'true') go(step - 1); });
+    reset.addEventListener('click', () => { if (reset.getAttribute('aria-disabled') !== 'true') go(0); });
+
+    window.addEventListener('resize', layout);
+    if ('ResizeObserver' in window) new ResizeObserver(layout).observe(chain);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+    layout();
+    caption();
+  })();</script>
+</section>

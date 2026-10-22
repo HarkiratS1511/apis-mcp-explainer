@@ -1,0 +1,125 @@
+<section id="s-05" class="slide" data-part="apis" data-label="An API key" aria-labelledby="s05-title">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s05-i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+      <pattern id="s05-dots" width="22" height="38" patternUnits="userSpaceOnUse">
+        <circle cx="11" cy="9" r="2" style="fill:var(--dragonfly-light)"/>
+        <circle cx="0" cy="28" r="2" style="fill:var(--dragonfly-light)"/>
+        <circle cx="22" cy="28" r="2" style="fill:var(--dragonfly-light)"/>
+      </pattern>
+    </defs>
+  </svg>
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>05</b> Your key</p>
+        <h2 id="s05-title" class="h2">An API key is your membership card.</h2>
+        <p class="lead">A service gives each customer a key, and checks it on every order.</p>
+        <p class="keyline">Keep it secret. Whoever holds it orders on your tab.</p>
+      </div>
+      <div class="s05-vis">
+        <div class="s05-stage tagged">
+        <span class="tag tag--corner">Example</span>
+        <button type="button" class="s05-card" id="s05-card" aria-pressed="false">
+          <span class="s05-inner">
+            <span class="s05-face s05-front" aria-hidden="false"><span class="sr-only">Membership card, front. Press to turn it over. </span>
+              <svg class="s05-deco" viewBox="0 0 110 90" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false"><rect width="110" height="90" fill="url(#s05-dots)"/></svg>
+              <span class="s05-top">
+                <span class="s05-lab"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-key"/></svg>API key</span>
+              </span>
+              <span class="s05-keytext">wx_8f2a····9c41</span>
+              <span class="s05-bottom">
+                <span class="s05-lab">Member</span>
+              </span>
+            </span>
+            <span class="s05-face s05-back" aria-hidden="true"><span class="sr-only">Membership card, back. </span>
+              <span class="s05-lab">What a key does</span>
+              <span class="s05-rows">
+                <span class="s05-row"><span class="s05-ico"><svg class="icon" aria-hidden="true"><use href="#i-user-check"/></svg></span><span class="s05-rowtxt">Says who’s ordering</span></span>
+                <span class="s05-row"><span class="s05-ico"><svg class="icon" aria-hidden="true"><use href="#i-bar-chart"/></svg></span><span class="s05-rowtxt">Counts how much you order</span></span>
+                <span class="s05-row"><span class="s05-ico"><svg class="icon" aria-hidden="true"><use href="#s05-i-receipt"/></svg></span><span class="s05-rowtxt">Puts it on your tab</span></span>
+              </span>
+            </span>
+          </span>
+        </button>
+        </div>
+        <div class="btn-row s05-actions">
+          <button type="button" class="btn btn--primary" id="s05-flip"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg><span id="s05-flip-label">Flip the card</span></button>
+          <span class="note">Or press the card itself.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 1024px) { #s-05 .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+    #s-05 .s05-vis { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; min-width: 0; }
+
+    #s-05 .s05-stage { position: relative; width: 100%; max-width: 640px; }
+    #s-05 .s05-stage .tag { pointer-events: none; }
+    #s-05 .s05-card {
+      display: block; position: relative; width: 100%; aspect-ratio: 1.586;
+      padding: 0; margin: 0; border: 0; background: none; border-radius: var(--radius-lg); cursor: pointer;
+      perspective: 1600px; -webkit-tap-highlight-color: transparent; text-align: left;
+    }
+    #s-05 .s05-inner {
+      position: absolute; inset: 0; display: block; transform-style: preserve-3d;
+      transition: transform var(--dur-3) var(--ease);
+    }
+    #s-05 .s05-card[aria-pressed="true"] .s05-inner { transform: rotateY(180deg); }
+    #s-05 .s05-face {
+      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+      padding: clamp(18px, 3vw, 36px); overflow: hidden;
+      background: var(--dragonfly-dark); color: var(--ink-on-dark);
+      border: 1px solid var(--dragonfly-light); border-radius: var(--radius-lg);
+      -webkit-backface-visibility: hidden; backface-visibility: hidden;
+    }
+    #s-05 .s05-back { transform: rotateY(180deg); justify-content: center; gap: clamp(18px, 2.6vw, 36px); }
+    #s-05 .s05-deco { position: absolute; bottom: 0; right: 0; height: 30%; width: 25%; color: var(--dragonfly-light); opacity: 0.2; pointer-events: none; }
+    #s-05 .s05-face > *:not(.s05-deco):not(.sr-only) { position: relative; }
+    #s-05 .s05-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    #s-05 .s05-lab { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--dragonfly-light); }
+    #s-05 .s05-keytext { display: block; font-family: var(--font-mono); font-weight: 500; font-size: clamp(26px, 3.6vw, 46px); letter-spacing: 0.03em; line-height: 1.2; color: var(--ink-on-dark); white-space: nowrap; }
+    #s-05 .s05-bottom { display: flex; align-items: center; justify-content: space-between; }
+    #s-05 .s05-rows { display: flex; flex-direction: column; gap: clamp(10px, 1.4vw, 20px); margin-bottom: clamp(4px, 1vw, 16px); }
+    #s-05 .s05-row { display: flex; align-items: center; gap: 16px; }
+    #s-05 .s05-ico { flex: none; display: inline-flex; align-items: center; justify-content: center; width: clamp(40px, 3.6vw, 52px); height: clamp(40px, 3.6vw, 52px); border: 1px solid var(--dragonfly-light); border-radius: var(--radius-full); color: var(--dragonfly-light); font-size: clamp(20px, 1.8vw, 26px); }
+    #s-05 .s05-rowtxt { font-size: clamp(20px, 1.6vw, 29px); line-height: 1.25; color: var(--ink-on-dark); }
+
+    #s-05 .s05-actions { gap: 16px 20px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #s-05 .s05-inner { transform: none !important; transform-style: flat; }
+      #s-05 .s05-back { transform: none; }
+      #s-05 .s05-face { transition: opacity var(--dur-2) var(--ease); -webkit-backface-visibility: visible; backface-visibility: visible; }
+      #s-05 .s05-back { opacity: 0; }
+      #s-05 .s05-card[aria-pressed="true"] .s05-front { opacity: 0; }
+      #s-05 .s05-card[aria-pressed="true"] .s05-back { opacity: 1; }
+    }
+    @media (max-width: 639px) {
+      #s-05 .s05-card { aspect-ratio: 1.12; }
+      #s-05 .s05-actions .btn { width: 100%; }
+      #s-05 .s05-lab { gap: 8px; letter-spacing: 0.1em; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-05');
+    const card = root.querySelector('#s05-card');
+    const flip = root.querySelector('#s05-flip');
+    const flipLabel = root.querySelector('#s05-flip-label');
+    function toggle() {
+      const back = card.getAttribute('aria-pressed') !== 'true';
+      card.setAttribute('aria-pressed', back ? 'true' : 'false');
+      front.setAttribute('aria-hidden', back ? 'true' : 'false');
+      backFace.setAttribute('aria-hidden', back ? 'false' : 'true');
+      flipLabel.textContent = back ? 'Flip it back' : 'Flip the card';
+      DT.announce(back
+        ? "Back of the card. A key does three things. It says who’s ordering, counts how much you order, and puts it on your tab."
+        : 'Front of the card. An API key marked Member, with a made-up example key.');
+    }
+    const front = root.querySelector('.s05-front'), backFace = root.querySelector('.s05-back');
+    card.addEventListener('click', toggle);
+    flip.addEventListener('click', toggle);
+  })();</script>
+</section>

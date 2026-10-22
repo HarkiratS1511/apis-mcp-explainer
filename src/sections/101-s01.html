@@ -1,0 +1,232 @@
+<section id="s-01" class="slide" data-part="apis" data-label="Apps asking apps" aria-labelledby="s01-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>01</b> Apps asking apps</p>
+        <h2 id="s01-title" class="h2">Your apps are always asking other apps.</h2>
+        <p class="keyline">Your weather app doesn’t own a single thermometer. It asks a service that does.</p>
+        <p class="note s01-hint"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg> Press a service to send it a question.</p>
+        <div class="btn-row"><button type="button" class="replay" id="s01-replay" disabled><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Replay</button></div>
+      </div>
+      <div class="s01-visual">
+        <div class="s01-stage" id="s01-stage">
+          <svg class="s01-svg" id="s01-svg" viewBox="0 0 680 350" aria-hidden="true" focusable="false">
+            <path class="s01-line" data-i="0"/>
+            <path class="s01-line" data-i="1"/>
+            <path class="s01-line" data-i="2"/>
+            <path class="s01-line" data-i="3"/>
+            <g id="s01-token" class="s01-token" visibility="hidden">
+              <rect id="s01-pill" x="-56" y="-19" width="112" height="38" rx="19"/>
+              <text id="s01-pilltext" x="0" y="6.5" text-anchor="middle">Question</text>
+            </g>
+            <g id="s01-phone" class="s01-phone">
+              <g id="s01-phonebody">
+                <rect class="s01-phone__body" x="-44" y="-84" width="88" height="168" rx="14"/>
+                <path class="s01-phone__ln" d="M-13 -69h26"/>
+                <rect class="s01-phone__app" x="-28" y="-46" width="24" height="24" rx="6"/>
+                <rect class="s01-phone__app" x="4" y="-46" width="24" height="24" rx="6"/>
+                <rect class="s01-phone__app" x="-28" y="-14" width="24" height="24" rx="6"/>
+                <rect class="s01-phone__app" x="4" y="-14" width="24" height="24" rx="6"/>
+                <path class="s01-phone__ln" d="M-14 68h28"/>
+              </g>
+              <text id="s01-phonelabel" class="s01-phone__label" x="0" y="112" text-anchor="middle">Your phone</text>
+            </g>
+          </svg>
+          <button type="button" class="s01-node" data-i="0" aria-pressed="false">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-cloud-sun"/></svg>
+            <span class="s01-node__name">Weather service</span>
+            <svg class="icon s01-node__check" aria-hidden="true"><use href="#i-check"/></svg>
+          </button>
+          <button type="button" class="s01-node" data-i="1" aria-pressed="false">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-map-pin"/></svg>
+            <span class="s01-node__name">Maps</span>
+            <svg class="icon s01-node__check" aria-hidden="true"><use href="#i-check"/></svg>
+          </button>
+          <button type="button" class="s01-node" data-i="2" aria-pressed="false">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-user-check"/></svg>
+            <span class="s01-node__name">Google sign-in</span>
+            <svg class="icon s01-node__check" aria-hidden="true"><use href="#i-check"/></svg>
+          </button>
+          <button type="button" class="s01-node" data-i="3" aria-pressed="false">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-landmark"/></svg>
+            <span class="s01-node__name">Your bank</span>
+            <svg class="icon s01-node__check" aria-hidden="true"><use href="#i-check"/></svg>
+          </button>
+        </div>
+
+        <div class="s01-panel card" id="s01-panel">
+          <span class="tag tag--corner">Example</span>
+          <div class="s01-panel__cols">
+            <div class="s01-cell" id="s01-qcell">
+              <p class="s01-cell__lab">The question</p>
+              <p class="s01-cell__txt" id="s01-q">Nothing asked yet.</p>
+            </div>
+            <div class="s01-cell" id="s01-acell">
+              <p class="s01-cell__lab">The answer</p>
+              <p class="s01-cell__txt" id="s01-a">It will appear here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-01 .s01-hint { display: flex; gap: 10px; align-items: center; }
+    #s-01 .s01-visual { display: grid; gap: 20px; min-width: 0; max-width: 700px; width: 100%; margin-inline: auto; }
+    #s-01 .s01-stage { position: relative; width: 100%; aspect-ratio: 680 / 350; }
+    #s-01 .s01-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+
+    #s-01 .s01-line { fill: none; stroke: var(--ink-muted); stroke-width: 2.5; stroke-dasharray: 3 9; stroke-linecap: round; transition: stroke var(--dur-1) var(--ease), stroke-width var(--dur-1) var(--ease); }
+    #s-01 .s01-line.is-on { stroke: var(--dragonfly); stroke-width: 3.5; stroke-dasharray: none; }
+
+    #s-01 .s01-phone__body { fill: var(--surface-card); stroke: var(--ink-heading); stroke-width: 3; }
+    #s-01 .s01-phone__app { fill: var(--surface-muted); stroke: var(--dragonfly); stroke-width: 2; }
+    #s-01 .s01-phone__ln { fill: none; stroke: var(--ink-label); stroke-width: 3; stroke-linecap: round; }
+    #s-01 .s01-phone__label { font: 500 19px var(--font-sans); fill: var(--ink-heading); }
+
+    #s-01 .s01-token rect { fill: var(--dragonfly); stroke: var(--surface-card); stroke-width: 3; }
+    #s-01 .s01-token text { font: 600 19px var(--font-sans); fill: var(--surface-card); }
+    #s-01 .s01-token.is-answer rect { fill: var(--surface-card); stroke: var(--dragonfly); stroke-width: 3; }
+    #s-01 .s01-token.is-answer text { fill: var(--ink); }
+
+    #s-01 .s01-node {
+      position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      min-height: 96px; padding: 12px 10px; text-align: center; cursor: pointer;
+      background: var(--surface-card); color: var(--ink); border: 2px solid var(--border-strong); border-radius: var(--radius-lg);
+      font-family: var(--font-sans); font-size: var(--fs-ui); font-weight: 500; line-height: 1.25;
+      transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #s-01 .s01-node:hover { background: var(--surface-muted); border-color: var(--ring); }
+    #s-01 .s01-node[aria-pressed="true"] { border-color: var(--dragonfly); background: var(--surface-card); }
+    #s-01 .s01-node .icon--lg { color: var(--ink-heading); }
+    #s-01 .s01-node[aria-pressed="true"] .icon--lg { color: var(--dragonfly); }
+    #s-01 .s01-node__check { position: absolute; top: 8px; right: 8px; width: 1.1em; height: 1.1em; stroke-width: 2; color: var(--dragonfly); opacity: 0; transition: opacity var(--dur-1) var(--ease); }
+    #s-01 .s01-node[aria-pressed="true"] .s01-node__check { opacity: 1; }
+    #s-01 .s01-node.is-asked { animation: s01-pulse var(--dur-3) var(--ease) 1; }
+    @keyframes s01-pulse { 0% { background: var(--dragonfly-light); } 100% { background: var(--surface-card); } }
+
+    #s-01 .s01-panel { display: grid; gap: 16px; --card-pad: clamp(18px, 1.6vw, 26px); }
+    #s-01 .s01-panel__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    #s-01 .s01-cell { min-width: 0; padding: 14px 16px; border-radius: var(--radius-md); background: var(--surface-muted); border: 2px solid transparent; transition: border-color var(--dur-1) var(--ease); }
+    #s-01 .s01-cell.is-live { border-color: var(--dragonfly); background: var(--surface-card); }
+    #s-01 .s01-cell__lab { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); line-height: 1.4; }
+    #s-01 .s01-cell__txt { margin-top: 6px; font-size: var(--fs-lead); line-height: 1.3; color: var(--ink-secondary); min-height: 2.6em; max-width: none; }
+    #s-01 .s01-cell.is-live .s01-cell__txt { color: var(--ink); }
+
+    @media (max-width: 639px) {
+      #s-01 .s01-panel__cols { grid-template-columns: 1fr; gap: 12px; }
+      #s-01 .s01-node { flex-direction: row; justify-content: flex-start; text-align: left; gap: 10px; min-height: 76px; padding: 10px 34px 10px 12px; font-size: 18px; }
+      #s-01 .s01-node__check { top: 50%; right: 8px; margin-top: -0.55em; }
+      #s-01 .s01-cell__txt { min-height: 0; }
+    }
+  </style>
+  <script>(() => {
+    const root = document.getElementById('s-01');
+    const stage = root.querySelector('#s01-stage');
+    const svg = root.querySelector('#s01-svg');
+    const lines = [...root.querySelectorAll('.s01-line')];
+    const nodes = [...root.querySelectorAll('.s01-node')];
+    const token = root.querySelector('#s01-token');
+    const pillText = root.querySelector('#s01-pilltext');
+    const phone = root.querySelector('#s01-phone');
+    const phoneBody = root.querySelector('#s01-phonebody');
+    const qEl = root.querySelector('#s01-q'), aEl = root.querySelector('#s01-a');
+    const qCell = root.querySelector('#s01-qcell'), aCell = root.querySelector('#s01-acell');
+    const replay = root.querySelector('#s01-replay');
+
+    /* Example text only. No numbers, no real data. */
+    const DATA = [
+      { name: 'Weather service', q: 'What’s tomorrow’s forecast?', a: 'Showers, then sunny.' },
+      { name: 'Maps', q: 'Where’s the nearest chemist?', a: 'Two streets away.' },
+      { name: 'Google sign-in', q: 'Is this really you?', a: 'Yes, it’s you.' },
+      { name: 'Your bank', q: 'Did the payment go through?', a: 'Yes, it went through.' }
+    ];
+
+    /* Two layouts, same parts: phone in the middle with the services around it, or a fan on a phone screen. */
+    const LAYOUTS = {
+      wide: {
+        W: 680, H: 350, nodeW: 190,
+        phone: { x: 340, y: 168, s: 1 },
+        starts: [[296, 128], [384, 128], [296, 208], [384, 208]],
+        centres: [[104, 52], [576, 52], [104, 298], [576, 298]], dir: [-1, 1, -1, 1]
+      },
+      narrow: {
+        W: 358, H: 400, nodeW: 172,
+        phone: { x: 50, y: 196, s: 0.78 },
+        starts: [[84, 176], [84, 192], [84, 208], [84, 224]],
+        centres: [[270, 48], [270, 149], [270, 251], [270, 352]], dir: [1, 1, 1, 1]
+      }
+    };
+    const mq = window.matchMedia('(max-width: 639px)');
+    function layout() {
+      const L = mq.matches ? LAYOUTS.narrow : LAYOUTS.wide;
+      stage.style.aspectRatio = L.W + ' / ' + L.H;
+      svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
+      phone.setAttribute('transform', 'translate(' + L.phone.x + ' ' + L.phone.y + ')');
+      phoneBody.setAttribute('transform', 'scale(' + L.phone.s + ')');
+      const lab = root.querySelector('#s01-phonelabel');
+      lab.setAttribute('y', String(Math.round(84 * L.phone.s + 30)));
+      lab.setAttribute('x', '0');
+      lab.style.fontSize = '19px';
+      nodes.forEach((n, i) => {
+        const c = L.centres[i], st = L.starts[i], d = L.dir[i];
+        n.style.left = (c[0] / L.W * 100) + '%';
+        n.style.top = (c[1] / L.H * 100) + '%';
+        n.style.width = (L.nodeW / L.W * 100) + '%';
+        const ex = c[0] - d * L.nodeW / 2;
+        const sx = st[0], sy = st[1], ey = c[1];
+        const k = Math.abs(ex - sx) * 0.5;
+        lines[i].setAttribute('d', 'M' + L.phone.x + ',' + L.phone.y + ' L' + sx + ',' + sy + ' C' + (sx + (ex > sx ? k : -k)) + ',' + sy + ' ' + (ex - (ex > sx ? k : -k)) + ',' + ey + ' ' + ex + ',' + ey + ' L' + c[0] + ',' + c[1]);
+      });
+    }
+    layout();
+    (mq.addEventListener ? mq.addEventListener('change', layout) : mq.addListener(layout));
+
+    let run = 0, sel = -1;
+
+    function setPill(answer) {
+      token.classList.toggle('is-answer', answer);
+      pillText.textContent = answer ? 'Answer' : 'Question';
+    }
+    function reset() {
+      qCell.classList.remove('is-live'); aCell.classList.remove('is-live');
+    }
+
+    async function ask(i) {
+      const my = ++run;
+      sel = i;
+      if (mq.matches) root.querySelector('.s01-visual').scrollIntoView({ block: 'nearest', behavior: DT.reduced ? 'auto' : 'smooth' });
+      const d = DATA[i];
+      nodes.forEach((n, j) => { n.setAttribute('aria-pressed', j === i ? 'true' : 'false'); n.classList.remove('is-asked'); });
+      lines.forEach((l, j) => l.classList.toggle('is-on', j === i));
+      replay.disabled = false;
+      reset();
+      qEl.textContent = d.q;
+      qCell.classList.add('is-live');
+      aEl.textContent = 'Waiting for the answer…';
+
+      setPill(false);
+      token.setAttribute('visibility', 'visible');
+      const ok = await DT.travel(token, lines[i], 1300);
+      if (!ok || my !== run) return;
+      void nodes[i].offsetWidth;
+      nodes[i].classList.add('is-asked');
+      await DT.wait(450);
+      if (my !== run) return;
+      setPill(true);
+      const ok2 = await DT.travel(token, lines[i], 1300, { reverse: true });
+      if (!ok2 || my !== run) return;
+      aEl.textContent = d.a;
+      aCell.classList.add('is-live');
+      DT.announce('Example. Your phone asked ' + d.name + ': ' + d.q + ' It answered: ' + d.a);
+      await DT.wait(500);
+      if (my !== run) return;
+      token.setAttribute('visibility', 'hidden');
+    }
+
+    nodes.forEach((n, i) => n.addEventListener('click', () => ask(i)));
+    replay.addEventListener('click', () => { if (sel >= 0) ask(sel); });
+  })();</script>
+</section>

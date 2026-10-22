@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>APIs and MCP, explained</title>
+<meta name="description" content="An interactive, plain-words explainer of APIs and MCP (Model Context Protocol), and how AI plugs into your other apps. A teaching demo by Ritesh &amp; Harkirat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:ital,wght@0,400;1,400&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:ital,wght@0,400;1,400&amp;display=swap"></noscript>
+<style>
+/* ===================================================================
+   1. TOKENS (Dragonfly Thinking brand kit, verbatim) + fluid tokens
+   =================================================================== */
+:root {
+  --dragonfly: #0563fa;
+  --dragonfly-dark: #0e2841;
+  --dragonfly-light: #c9e6ff;
+  --cobalt: #002d9c;
+  --ink: #18181b;
+  --ink-heading: #1d293d;
+  --ink-strong: #314158;
+  --ink-secondary: #52525c;
+  --ink-label: #45556c;
+  --ink-muted: #71717a;
+  --ink-on-dark: #fafafa;
+  --ink-on-dark-muted: #d4d4d8;
+  --surface: #fafafa;
+  --surface-page: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-muted: #f4f4f5;
+  --surface-inverse: #0f172a;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --ring: #a1a1aa;
+  --logo-ink: #2e2b2d;
+  --logo-ink-reversed: #ededec;
+  --gradient-1: #002d9c;
+  --gradient-2: #1d4ed8;
+  --gradient-3: #0563f4;
+  --gradient-4: #92448a;
+  --gradient-5: #da342a;
+  --gradient-6: #8b1a14;
+  --lens-tech: #3b82f6;
+  --lens-geo: #0ea5e9;
+  --lens-systems: #10b981;
+  --lens-business: #f97316;
+  --lens-scenario: #9b4dca;
+  --lens-risk: #dc2626;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+  --font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-display-alt: "Instrument Serif", "IBM Plex Serif", Georgia, serif;
+  --gradient-headline: linear-gradient(90deg, #002d9c 0%, #1d4ed8 22%, #0563f4 42%, #92448a 62%, #da342a 82%, #8b1a14 100%);
+
+  /* Fluid type (projector first, phone last) */
+  --fs-display: clamp(48px, 6.4vw, 104px);
+  --fs-h2: clamp(36px, 4.2vw, 64px);
+  --fs-h3: clamp(26px, 2.4vw, 36px);
+  --fs-lead: clamp(22px, 1.7vw, 30px);
+  --fs-body: clamp(20px, 1.25vw, 24px);
+  --fs-label: clamp(16px, 0.95vw, 18px);
+  --fs-ui: clamp(18px, 1.1vw, 20px);
+
+  /* Motion */
+  --dur-1: 200ms;
+  --dur-2: 450ms;
+  --dur-3: 800ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  /* Layout */
+  --bar-h: 64px;
+  --header-h: 64px;
+  --gutter: clamp(16px, 3.5vw, 48px);
+  --slide-pad: clamp(56px, 8vh, 112px);
+}
+@media (max-width: 639px) { :root { --bar-h: 56px; } }
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: 1ms; --dur-2: 1ms; --dur-3: 1ms; }
+}
+
+/* ===================================================================
+   2. BASE
+   =================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-bottom: var(--bar-h); }
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-weight: 400;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+p { margin: 0; max-width: 60ch; }
+ul, ol { margin: 0; padding: 0; }
+b, strong { font-weight: 600; }
+img, svg { max-width: 100%; }
+button { font: inherit; color: inherit; }
+button, [role="switch"], a, .pbar, summary, select { touch-action: manipulation; }
+a { color: var(--dragonfly); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+::selection { background: var(--dragonfly-light); color: var(--ink); }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--ink-heading);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+h1, .h-display { font-size: var(--fs-display); line-height: 1.04; max-width: 18ch; }
+h2, .h2 { font-size: var(--fs-h2); line-height: 1.08; max-width: 24ch; margin-bottom: clamp(20px, 3vh, 32px); }
+h3, .h3 { font-size: var(--fs-h3); line-height: 1.18; max-width: 30ch; }
+/* Headings take focus after a presenter jump; a ring on a heading is only noise on a projector. */
+:is(h1, h2, h3, h4, section, main)[tabindex="-1"]:focus { outline: none; }
+
+:focus-visible { outline: 3px solid var(--dragonfly); outline-offset: 3px; }
+.slide--navy :focus-visible:not(:is(.card, .panel, .callout) *) { outline-color: var(--dragonfly-light); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--ink); color: var(--ink-on-dark); padding: 14px 24px; border-radius: var(--radius-md);
+  font: 500 var(--fs-ui)/1.25 var(--font-sans); text-decoration: none;
+}
+.skip-link:focus { top: 16px; }
+
+.icon {
+  width: 1em; height: 1em; flex: none; vertical-align: -0.125em;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.icon--lg { width: 1.5em; height: 1.5em; }
+
+/* ===================================================================
+   3. LAYOUT
+   =================================================================== */
+.wrap { width: 100%; max-width: calc(1240px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.narrow { max-width: 60ch; }
+
+.slide {
+  position: relative;
+  min-height: calc(100vh - var(--bar-h));
+  min-height: calc(100svh - var(--bar-h));
+  padding-top: clamp(56px, 10vh, 120px);
+  padding-bottom: max(var(--slide-pad), calc(var(--bar-h) + 8px));
+  display: flex; flex-direction: column; justify-content: flex-start;
+  background: var(--surface-page);
+}
+/* Content sections are top-anchored so every .secnum sits at the same height. Openers, hero and the big moments centre. */
+.slide--center { justify-content: center; padding-top: var(--slide-pad); }
+.slide + .slide { border-top: 1px solid var(--border); }
+.slide > .wrap { position: relative; z-index: 1; }
+
+.slide--navy { background: var(--dragonfly-dark); color: var(--ink-on-dark); }
+.slide--sky { background: var(--dragonfly-light); color: var(--ink); }
+.slide.slide--navy, .slide.slide--sky, .slide--navy + .slide, .slide--sky + .slide { border-top: 0; }
+/* Navy recolouring never reaches inside .card/.panel/.callout: those are light-ground islands. */
+.slide--navy :is(h1, h2, h3, h4):not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark); }
+.slide--navy a:not(.btn):not(.replay):not(.btn-reset):not(:is(.card, .panel, .callout) *) { color: var(--dragonfly-light); }
+.slide--sky a:not(.btn):not(.replay):not(.btn-reset) { color: var(--cobalt); }
+
+.split { display: grid; gap: clamp(32px, 4vw, 72px); align-items: start; }
+.split > * { min-width: 0; }
+@media (min-width: 1024px) { .split { grid-template-columns: 5fr 7fr; } }
+
+.stack { --stack: 24px; }
+.stack-lg { --stack: clamp(28px, 4vh, 48px); }
+.stack > * + *, .stack-lg > * + * { margin-top: var(--stack); }
+
+/* Decorative compound-eye dot lattice. Put <div class="facets" aria-hidden="true"></div> first in a slide.
+   Confined to the right 40% of the slide, fading out to the left, and hidden on phones, so it never sits under text. */
+.facets {
+  --facet: var(--border-strong);
+  position: absolute; top: 0; bottom: 0; right: 0; left: 60%; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--facet) 0 1.6px, transparent 2.6px),
+    radial-gradient(circle at 50% 50%, var(--facet) 0 1.6px, transparent 2.6px);
+  background-size: 44px 76px;
+  background-position: 0 0, 22px 38px;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+.slide--navy .facets { --facet: var(--dragonfly-light); opacity: 0.2; }
+@media (max-width: 639px) { .facets { display: none; } }
+
+/* ===================================================================
+   4. TYPE
+   =================================================================== */
+.eyebrow {
+  margin: 0; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600;
+  line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dragonfly);
+}
+.slide--navy .eyebrow:not(:is(.card, .panel, .callout) *) { color: var(--dragonfly-light); }
+.slide--sky .eyebrow { color: var(--cobalt); }
+
+.secnum {
+  display: flex; gap: 14px; align-items: baseline; margin: 0;
+  font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600;
+  line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label);
+}
+.secnum b { font-weight: 600; color: var(--dragonfly); }
+.slide--navy .secnum:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark-muted); }
+.slide--navy .secnum:not(:is(.card, .panel, .callout) *) b { color: var(--dragonfly-light); }
+.slide--sky .secnum b { color: var(--cobalt); }
+
+.lead { text-wrap: balance; font-size: var(--fs-lead); line-height: 1.45; color: var(--ink-heading); max-width: 52ch; }
+.slide--navy .lead:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark-muted); }
+.mono-note { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 500; line-height: 1.5; letter-spacing: 0.02em; color: var(--ink-label); }
+.slide--navy .mono-note:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark-muted); }
+/* .note: small notes and captions in plain sans (mono is for short UPPERCASE labels only). .mono-note is deprecated. */
+.note { font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-ui); line-height: 1.5; color: var(--ink-label); max-width: 60ch; }
+.slide--navy .note:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark-muted); }
+/* .keyline: the one takeaway sentence of a section. */
+.keyline { font-family: var(--font-serif); font-weight: 400; font-size: var(--fs-lead); line-height: 1.3; letter-spacing: -0.015em; color: var(--ink-heading); max-width: 40ch; text-align: left; text-wrap: balance; }
+.slide--navy .keyline:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark); }
+
+/* Gradient italic phrase: hero and section 12 only (contract). */
+.grad {
+  display: inline-block; font-style: italic; font-weight: 400;
+  padding: 0 0.08em 0.14em 0; margin-bottom: -0.14em;
+  background: var(--gradient-headline); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* Everyday word big, tech word small beside it */
+.term { display: block; }
+.term__word { font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink-heading); max-width: none; }
+.term__tech {
+  margin-top: 6px; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600;
+  line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dragonfly); max-width: none;
+}
+.slide--navy .term__word:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark); }
+.slide--navy .term__tech:not(:is(.card, .panel, .callout) *) { color: var(--dragonfly-light); }
+.slide--sky .term__tech { color: var(--cobalt); }
+
+/* ===================================================================
+   5. BUTTONS AND CONTROLS
+   =================================================================== */
+.btn, .replay, .btn-reset {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 14px 28px;
+  font-family: var(--font-sans); font-size: var(--fs-ui); font-weight: 500; line-height: 1.25; text-align: center;
+  color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: var(--radius-md);
+  cursor: pointer; text-decoration: none; -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.btn .icon { transition: transform var(--dur-1) var(--ease); }
+
+.btn--primary { background: var(--ink); color: var(--ink-on-dark); }
+.btn--secondary, .replay, .btn-reset { background: var(--surface-card); color: var(--ink); border-color: var(--ink-muted); }
+.btn--on-dark { background: var(--ink-on-dark); color: var(--ink); }
+.btn--small { min-height: 48px; padding: 10px 20px; }
+.replay, .btn-reset { padding: 14px 24px; }
+
+.btn--choice { position: relative; background: var(--surface-card); color: var(--ink); border: 2px solid var(--ink-muted); padding-inline: 46px; }
+.btn--choice[aria-pressed="true"] { border-color: var(--ink); background: var(--surface-muted); }
+.btn__check { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); opacity: 0; width: 1.1em; height: 1.1em; stroke-width: 2; transition: opacity var(--dur-1) var(--ease); }
+.btn--choice[aria-pressed="true"] .btn__check { opacity: 1; }
+
+/* Navy slides: ink buttons would vanish, so outside cards they flip to light (cards keep the light-ground look) */
+.slide--navy .btn--primary:not(:is(.card, .panel, .callout) *) { background: var(--ink-on-dark); color: var(--ink); }
+.slide--navy .btn--secondary:not(:is(.card, .panel, .callout) *), .slide--navy .replay:not(:is(.card, .panel, .callout) *), .slide--navy .btn-reset:not(:is(.card, .panel, .callout) *) { background: transparent; color: var(--ink-on-dark); border-color: var(--ink-on-dark-muted); }
+
+/* Hover and active apply only to enabled buttons */
+.btn:not([disabled]):not([aria-disabled="true"]):active, .replay:not([disabled]):active, .btn-reset:not([disabled]):active { transform: translateY(1px); }
+.btn:not([disabled]):not([aria-disabled="true"]):hover .icon:last-child:not(.btn__check) { transform: translateX(3px); }
+.btn--primary:not([disabled]):not([aria-disabled="true"]):hover { background: var(--ink-strong); }
+.btn--primary:not([disabled]):not([aria-disabled="true"]):active { background: var(--surface-inverse); }
+.btn--secondary:not([disabled]):not([aria-disabled="true"]):hover, .replay:not([disabled]):hover, .btn-reset:not([disabled]):hover { background: var(--surface-muted); border-color: var(--ink); }
+.btn--secondary:not([disabled]):not([aria-disabled="true"]):active, .replay:not([disabled]):active, .btn-reset:not([disabled]):active { background: var(--border); }
+.btn--on-dark:not([disabled]):not([aria-disabled="true"]):hover { background: var(--dragonfly-light); }
+.btn--on-dark:not([disabled]):not([aria-disabled="true"]):active { background: var(--ink-on-dark-muted); }
+.btn--choice:not([disabled]):not([aria-disabled="true"]):hover { background: var(--surface-muted); border-color: var(--ink); }
+.slide--navy .btn--primary:not(:is(.card, .panel, .callout) *):not([disabled]):not([aria-disabled="true"]):hover { background: var(--dragonfly-light); }
+.slide--navy .btn--secondary:not(:is(.card, .panel, .callout) *):not([disabled]):not([aria-disabled="true"]):hover, .slide--navy .replay:not(:is(.card, .panel, .callout) *):not([disabled]):hover, .slide--navy .btn-reset:not(:is(.card, .panel, .callout) *):not([disabled]):hover { background: var(--dragonfly-dark); border-color: var(--ink-on-dark); }
+
+/* Disabled stays legible (muted fill, dark grey text) and wins over every variant above */
+.slide .btn[disabled], .slide .btn[aria-disabled="true"], .slide .replay[disabled], .slide .btn-reset[disabled],
+.btn[disabled], .btn[aria-disabled="true"], .replay[disabled], .btn-reset[disabled] {
+  cursor: not-allowed; background: var(--surface-muted); color: var(--ink-secondary); border-color: var(--border); transform: none;
+}
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.seg { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* Switch: thumb position AND the words On/Off carry state */
+.switch {
+  display: inline-flex; align-items: center; gap: 16px; min-height: 56px; padding: 4px 0;
+  background: none; border: 0; border-radius: var(--radius-md); cursor: pointer; text-align: left;
+  font-family: var(--font-sans); font-size: var(--fs-ui); font-weight: 500; line-height: 1.25; color: var(--ink);
+}
+.switch__track {
+  position: relative; flex: none; width: 96px; height: 44px; border-radius: var(--radius-full);
+  background: var(--surface-muted); border: 2px solid var(--ink-muted);
+  display: flex; align-items: center; justify-content: flex-end; padding-inline: 12px;
+  font-family: var(--font-mono); font-size: 16px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-label);
+  transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.switch__track::after { content: "Off"; content: "Off" / ""; }
+.switch__thumb {
+  position: absolute; top: 3px; left: 3px; width: 34px; height: 34px; border-radius: var(--radius-full);
+  background: var(--surface-card); border: 2px solid var(--ink-label);
+  transition: transform var(--dur-2) var(--ease);
+}
+.switch:hover .switch__track { border-color: var(--ink); }
+.switch[aria-checked="true"] .switch__track { background: var(--ink); border-color: var(--ink); color: var(--ink-on-dark); justify-content: flex-start; }
+.switch[aria-checked="true"] .switch__track::after { content: "On"; content: "On" / ""; }
+.switch[aria-checked="true"] .switch__thumb { transform: translateX(52px); border-color: var(--ink-on-dark); }
+.slide--navy .switch:not(:is(.card, .panel, .callout) *) { color: var(--ink-on-dark); }
+
+/* ===================================================================
+   6. SURFACES
+   =================================================================== */
+.card, .panel, .callout, .result { position: relative; }
+.card { --card-pad: clamp(20px, 2vw, 32px); background: var(--surface-card); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--card-pad); }
+.card--active { border: 2px solid var(--dragonfly); padding: calc(var(--card-pad) - 1px); }
+.panel { background: var(--surface-muted); color: var(--ink); border-radius: var(--radius-lg); padding: clamp(20px, 2vw, 32px); }
+.callout { background: var(--surface-muted); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(20px, 2vw, 28px); }
+.callout > * + * { margin-top: 10px; }
+.callout__kicker { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4; color: var(--ink-label); }
+.callout--warn { background: var(--surface-card); border-color: var(--lens-risk); }
+.callout--warn .callout__kicker { color: var(--lens-risk); }
+/* Tag placement: top-right corner of a panel/card (.tag--corner) or directly under the heading. */
+.tagged { position: relative; }
+.tag--corner { position: absolute; top: 12px; right: 12px; z-index: 2; }
+:is(.card, .panel, .callout):has(> .tag--corner) { padding-top: 56px; }
+.result { display: flex; gap: 16px; align-items: flex-start; background: var(--surface-muted); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(16px, 1.6vw, 24px); }
+.result[hidden] { display: none; }
+.result > * { min-width: 0; }
+.result p { max-width: none; }
+.result__icon { margin-top: 0.1em; }
+.result--ok .result__icon { color: var(--dragonfly); }
+.result--warn { background: var(--surface-card); border-color: var(--lens-risk); }
+.result--warn .result__icon { color: var(--lens-risk); }
+.full { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 3vw, 40px); }
+.full > * { min-width: 0; }
+.tag {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: var(--surface-card); color: var(--ink-label);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-full);
+  font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* ===================================================================
+   7. HEADER, FOOTER, PRESENTER BAR
+   =================================================================== */
+.site-header { height: var(--header-h); background: var(--surface-page); }
+.site-header__in, .site-footer__in { display: flex; align-items: center; gap: 14px; }
+.site-header__in { height: 100%; }
+.site-footer__mark { display: block; flex: none; height: 28px; width: 17px; }
+.site-footer__mark path { fill: var(--logo-ink-reversed); }
+.site-header img, .site-footer img { display: block; height: 28px; width: auto; }
+.site-header__label { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+.site-footer { border-top: 0; padding: 40px 0 calc(var(--bar-h) + 48px); background: var(--dragonfly-dark); color: var(--ink-on-dark); }
+.site-footer__in { flex-wrap: wrap; row-gap: 8px; column-gap: 14px; }
+.site-footer p { font-size: var(--fs-ui); max-width: none; color: var(--ink-on-dark); }
+.site-footer p.note { margin-left: auto; color: var(--ink-on-dark-muted); }
+@media (max-width: 639px) { .site-footer p.note { margin-left: 0; flex-basis: 100%; } }
+
+.pbar {
+  --pbar-fs: clamp(16px, 0.95vw, 18px);
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; height: var(--bar-h);
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 12px;
+  padding-inline: clamp(8px, 2vw, 24px);
+  background: var(--surface-card); border-top: 1px solid var(--border);
+}
+.pbar[hidden] { display: none; }
+.pbar :focus-visible { outline-offset: -3px; }
+.pbar__btn {
+  display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; cursor: pointer;
+  background: var(--surface-card); color: var(--ink); border: 1px solid var(--ink-muted); border-radius: var(--radius-md);
+  font-size: 22px; transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.pbar__btn:hover { background: var(--surface-muted); border-color: var(--ink); }
+.pbar__btn:active { background: var(--border); }
+.pbar__btn[aria-disabled="true"], .pbar__btn[aria-disabled="true"]:hover { color: var(--ink-secondary); background: var(--surface-muted); border-color: var(--border); cursor: default; }
+.pbar__parts { display: flex; justify-content: center; align-items: center; gap: clamp(8px, 2.5vw, 40px); min-width: 0; }
+.pbar__seg {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  min-height: 48px; padding: 4px 12px; background: none; border: 0; border-radius: var(--radius-md); cursor: pointer;
+}
+.pbar__seg:hover { background: var(--surface-muted); }
+.pbar__label, .pbar__now { font-family: var(--font-sans); font-size: var(--pbar-fs); font-weight: 500; line-height: 1.2; color: var(--ink-label); white-space: nowrap; }
+.pbar__seg[aria-current="true"] .pbar__label { color: var(--ink); font-weight: 600; }
+.pbar__ticks { display: flex; gap: 3px; align-items: center; height: 8px; }
+.pbar__tick { width: 12px; height: 4px; border-radius: 2px; background: var(--border-strong); }
+.pbar__tick.is-visited { background: var(--dragonfly); }
+.pbar__tick.is-current { background: var(--dragonfly); height: 8px; }
+.pbar__now { display: none; color: var(--ink); font-weight: 600; text-align: center; overflow: hidden; text-overflow: ellipsis; }
+.pbar__right { display: flex; align-items: center; gap: 12px; }
+.pbar__count { font-family: var(--font-mono); font-size: var(--pbar-fs); font-weight: 600; color: var(--ink); white-space: nowrap; }
+@media (max-width: 899px) {
+  .pbar__tick { width: 7px; }
+  .pbar__ticks { gap: 2px; }
+  .pbar__seg { padding-inline: 8px; }
+  .pbar__parts { gap: 8px; }
+}
+@media (max-width: 639px) {
+  .pbar { column-gap: 8px; padding-inline: 8px; }
+  .pbar__parts { display: none; }
+  .pbar__now { display: block; grid-column: 2; grid-row: 1; }
+  .pbar__right { gap: 8px; }
+}
+
+/* Safety net for motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+}
+</style>
+<script>
+/* ===================================================================
+   DT core API (window.DT). Runs before the sections, so section scripts can use it immediately.
+   =================================================================== */
+(function () {
+  'use strict';
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var DT = window.DT = window.DT || {};
+
+  Object.defineProperty(DT, 'reduced', { get: function () { return mq.matches; }, enumerable: true });
+  DT.dur = function (ms) { return mq.matches ? 0 : ms; };
+  DT.wait = function (ms) { return new Promise(function (res) { setTimeout(res, DT.dur(ms)); }); };
+  DT._jumping = false;   // true while a presenter jump is scrolling (set by the presenter script)
+
+  /* Screen-reader announcement through the global polite live region.
+     Messages sent in the same tick are queued and read together. */
+  var queue = [], scheduled = false;
+  DT.announce = function (text) {
+    queue.push(String(text).replace(/[.\s]+$/, ''));
+    if (scheduled) return;
+    scheduled = true;
+    function flush() {
+      var el = document.getElementById('dt-live');
+      if (!el) { queue = []; scheduled = false; return; }
+      el.textContent = '';
+      requestAnimationFrame(function () { el.textContent = queue.join('. ') + '.'; queue = []; scheduled = false; });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', flush, { once: true });
+    else flush();
+  };
+
+  /* Fire cb(entry) once el has been at least `threshold` visible (or fills `threshold` of the usable viewport
+     when el is taller than the screen) for about 300ms, and no presenter jump is scrolling.
+     once:false fires again only after el has left and come back. Returns a function that stops observing. */
+  DT.onEnter = function (el, cb, opts) {
+    opts = opts || {};
+    var threshold = opts.threshold == null ? 0.5 : opts.threshold;
+    var once = opts.once !== false;
+    var DWELL = 300;
+    if (!('IntersectionObserver' in window)) { cb({ target: el, isIntersecting: true }); return function () {}; }
+    var visible = false, armed = true, timer = 0, stopped = false, last = null;
+    function clear() { clearTimeout(timer); timer = 0; }
+    function consider() {
+      clear();
+      if (stopped || !visible || !armed || DT._jumping) return;
+      timer = setTimeout(function () {
+        timer = 0;
+        if (stopped || !visible || !armed || DT._jumping) return;
+        armed = false;
+        try { cb(last); } catch (err) { console.error(err); }
+        if (once) stop();
+      }, DWELL);
+    }
+    function stop() {
+      stopped = true; clear(); io.disconnect();
+      document.removeEventListener('dt:settle', consider);
+      document.removeEventListener('dt:jump', clear);
+    }
+    var steps = []; for (var i = 0; i <= 20; i++) steps.push(i / 20);
+    var io = new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      var bar = document.getElementById('dt-bar');
+      var usable = window.innerHeight - (bar ? bar.offsetHeight : 64);
+      var ok = e.isIntersecting && (e.intersectionRatio >= threshold - 0.01 || e.intersectionRect.height >= usable * threshold);
+      if (ok) { visible = true; last = e; consider(); }
+      else { visible = false; armed = true; clear(); }
+    }, { threshold: steps });
+    document.addEventListener('dt:settle', consider);
+    document.addEventListener('dt:jump', clear);
+    io.observe(el);
+    return stop;
+  };
+
+  /* Animate an SVG element (circle or g, drawn centred on 0,0) along an SVG path.
+     Sets transform="translate(x y)" in the path's own coordinate space, so put the dot in the same
+     <g> as the path. Resolves true when it arrives, false if a newer travel() on the same dot cancelled it.
+     Reduced motion: jumps to the end at once. */
+  var travels = new WeakMap();
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  DT.travel = function (dot, path, ms, opts) {
+    var rev = !!(opts && opts.reverse);
+    var prev = travels.get(dot);
+    if (prev) { cancelAnimationFrame(prev.raf); prev.done(false); }
+    var len = path.getTotalLength();
+    function place(t) {
+      var p = path.getPointAtLength(len * (rev ? 1 - t : t));
+      dot.setAttribute('transform', 'translate(' + p.x + ' ' + p.y + ')');
+    }
+    return new Promise(function (resolve) {
+      var state = { raf: 0, done: function (v) { if (travels.get(dot) === state) travels.delete(dot); resolve(v); } };
+      travels.set(dot, state);
+      var d = DT.dur(ms);
+      if (d <= 0) { place(1); state.done(true); return; }
+      var t0 = null;
+      function frame(now) {
+        if (t0 === null) t0 = now;
+        var t = Math.min(1, (now - t0) / d);
+        place(ease(t));
+        if (t < 1) state.raf = requestAnimationFrame(frame); else state.done(true);
+      }
+      place(0);
+      state.raf = requestAnimationFrame(frame);
+    });
+  };
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the content</a>
+
+<!-- Icon sprite. Use: <svg class="icon" aria-hidden="true"><use href="#i-key"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol stroke-width="2" id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol stroke-width="2" id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    <symbol stroke-width="2" id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol stroke-width="2" id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol stroke-width="2" id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol stroke-width="2" id="i-unlock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
+    <symbol stroke-width="2" id="i-key" viewBox="0 0 24 24"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+    <symbol stroke-width="2" id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol stroke-width="2" id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol stroke-width="2" id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol stroke-width="2" id="i-cloud-sun" viewBox="0 0 24 24"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.95 12.65a4 4 0 0 0-5.93-4.13"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></symbol>
+    <symbol stroke-width="2" id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol stroke-width="2" id="i-user-check" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+    <symbol stroke-width="2" id="i-landmark" viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="m12 2 8 5H4z"/></symbol>
+    <symbol stroke-width="2" id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol stroke-width="2" id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol stroke-width="2" id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+    <symbol stroke-width="2" id="i-bar-chart" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></symbol>
+    <symbol stroke-width="2" id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+    <symbol stroke-width="2" id="i-shield-alert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+    <symbol stroke-width="2" id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol stroke-width="2" id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+    <symbol stroke-width="2" id="i-door-closed" viewBox="0 0 24 24"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></symbol>
+    <symbol stroke-width="2" id="i-door-open" viewBox="0 0 24 24"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.56v16.16a1 1 0 0 1-1.24.97L5 20V5.56a2 2 0 0 1 1.52-1.94l4-1A2 2 0 0 1 13 4.56Z"/></symbol>
+    <symbol stroke-width="2" id="i-chef-hat" viewBox="0 0 24 24"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.46.32-.84.73-1.04a4 4 0 0 0-2.14-7.59 5 5 0 0 0-9.18 0 4 4 0 0 0-2.14 7.59c.41.2.73.58.73 1.04V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></symbol>
+    <symbol stroke-width="2" id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  </defs>
+</svg>
+
+<div id="dt-live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <img src="dt-dragonfly-mark.svg" alt="" width="17" height="28">
+    <span class="site-header__label">APIs and MCP, explained</span>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<!--SECTIONS-->
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <svg class="site-footer__mark" viewBox="0 0 63 102" width="17" height="28" aria-hidden="true" focusable="false">
+      <path d="M28.0211 75.7194C25.1147 82.7205 25.8396 90.7566 30.1782 99.6116L27.9409 101.375C27.9409 101.375 5.65872 72.7817 37.9564 53.0713L41.267 58.2115L42.7864 60.5707C37.7647 63.376 31.1087 68.2827 28.0211 75.7194Z" fill-opacity="0.8"/>
+      <path d="M50.7209 56.9593L47.013 58.5414C40.0189 61.5175 33.903 62.6988 28.606 62.6988C9.81215 62.6988 1.30561 47.8568 0.180001 45.7206C-0.109243 45.1735 -0.0465151 44.5044 0.343789 44.0235C0.730609 43.5391 1.37182 43.3335 1.97122 43.5007L50.7209 56.9593Z" fill-opacity="0.85"/>
+      <path d="M50.7179 56.961L46.651 56.7101C30.0596 55.3719 17.9602 49.2281 10.6908 38.446C4.41802 29.1414 4.35181 19.9832 4.35181 19.5999C4.35181 18.9796 4.7212 18.422 5.28923 18.1746C5.84681 17.9341 6.495 18.0386 6.94454 18.4429L50.7179 56.961Z" fill-opacity="0.9"/>
+      <path d="M58.3931 55.3165C60.9375 55.3165 63.0001 53.2539 63.0001 50.7095C63.0001 48.1652 60.9375 46.1025 58.3931 46.1025C55.8488 46.1025 53.7861 48.1652 53.7861 50.7095C53.7861 53.2539 55.8488 55.3165 58.3931 55.3165Z"/>
+      <path d="M50.7184 56.96L47.2022 55.0747C10.078 35.1378 22.2854 4.37001 23.7979 0.926973C24.0488 0.362425 24.6063 0 25.2197 0H25.2266C25.847 0.00348486 26.4045 0.37288 26.6485 0.940912L50.7184 56.96Z"/>
+    </svg>
+    <p>A teaching demo by Ritesh &amp; Harkirat</p>
+    <p class="note">Not an official Dragonfly Thinking product.</p>
+  </div>
+</footer>
+
+<nav id="dt-bar" class="pbar" aria-label="Presenter navigation" hidden>
+  <button type="button" class="pbar__btn" id="dt-prev" aria-label="Previous section"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+  <div class="pbar__parts" id="dt-parts"></div>
+  <span class="pbar__now" id="dt-now" aria-hidden="true"></span>
+  <div class="pbar__right">
+    <span class="pbar__count"><span class="sr-only" id="dt-count-sr"></span><span id="dt-count" aria-hidden="true">01 / 01</span></span>
+    <button type="button" class="pbar__btn" id="dt-next" aria-label="Next section"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+  </div>
+</nav>
+
+<script>
+/* ===================================================================
+   Presenter navigation. Built from whatever main > section.slide exist.
+   =================================================================== */
+(function () {
+  'use strict';
+  var DT = window.DT;
+  var bar = document.getElementById('dt-bar');
+  var partsEl = document.getElementById('dt-parts');
+  var countEl = document.getElementById('dt-count');
+  var countSr = document.getElementById('dt-count-sr');
+  var nowEl = document.getElementById('dt-now');
+  var prevBtn = document.getElementById('dt-prev');
+  var nextBtn = document.getElementById('dt-next');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('main > section.slide'));
+  if (!secs.length) return;
+
+  var PARTS = [
+    { key: 'apis', label: 'Part 1 · APIs' },
+    { key: 'mcp', label: 'Part 2 · MCP' },
+    { key: 'safe', label: 'Staying safe' }
+  ];
+  var NAMED = { 's-hero': 'Start', 's-part1': 'Part 1', 's-part2': 'Part 2', 's-safe': 'Safety' };
+  var GUARD = 'dialog[open], [role="dialog"]:not([hidden]), [aria-modal="true"]:not([hidden])';
+
+  /* Numbered content sections are counted by their id (s-04 is "04"); openers get a word. */
+  var nums = secs.map(function (s) { var m = /^s-(\d+)$/.exec(s.id); return m ? parseInt(m[1], 10) : null; });
+  var total = Math.max(nums.filter(function (n) { return n !== null; }).length, Math.max.apply(null, nums.map(function (n) { return n || 0; })));
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function labelOf(i) { return secs[i].getAttribute('data-label') || secs[i].id; }
+  function counterOf(i) {
+    if (nums[i] !== null) return { text: pad(nums[i]) + ' / ' + pad(total), sr: 'Section ' + nums[i] + ' of ' + total };
+    var t = NAMED[secs[i].id] || labelOf(i);
+    return { text: t, sr: t };
+  }
+  /* Part used for ticks and highlighting: intro has none; close counts as part of "safe". */
+  function partOf(s) {
+    var p = s.getAttribute('data-part');
+    return p === 'close' ? 'safe' : (p === 'intro' ? null : p);
+  }
+
+  var segs = {};      // key -> { btn, ticks:[{el, idx}] }
+  PARTS.forEach(function (p) {
+    var idxs = [];
+    secs.forEach(function (s, i) { if (partOf(s) === p.key) idxs.push(i); });
+    if (!idxs.length) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pbar__seg';
+    btn.setAttribute('data-part', p.key);
+    var label = document.createElement('span');
+    label.className = 'pbar__label';
+    label.textContent = p.label;
+    var ticks = document.createElement('span');
+    ticks.className = 'pbar__ticks';
+    ticks.setAttribute('aria-hidden', 'true');
+    var tickEls = idxs.map(function (i) {
+      var t = document.createElement('span'); t.className = 'pbar__tick'; ticks.appendChild(t);
+      return { el: t, idx: i };
+    });
+    btn.appendChild(label); btn.appendChild(ticks);
+    btn.addEventListener('click', function (e) { var kbd = e.detail === 0; goTo(idxs[0], { focus: kbd ? 'heading' : false, announce: !kbd }); });
+    partsEl.appendChild(btn);
+    segs[p.key] = { btn: btn, ticks: tickEls, label: p.label };
+  });
+
+  var current = 0, visited = {};
+  var jumping = false, navTarget = null, destY = 0, jumpStart = 0;
+  var settleT = 0, dwellT = 0, hashT = 0, userMoved = false, resizing = false;
+  var anchorIdx = 0, anchorOff = 0, lastW = window.innerWidth, lastH = window.innerHeight;
+
+  function barH() { return bar.offsetHeight || 64; }
+  function absTop(el) { return el.getBoundingClientRect().top + window.scrollY; }
+  function maxY() { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
+  function measure() {
+    var bot = window.innerHeight - barH(), best = 0, bestOv = -Infinity;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      var ov = Math.min(r.bottom, bot) - Math.max(r.top, 0);
+      if (ov > bestOv + 0.5) { bestOv = ov; best = i; }
+    }
+    return best;
+  }
+
+  function render() {
+    var c = counterOf(current);
+    countEl.textContent = c.text;
+    countSr.textContent = c.sr;
+    var cp = partOf(secs[current]);
+    nowEl.textContent = cp && segs[cp] ? segs[cp].label : labelOf(current);
+    PARTS.forEach(function (p) {
+      var s = segs[p.key]; if (!s) return;
+      if (p.key === cp) s.btn.setAttribute('aria-current', 'true'); else s.btn.removeAttribute('aria-current');
+      s.ticks.forEach(function (t) {
+        t.el.className = 'pbar__tick' + (t.idx === current ? ' is-current' : (visited[t.idx] ? ' is-visited' : ''));
+      });
+    });
+    var first = current === 0, last = current === secs.length - 1;
+    prevBtn.setAttribute('aria-disabled', first ? 'true' : 'false');
+    nextBtn.setAttribute('aria-disabled', last ? 'true' : 'false');
+    prevBtn.setAttribute('aria-label', first ? 'Previous section (this is the first)' : 'Previous: ' + labelOf(current - 1));
+    nextBtn.setAttribute('aria-label', last ? 'Next section (this is the last)' : 'Next: ' + labelOf(current + 1));
+  }
+
+  /* A section counts as visited only after a short dwell, not when scrolled past. */
+  function scheduleVisit() {
+    clearTimeout(dwellT);
+    dwellT = setTimeout(function () { if (!jumping) { visited[current] = true; render(); } }, 600);
+  }
+  /* Keep the URL hash in step with the current section without adding history entries. */
+  function scheduleHash() {
+    clearTimeout(hashT);
+    hashT = setTimeout(function () {
+      if (jumping) return;
+      try {
+        var id = secs[current].id;
+        var want = current === 0 ? '' : '#' + id;
+        if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
+      } catch (e) { /* file or sandboxed contexts */ }
+    }, 350);
+  }
+  function remember() { anchorIdx = current; anchorOff = window.scrollY - absTop(secs[current]); }
+
+  var raf = 0;
+  function update() {
+    if (jumping) return;           // the jump owns `current` until it settles
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
+      if (jumping) return;
+      var c = measure();
+      if (c !== current) { current = c; scheduleVisit(); }
+      render();
+      if (!resizing) { remember(); scheduleHash(); }   // a resize reflows sections; keep the anchor from before it
+    });
+  }
+
+  /* ---- jumping ---- */
+  function settle() {
+    if (Math.abs(window.scrollY - destY) > 3 && Date.now() - jumpStart < 2500) { armSettle(); return; }
+    jumping = false; DT._jumping = false; navTarget = null;
+    current = measure();
+    render(); remember(); scheduleVisit(); scheduleHash();
+    document.dispatchEvent(new Event('dt:settle'));
+  }
+  function armSettle() { clearTimeout(settleT); settleT = setTimeout(settle, 200); }
+  function endJump() {          // the person took over with wheel, touch or mouse
+    if (!jumping) return;
+    clearTimeout(settleT);
+    jumping = false; DT._jumping = false; navTarget = null;
+    document.dispatchEvent(new Event('dt:settle'));
+    update();
+  }
+  /* from/to are section indexes; dt:jump carries their ids (from === to when scrolling inside one tall section). */
+  function scrollToY(y, instant, from, to) {
+    y = Math.max(0, Math.min(maxY(), y));
+    destY = y;
+    if (!jumping) jumpStart = Date.now();
+    jumping = true; DT._jumping = true;
+    if (from === undefined) from = to = current;
+    document.dispatchEvent(new CustomEvent('dt:jump', { detail: { from: secs[from].id, to: secs[to].id } }));
+    clearTimeout(dwellT);
+    window.scrollTo({ top: y, behavior: (instant || DT.reduced) ? 'auto' : 'smooth' });
+    armSettle();
+  }
+  function focusHeading(sec) {
+    var id = (sec.getAttribute('aria-labelledby') || '').split(/\s+/)[0];
+    var h = id ? sec.querySelector('#' + (window.CSS && CSS.escape ? CSS.escape(id) : id)) : null;
+    h = h || sec.querySelector('h1, h2') || sec;
+    if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1');
+    try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); }
+  }
+  /* opts: focus ('heading' | false), announce (true), instant (true) */
+  function goTo(i, opts) {
+    opts = opts || {};
+    i = Math.max(0, Math.min(secs.length - 1, i));
+    var sec = secs[i], from = current;
+    navTarget = i; current = i;
+    scrollToY(i === 0 ? 0 : absTop(sec), opts.instant, from, i);
+    if (opts.focus === 'heading') focusHeading(sec);
+    if (opts.announce) {
+      var c = counterOf(i);
+      DT.announce(nums[i] !== null ? c.sr + ': ' + labelOf(i) : labelOf(i));
+    }
+    render();
+  }
+  /* how: 'key' (may scroll within tall sections, moves focus to the heading) or 'button' (jumps by section) */
+  function step(d, how, kbd) {
+    var base = jumping && navTarget !== null ? navTarget : current;
+    if (how === 'key' && window.innerWidth >= 1024) {
+      var y = jumping ? destY : window.scrollY;
+      var usable = window.innerHeight - barH();
+      var sec = secs[base];
+      var pb = parseFloat(getComputedStyle(sec).paddingBottom) || 0;   // the slide's bottom padding is air, not content
+      var top = base === 0 ? 0 : absTop(sec), bottom = absTop(sec) + sec.offsetHeight - pb;
+      var tall = sec.offsetHeight - pb > usable + 24;   // only sections taller than the screen scroll in steps
+      if (tall && d > 0 && bottom - (y + usable) > 24) { navTarget = base; scrollToY(Math.min(y + 0.85 * usable, bottom - usable)); return true; }
+      if (tall && d < 0 && y - top > 24) { navTarget = base; scrollToY(Math.max(y - 0.85 * usable, top)); return true; }
+    }
+    var t = base + d;
+    if (t < 0 || t > secs.length - 1) return false;
+    goTo(t, (how === 'key' || kbd) ? { focus: 'heading' } : { focus: false, announce: true });
+    return true;
+  }
+
+  prevBtn.addEventListener('click', function (e) { step(-1, 'button', e.detail === 0); });
+  nextBtn.addEventListener('click', function (e) { step(1, 'button', e.detail === 0); });
+  ['wheel', 'touchstart', 'mousedown'].forEach(function (ev) {
+    window.addEventListener(ev, function (e) {
+      userMoved = true;
+      if (e.target && e.target.closest && e.target.closest('#dt-bar')) return;   // bar clicks must not cancel the jump in flight
+      endJump();
+    }, { passive: true });
+  });
+
+  /* A visible dialog inside the CURRENT section (not hidden, has a box, intersects the viewport), or null.
+     Dialogs in other sections never block the presenter keys. */
+  function openDialog() {
+    var sec = secs[jumping && navTarget !== null ? navTarget : current];
+    var list = sec.querySelectorAll(GUARD);
+    for (var i = 0; i < list.length; i++) {
+      var el = list[i];
+      if (el.closest('[hidden]') || !el.getClientRects().length) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight && r.right > 0 && r.left < window.innerWidth) return el;
+    }
+    return null;
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.defaultPrevented || e.isComposing) return;
+    var ae = document.activeElement;
+    if (e.key === 'Escape') {
+      if (e.target && e.target.closest && e.target.closest(GUARD)) return;   // the dialog (or its own re-dispatched Escape) handles it
+      if (ae && ae.closest && ae.closest(GUARD)) return;
+      var dlg = openDialog();
+      if (dlg) {                                   // focus is outside the open dialog: let the section close it
+        e.preventDefault();
+        dlg.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+        return;
+      }
+      if (ae && ae !== document.body) ae.blur();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    var d = 0;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') d = 1;
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') d = -1;
+    if (!d) return;
+    var t = e.target;
+    if (t && t.closest) {
+      if (t.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+      if (t.closest('[data-own-arrows]')) return;
+      if (t.closest(GUARD)) return;
+    }
+    if (openDialog()) return;
+    userMoved = true;
+    e.preventDefault();                            // always: a no-op at either end must not scroll the page natively
+    if (e.repeat) return;                          // one step per press, never a runaway
+    step(d, 'key');
+  });
+
+  /* Links to a section (#s-...) use the same jump, so focus lands on the heading. They still work without JS. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#s-"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var id = a.getAttribute('href').slice(1);
+    var i = secs.findIndex(function (s) { return s.id === id; });
+    if (i < 0) return;
+    e.preventDefault();
+    goTo(i, { focus: 'heading' });
+  });
+
+  window.addEventListener('scroll', function () { if (jumping) armSettle(); else update(); }, { passive: true });
+  var resizeT = 0;
+  window.addEventListener('resize', function () {
+    resizing = true;
+    clearTimeout(resizeT);
+    resizeT = setTimeout(function () {
+      var wChanged = window.innerWidth !== lastW, hChanged = Math.abs(window.innerHeight - lastH) > 150;
+      lastW = window.innerWidth; lastH = window.innerHeight;
+      if (wChanged || hChanged) {   // re-anchor to the section the person was on (ignores phone toolbar nudges)
+        var sec = secs[anchorIdx];
+        var off = Math.min(anchorOff, Math.max(0, sec.offsetHeight - 1));
+        window.scrollTo({ top: Math.max(0, (anchorIdx === 0 ? 0 : absTop(sec)) + (anchorIdx === 0 ? Math.max(0, off) : off)), behavior: 'auto' });
+      }
+      resizing = false;
+      update();
+    }, 120);
+  });
+  if ('ResizeObserver' in window) new ResizeObserver(update).observe(document.getElementById('main'));
+
+  DT.sections = secs;
+  DT.current = function () { return current; };
+  DT.goTo = function (idOrIndex, opts) {
+    var i = typeof idOrIndex === 'number' ? idOrIndex : secs.findIndex(function (s) { return s.id === idOrIndex; });
+    if (i >= 0) goTo(i, opts || { focus: 'heading' });
+  };
+
+  /* A reload at #s-xx lands there instantly (no animated scroll), again once fonts settle the layout. */
+  function toHash() {
+    var id = location.hash.slice(1);
+    var i = id ? secs.findIndex(function (s) { return s.id === id; }) : -1;
+    if (i >= 0 && !userMoved) { goTo(i, { focus: false, instant: true }); }
+  }
+  bar.hidden = false;
+  current = measure();
+  render();
+  toHash();
+  window.addEventListener('load', function () { toHash(); update(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { toHash(); update(); });
+  scheduleVisit();
+})();
+</script>
+</body>
+</html>

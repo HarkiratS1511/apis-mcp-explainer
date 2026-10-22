@@ -1,0 +1,24 @@
+<section id="s-hero" class="slide slide--center" data-part="intro" data-label="Welcome" aria-labelledby="shero-title">
+  <div class="facets" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="shero-inner stack-lg">
+      <p class="eyebrow">A teaching demo</p>
+      <h1 id="shero-title" class="h-display">Plugging AI into <em class="grad">your other apps.</em></h1>
+      <p class="lead">APIs and MCP, explained without the jargon.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#s-part1">Start with APIs <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="btn btn--secondary" href="#s-part2">Jump to MCP</a>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-hero { min-height: calc(100vh - var(--bar-h) - var(--header-h)); min-height: calc(100svh - var(--bar-h) - var(--header-h)); }
+    #s-hero .shero-inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+    #s-hero .shero-inner > * { margin-left: 0; margin-right: 0; }
+    #s-hero .h-display { max-width: 16ch; text-wrap: balance; }
+    #s-hero .lead { max-width: 40ch; }
+    #s-hero .btn-row { justify-content: center; }
+    #s-hero .eyebrow { letter-spacing: 0.2em; }
+    #s-hero .facets { left: 72%; }
+  </style>
+</section>

@@ -1,0 +1,150 @@
+<section id="s-03" class="slide" data-part="apis" data-label="Four parts of an order" aria-labelledby="s03-title">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s03-i-menu" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+      <symbol id="s03-i-order" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+      <symbol id="s03-i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.29 7 8.71 5 8.71-5"/><path d="m7.5 4.27 9 5.15"/></symbol>
+    </defs>
+  </svg>
+  <div class="wrap">
+    <div class="s03-head stack">
+      <p class="secnum"><b>03</b> Ordering words</p>
+      <h2 id="s03-title" class="h2">Every order has four parts.</h2>
+    </div>
+
+    <div class="s03-vis">
+      <div class="s03-grid" role="group" aria-label="The four parts of an order">
+        <button type="button" class="card s03-card" aria-pressed="false" data-i="0">
+          <span class="s03-chip"><svg class="icon" aria-hidden="true"><use href="#s03-i-menu"/></svg></span>
+          <span class="s03-txt">
+            <span class="s03-n">1 of 4</span>
+            <span class="term"><span class="term__word">The menu</span><span class="term__tech">Documentation</span></span>
+          </span>
+        </button>
+        <button type="button" class="card s03-card" aria-pressed="false" data-i="1">
+          <span class="s03-chip"><svg class="icon" aria-hidden="true"><use href="#s03-i-order"/></svg></span>
+          <span class="s03-txt">
+            <span class="s03-n">2 of 4</span>
+            <span class="term"><span class="term__word">Your order</span><span class="term__tech">Request</span></span>
+          </span>
+        </button>
+        <button type="button" class="card s03-card" aria-pressed="false" data-i="2">
+          <span class="s03-chip"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <span class="s03-txt">
+            <span class="s03-n">3 of 4</span>
+            <span class="term"><span class="term__word">The phone number</span><span class="term__tech">Endpoint</span></span>
+          </span>
+        </button>
+        <button type="button" class="card s03-card" aria-pressed="false" data-i="3">
+          <span class="s03-chip"><svg class="icon" aria-hidden="true"><use href="#s03-i-package"/></svg></span>
+          <span class="s03-txt">
+            <span class="s03-n">4 of 4</span>
+            <span class="term"><span class="term__word">The delivery</span><span class="term__tech">Response</span></span>
+          </span>
+        </button>
+      </div>
+
+      <div class="s03-bar">
+        <div class="s03-controls btn-row">
+          <button type="button" class="btn btn--primary" id="s03-go"><span id="s03-go-label">Show me</span> <svg class="icon" aria-hidden="true"><use id="s03-go-icon" href="#i-arrow-right"/></svg></button>
+        </div>
+        <div class="s03-stage" aria-live="polite" aria-atomic="true">
+          <p class="s03-sentence" id="s03-sentence">Press Show me, or choose any part.</p>
+          <p class="keyline s03-key" id="s03-key"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #s-03 .s03-head .h2 { max-width: none; }
+    #s-03 .s03-vis { margin-top: clamp(24px, 4vh, 44px); display: flex; flex-direction: column; gap: clamp(20px, 3vh, 32px); }
+    #s-03 .s03-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 24px); }
+    #s-03 .s03-card {
+      display: flex; flex-direction: column; align-items: flex-start; gap: clamp(14px, 2vh, 24px);
+      width: 100%; min-width: 0; text-align: left; cursor: pointer; font: inherit; -webkit-tap-highlight-color: transparent;
+      transition: border-color var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease);
+    }
+    #s-03 .s03-card:not(.card--active):hover { border-color: var(--ring); background: var(--surface-muted); }
+    #s-03 .s03-chip {
+      display: inline-flex; align-items: center; justify-content: center; flex: none;
+      width: clamp(52px, 4vw, 64px); height: clamp(52px, 4vw, 64px); border-radius: var(--radius-lg);
+      background: var(--surface-muted); border: 1px solid var(--border); color: var(--ink-heading);
+      font-size: clamp(28px, 2.2vw, 34px);
+      transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+    }
+    #s-03 .card--active .s03-chip { background: var(--dragonfly-light); border-color: var(--dragonfly-light); color: var(--dragonfly-dark); }
+    #s-03 .s03-txt { display: block; min-width: 0; }
+    #s-03 .s03-n { display: block; margin-bottom: 8px; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4; color: var(--ink-label); }
+    #s-03 .term__word, #s-03 .term__tech { display: block; overflow-wrap: anywhere; }
+    #s-03 .term__word { font-size: clamp(26px, 2vw, 32px); }
+
+    #s-03 .s03-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: start; }
+    #s-03 .s03-controls { min-height: 64px; align-items: center; }
+    #s-03 .s03-stage { min-height: clamp(150px, 19vh, 190px); display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; }
+    #s-03 .s03-sentence { max-width: 40ch; font-size: var(--fs-lead); line-height: 1.4; color: var(--ink-heading); min-height: 1.4em; padding-top: 12px; }
+    #s-03 .s03-sentence.is-new { animation: s03-fade var(--dur-2) var(--ease); }
+    @keyframes s03-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    #s-03 .s03-key { max-width: none; min-height: 1.3em; margin: 0; }
+    #s-03 .s03-key.is-on { animation: s03-fade var(--dur-2) var(--ease); }
+
+    @media (max-width: 1023px) { #s-03 .s03-bar { grid-template-columns: minmax(0, 1fr); gap: 20px; } #s-03 .s03-stage { min-height: 0; } }
+    @media (max-width: 1023px) and (min-width: 640px) {
+      #s-03 .s03-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #s-03 .s03-card { flex-direction: row; align-items: center; }
+    }
+    @media (max-width: 639px) {
+      #s-03 .s03-vis { margin-top: 24px; }
+      #s-03 .s03-bar { order: 1; }
+      #s-03 .s03-controls { min-height: 0; }
+      #s-03 .s03-controls :is(.btn, .btn-reset) { width: 100%; }
+      #s-03 .s03-sentence { min-height: 0; padding-top: 0; }
+      #s-03 .s03-grid { order: 2; grid-template-columns: minmax(0, 1fr); }
+      #s-03 .s03-card { flex-direction: row; align-items: center; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-03');
+    const cards = Array.from(root.querySelectorAll('.s03-card'));
+    const go = root.querySelector('#s03-go');
+    const goLabel = root.querySelector('#s03-go-label');
+    const goIcon = root.querySelector('#s03-go-icon');
+    const sentence = root.querySelector('#s03-sentence');
+    const key = root.querySelector('#s03-key');
+
+    const TEXT = [
+      "The menu lists everything you’re allowed to ask for.",
+      "Your order is the request you send, worded the way the menu says.",
+      "The phone number is the one address your order is sent to.",
+      "The delivery is the answer that comes back, in the form the menu promised."
+    ];
+    const KEY_POINT = "You can only order what’s on the menu.";
+    let idx = -1;
+
+    function render(announce) {
+      cards.forEach((c, i) => {
+        const on = i === idx;
+        c.classList.toggle('card--active', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      sentence.textContent = idx < 0 ? 'Press Show me, or choose any part.' : TEXT[idx];
+      sentence.classList.remove('is-new');
+      if (idx >= 0) { void sentence.offsetWidth; sentence.classList.add('is-new'); }
+      const hadKey = key.textContent !== '';
+      key.textContent = idx >= 0 ? KEY_POINT : '';
+      key.classList.remove('is-on');
+      if (idx >= 0 && !hadKey) { void key.offsetWidth; key.classList.add('is-on'); }
+      go.className = idx === 3 ? 'btn-reset' : 'btn btn--primary';
+      const goSvg = goIcon.parentNode;
+      if (idx === 3) go.prepend(goSvg); else go.append(goSvg);
+      if (idx < 0) { goLabel.textContent = 'Show me'; goIcon.setAttribute('href', '#i-arrow-right'); }
+      else if (idx < 3) { goLabel.textContent = 'Next part'; goIcon.setAttribute('href', '#i-arrow-right'); }
+      else { goLabel.textContent = 'Start again'; goIcon.setAttribute('href', '#i-rotate-ccw'); }
+    }
+
+    go.addEventListener('click', () => { idx = idx >= 3 ? 0 : idx + 1; render(); });
+    cards.forEach((c) => c.addEventListener('click', () => { idx = Number(c.dataset.i); render(); }));
+    render();
+  })();</script>
+</section>

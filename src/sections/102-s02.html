@@ -1,0 +1,219 @@
+<section id="s-02" class="slide" data-part="apis" data-label="Ordering by phone" aria-labelledby="s02-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>02</b> Ordering by phone</p>
+        <h2 id="s02-title" class="h2">An API is ordering by phone.</h2>
+        <p>An API is a service’s phone line for other apps.</p>
+        <p class="keyline">Same kitchen, same food.</p>
+        <div class="s02-ctrl">
+          <div class="seg" role="group" aria-label="How the order arrives">
+            <button type="button" class="btn btn--choice" id="s02-walk" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Walk in</button>
+            <button type="button" class="btn btn--choice" id="s02-phone" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Phone in</button>
+          </div>
+          <button type="button" class="replay" id="s02-replay" disabled><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Replay</button>
+        </div>
+      </div>
+      <div class="s02-visual">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+          <defs>
+            <symbol id="s02-i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+            <symbol id="s02-i-utensils" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+            <marker id="s02-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 8.5 5 1.5 8.5" fill="none" style="stroke:var(--ink-muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <marker id="s02-arr-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 8.5 5 1.5 8.5" fill="none" style="stroke:var(--dragonfly)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          </defs>
+        </svg>
+        <div class="s02-stage tagged" id="s02-stage">
+          <span class="tag tag--corner">For illustration</span>
+          <svg class="s02-svg" id="s02-svg" role="img" aria-label="Two ways to order from one restaurant. Walk in: you, the dining room, the kitchen. Phone in: another app, a phone line with a set menu called an API, the same kitchen." focusable="false"></svg>
+        </div>
+        <div class="s02-cap panel">
+          <p class="s02-cap__txt" id="s02-cap">Choose Walk in or Phone in to follow an order.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-02 .s02-ctrl { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    #s-02 .s02-visual { display: grid; gap: 16px; min-width: 0; max-width: 720px; width: 100%; margin-inline: auto; }
+    #s-02 .s02-stage { position: relative; width: 100%; }
+    #s-02 .s02-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    #s-02 .s02-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 20px; }
+    #s-02 .s02-cap__txt { flex: 1 1 280px; min-height: 2.6em; display: flex; align-items: center; font-size: var(--fs-body); line-height: 1.3; color: var(--ink); }
+
+    /* lanes */
+    #s-02 .s02-lab { font: 600 20px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; fill: var(--ink-label); }
+    #s-02 .s02-lane.is-on .s02-lab { fill: var(--ink); }
+    #s-02 .s02-line { fill: none; stroke: var(--ink-muted); stroke-width: 2.5; stroke-dasharray: 3 9; stroke-linecap: round; marker-end: url(#s02-arr); transition: stroke var(--dur-1) var(--ease); }
+    #s-02 .s02-lane.is-on .s02-line { stroke: var(--dragonfly); stroke-width: 3.5; stroke-dasharray: none; marker-end: url(#s02-arr-on); }
+    #s-02 .s02-trav { fill: none; stroke: none; }
+
+    #s-02 .s02-node rect { fill: var(--surface-card); stroke: var(--border-strong); stroke-width: 2; transition: stroke var(--dur-1) var(--ease), fill var(--dur-1) var(--ease); }
+    #s-02 .s02-node { color: var(--ink-label); }
+    #s-02 .s02-ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-02 .s02-t { font-family: var(--font-sans); font-weight: 500; fill: var(--ink-label); text-anchor: middle; }
+    #s-02 .s02-tech { font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.12em; fill: var(--dragonfly); text-anchor: middle; }
+    #s-02 .s02-node.is-on { color: var(--ink-heading); }
+    #s-02 .s02-node.is-on .s02-t { fill: var(--ink); }
+    #s-02 .s02-node.is-on.is-lit rect { stroke: var(--dragonfly); stroke-width: 2; fill: color-mix(in srgb, var(--dragonfly-light) 35%, var(--surface-card)); }
+    #s-02 .s02-node.is-on.is-lit { color: var(--dragonfly); }
+
+    #s-02 .s02-kitchen rect.s02-k { fill: var(--surface-card); stroke: var(--ink-label); stroke-width: 2; transition: fill var(--dur-2) var(--ease), stroke var(--dur-2) var(--ease); }
+    #s-02 .s02-kitchen { color: var(--ink-heading); }
+    #s-02 .s02-kitchen .s02-t { fill: var(--ink); font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.02em; }
+    #s-02 .s02-kitchen.is-hit rect.s02-k { fill: var(--dragonfly-light); stroke: var(--dragonfly); stroke-width: 2; }
+    #s-02 .s02-kitchen.is-hit { color: var(--dragonfly-dark); }
+    #s-02 .s02-note { fill: var(--ink-label); font-family: var(--font-sans); text-anchor: middle; transition: opacity var(--dur-2) var(--ease); }
+    #s-02 .s02-kitchen.is-hit .s02-note { opacity: 0; }
+    #s-02 .s02-badge { opacity: 0; transition: opacity var(--dur-2) var(--ease); }
+    #s-02 .s02-kitchen.is-hit .s02-badge { opacity: 1; }
+    #s-02 .s02-badge rect { fill: var(--ink); }
+    #s-02 .s02-badge text { font: 600 21px var(--font-sans); fill: var(--ink-on-dark); text-anchor: middle; }
+
+    #s-02 .s02-token circle { fill: var(--dragonfly); stroke: var(--surface-card); stroke-width: 4; }
+
+    @media (max-width: 639px) {
+      #s-02 .s02-stage { padding-top: 52px; }
+      #s-02 .s02-cap { padding: 14px 16px; }
+      #s-02 .s02-cap__txt { min-height: 0; }
+      #s-02 .s02-ctrl .seg { width: 100%; }
+      #s-02 .s02-ctrl .seg .btn { flex: 1 1 140px; }
+    }
+  </style>
+  <script>(() => {
+    const root = document.getElementById('s-02');
+    const svg = root.querySelector('#s02-svg');
+    const btn = { walk: root.querySelector('#s02-walk'), phone: root.querySelector('#s02-phone') };
+    const replay = root.querySelector('#s02-replay');
+    const capEl = root.querySelector('#s02-cap');
+    const mq = window.matchMedia('(max-width: 639px)');
+
+    /* Everyday words first; the tech word "API" sits small beside the phone line. */
+    const LABEL = { walk: 'Walk in', phone: 'Phone in' };
+    const NODE = {
+      walk1:  { lane: 'walk',  step: 1, icon: 's02-i-user',     lines: ['You'] },
+      walk2:  { lane: 'walk',  step: 2, icon: 's02-i-utensils', lines: ['Dining room'] },
+      phone1: { lane: 'phone', step: 1, icon: 'i-smartphone',   lines: ['Another app'] },
+      phone2: { lane: 'phone', step: 2, icon: 'i-phone',        lines: ['A phone line', 'with a set menu'], tech: 'API' }
+    };
+    const STEPS = {
+      walk:  ['You place your order.', 'The dining room carries it through.', 'Walk in: the kitchen cooks it. Same kitchen, same food.'],
+      phone: ['Another app wants to order.', 'It rings the phone line and picks from the set menu.', 'Phone in: the kitchen cooks it. Same kitchen, same food.']
+    };
+
+    const LAY = {
+      wide: {
+        W: 720, H: 440, fs: 21, lh: 25, ic: 32, tfs: 21,
+        labels: { walk: [0, 24, 'start'], phone: [0, 288, 'start'] },
+        geo: { walk1: [0, 40, 160, 96], walk2: [230, 40, 160, 96], phone1: [0, 304, 160, 96], phone2: [210, 284, 200, 136] },
+        kitchen: { x: 540, y: 120, w: 180, h: 200, row: false },
+        paths: {
+          walk:  { aD: 'M160,88 H230', aT: 'M80,88 H310', bD: 'M390,88 C465,88 465,172 540,172', bT: 'M310,88 H390 C465,88 465,172 540,172' },
+          phone: { aD: 'M160,352 H210', aT: 'M80,352 H310', bD: 'M410,352 C475,352 475,268 540,268', bT: 'M310,352 H410 C475,352 475,268 540,268' }
+        }
+      },
+      narrow: {
+        W: 358, H: 506, fs: 18, lh: 22, ic: 28, tfs: 18,
+        labels: { walk: [90, 22, 'middle'], phone: [268, 22, 'middle'] },
+        geo: { walk1: [12, 36, 156, 84], walk2: [12, 168, 156, 84], phone1: [190, 36, 156, 84], phone2: [190, 168, 156, 120] },
+        kitchen: { x: 12, y: 364, w: 334, h: 128, row: true },
+        paths: {
+          walk:  { aD: 'M90,120 V168', aT: 'M90,78 V210', bD: 'M90,252 V364', bT: 'M90,210 V252 V364' },
+          phone: { aD: 'M268,120 V168', aT: 'M268,78 V228', bD: 'M268,288 V364', bT: 'M268,228 V288 V364' }
+        }
+      }
+    };
+
+    function nodeSvg(key, L) {
+      const n = NODE[key], g = L.geo[key], x = g[0], y = g[1], w = g[2], h = g[3], cx = x + w / 2;
+      let s = '<g class="s02-node" data-key="' + key + '" data-step="' + n.step + '">';
+      s += '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="8"/>';
+      s += '<use class="s02-ic" href="#' + n.icon + '" x="' + (cx - L.ic / 2) + '" y="' + (y + 12) + '" width="' + L.ic + '" height="' + L.ic + '"/>';
+      let ty = y + 12 + L.ic + 26;
+      n.lines.forEach(t => { s += '<text class="s02-t" x="' + cx + '" y="' + ty + '" font-size="' + L.fs + '">' + t + '</text>'; ty += L.lh; });
+      if (n.tech) s += '<text class="s02-tech" x="' + cx + '" y="' + (ty + 2) + '" font-size="' + L.tfs + '">' + n.tech + '</text>';
+      return s + '</g>';
+    }
+    function laneSvg(lane, L) {
+      const p = L.paths[lane], lb = L.labels[lane];
+      let s = '<g class="s02-lane" data-lane="' + lane + '">';
+      s += '<text class="s02-lab" x="' + lb[0] + '" y="' + lb[1] + '" text-anchor="' + lb[2] + '">' + LABEL[lane] + '</text>';
+      s += '<path class="s02-line" d="' + p.aD + '"/><path class="s02-line" d="' + p.bD + '"/>';
+      s += '<path class="s02-trav" data-t="a" d="' + p.aT + '"/><path class="s02-trav" data-t="b" d="' + p.bT + '"/>';
+      return s + '</g>';
+    }
+    function kitchenSvg(L) {
+      const k = L.kitchen, cx = k.x + k.w / 2;
+      let s = '<g class="s02-kitchen" id="s02-kitchen">';
+      s += '<rect class="s02-k" x="' + k.x + '" y="' + k.y + '" width="' + k.w + '" height="' + k.h + '" rx="10"/>';
+      if (!k.row) {
+        s += '<use class="s02-ic" href="#i-chef-hat" x="' + (cx - 22) + '" y="' + (k.y + 22) + '" width="44" height="44"/>';
+        s += '<text class="s02-t" x="' + cx + '" y="' + (k.y + 106) + '" font-size="26">The kitchen</text>';
+        s += '<text class="s02-note" x="' + cx + '" y="' + (k.y + 152) + '" font-size="21"><tspan x="' + cx + '">Both routes</tspan><tspan x="' + cx + '" dy="25">end here</tspan></text><g class="s02-badge"><rect x="' + (k.x + 14) + '" y="' + (k.y + 138) + '" width="' + (k.w - 28) + '" height="46" rx="23"/><text x="' + cx + '" y="' + (k.y + 168) + '">Same kitchen</text></g>';
+      } else {
+        s += '<use class="s02-ic" href="#i-chef-hat" x="' + (cx - 100) + '" y="' + (k.y + 14) + '" width="40" height="40"/>';
+        s += '<text class="s02-t" style="text-anchor:start" x="' + (cx - 48) + '" y="' + (k.y + 43) + '" font-size="24">The kitchen</text>';
+        s += '<text class="s02-note" x="' + cx + '" y="' + (k.y + 99) + '" font-size="18">Both routes end here</text>';
+        s += '<g class="s02-badge"><rect x="' + (cx - 84) + '" y="' + (k.y + 68) + '" width="168" height="46" rx="23"/><text x="' + cx + '" y="' + (k.y + 98) + '" font-size="19">Same kitchen</text></g>';
+      }
+      return s + '</g>';
+    }
+    function render() {
+      const L = mq.matches ? LAY.narrow : LAY.wide;
+      svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
+      let s = laneSvg('walk', L) + laneSvg('phone', L);
+      s += '<g id="s02-token" class="s02-token" visibility="hidden"><circle r="14"/></g>';
+      s += nodeSvg('walk1', L) + nodeSvg('walk2', L) + nodeSvg('phone1', L) + nodeSvg('phone2', L);
+      s += kitchenSvg(L);
+      svg.innerHTML = s;
+      applyState();
+    }
+
+    /* state: lane (or null), step 0..3 (3 = reached the kitchen) */
+    let lane = null, step = 0, run = 0;
+    function applyState() {
+      svg.querySelectorAll('.s02-lane').forEach(g => g.classList.toggle('is-on', g.dataset.lane === lane));
+      svg.querySelectorAll('.s02-node').forEach(n => {
+        const on = NODE[n.dataset.key].lane === lane;
+        n.classList.toggle('is-on', on);
+        n.classList.toggle('is-lit', on && +n.dataset.step <= step);
+      });
+      const k = svg.querySelector('#s02-kitchen');
+      if (k) k.classList.toggle('is-hit', step >= 3);
+      btn.walk.setAttribute('aria-pressed', lane === 'walk' ? 'true' : 'false');
+      btn.phone.setAttribute('aria-pressed', lane === 'phone' ? 'true' : 'false');
+      replay.disabled = !lane;
+    }
+    function setCap(t) { capEl.textContent = t; }
+
+    async function play(l) {
+      const my = ++run;
+      if (mq.matches) root.querySelector('.s02-visual').scrollIntoView({ block: 'nearest', behavior: DT.reduced ? 'auto' : 'smooth' });
+      lane = l; step = 1; applyState(); setCap(STEPS[l][0]);
+      const tk = svg.querySelector('#s02-token');
+      const pa = svg.querySelector('.s02-lane[data-lane="' + l + '"] [data-t="a"]');
+      const pb = svg.querySelector('.s02-lane[data-lane="' + l + '"] [data-t="b"]');
+      tk.setAttribute('visibility', 'hidden');
+      let pr = DT.travel(tk, pa, 1200);
+      tk.setAttribute('visibility', 'visible');
+      if (!(await pr) || my !== run) return;
+      step = 2; applyState(); setCap(STEPS[l][1]);
+      await DT.wait(350);
+      if (my !== run) return;
+      pr = DT.travel(tk, pb, 1400);
+      if (!(await pr) || my !== run) return;
+      step = 3; applyState(); setCap(STEPS[l][2]);
+      DT.announce(STEPS[l][2]);
+      await DT.wait(400);
+      if (my !== run) return;
+      tk.setAttribute('visibility', 'hidden');
+    }
+
+    btn.walk.addEventListener('click', () => play('walk'));
+    btn.phone.addEventListener('click', () => play('phone'));
+    replay.addEventListener('click', () => { if (lane) play(lane); });
+
+    render();
+    mq.addEventListener ? mq.addEventListener('change', () => { run++; render(); if (lane) { step = 3; applyState(); setCap(STEPS[lane][2]); } }) : null;
+  })();</script>
+</section>

@@ -1,0 +1,82 @@
+<section id="s-21" class="slide slide--navy slide--center" data-part="close" data-label="Three words to take home" aria-labelledby="s21-title">
+  <div class="wrap">
+    <div class="s21-all">
+      <div class="stack" style="--stack:14px">
+        <p class="secnum"><b>21</b> To take home</p>
+        <h2 id="s21-title" class="h2">Three words to take home.</h2>
+      </div>
+
+      <ul class="s21-words" role="list">
+        <li class="s21-word">
+          <svg class="s21-ico" aria-hidden="true"><use href="#s21-i-counter"/></svg>
+          <h3 class="s21-word__w">API</h3>
+          <p class="s21-word__d">the ordering counter</p>
+        </li>
+        <li class="s21-word">
+          <svg class="s21-ico" aria-hidden="true"><use href="#i-plug"/></svg>
+          <h3 class="s21-word__w">MCP</h3>
+          <p class="s21-word__d">the universal plug</p>
+        </li>
+        <li class="s21-word">
+          <svg class="s21-ico" aria-hidden="true"><use href="#s21-i-toggle"/></svg>
+          <h3 class="s21-word__w">Connector</h3>
+          <p class="s21-word__d">the button you press</p>
+        </li>
+      </ul>
+
+      <div class="s21-bottom">
+        <div class="s21-habits">
+          <p class="s21-kicker">Three habits</p>
+          <ol class="s21-list" role="list">
+            <li><span class="s21-n" aria-hidden="true">1</span><span>Start with read-only connections (they can look, not change).</span></li>
+            <li><span class="s21-n" aria-hidden="true">2</span><span>Stick to well-known companies&rsquo; connectors.</span></li>
+            <li><span class="s21-n" aria-hidden="true">3</span><span>If a connection doesn&rsquo;t show up, start a new chat or restart the app.</span></li>
+          </ol>
+        </div>
+        <a class="btn btn--on-dark s21-back" href="#s-hero"><svg class="icon" aria-hidden="true"><use href="#s21-i-up"/></svg>Back to the start</a>
+      </div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s21-i-counter" viewBox="0 0 24 24"><path d="M3 9 5 3h14l2 6"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v9h14v-9"/><path d="M9 21v-5h6v5"/></symbol>
+      <symbol id="s21-i-toggle" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="6"/><circle cx="16" cy="12" r="2"/></symbol>
+      <symbol id="s21-i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    </defs>
+  </svg>
+
+  <style>
+    #s-21 .s21-all { display: flex; flex-direction: column; gap: clamp(32px, 6vh, 64px); }
+    #s-21 .h2 { max-width: none; margin-bottom: 0; }
+
+    #s-21 .s21-words { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3.5vw, 64px); padding: 0; margin: 0; }
+    #s-21 .s21-word { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding-top: clamp(18px, 2.5vh, 28px); border-top: 1px solid color-mix(in srgb, var(--dragonfly-light) 40%, transparent); min-width: 0; }
+    #s-21 .s21-ico { width: clamp(40px, 3.4vw, 56px); height: clamp(40px, 3.4vw, 56px); max-width: none; fill: none; stroke: var(--dragonfly-light); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 8px; }
+    #s-21 .s21-word__w { font-size: clamp(48px, 4.6vw, 80px); line-height: 1.02; letter-spacing: -0.03em; max-width: none; overflow-wrap: anywhere; }
+    #s-21 .s21-word__d { font-size: var(--fs-lead); line-height: 1.3; color: var(--ink-on-dark-muted); max-width: none; }
+
+    #s-21 .s21-bottom { display: flex; flex-wrap: wrap; align-items: center; padding-top: clamp(24px, 4vh, 40px); border-top: 1px solid color-mix(in srgb, var(--dragonfly-light) 40%, transparent); justify-content: space-between; gap: 32px 48px; }
+    #s-21 .s21-habits { flex: 1 1 520px; min-width: 0; }
+    #s-21 .s21-kicker { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4; color: var(--dragonfly-light); max-width: none; }
+    #s-21 .s21-list { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 10px; }
+    #s-21 .s21-list li { display: flex; gap: 18px; align-items: baseline; font-size: var(--fs-body); line-height: 1.4; color: var(--ink-on-dark); max-width: 62ch; }
+    #s-21 .s21-n { flex: none; font-family: var(--font-mono); font-weight: 600; font-size: var(--fs-label); color: var(--dragonfly-light); width: 1.4em; }
+    #s-21 .s21-back, #s-21 .s21-back:hover { flex: none; color: var(--ink); }
+
+    @media (max-width: 1023px) {
+      #s-21 .s21-words { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+      #s-21 .s21-word { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; }
+      #s-21 .s21-ico { align-self: center; margin: 0; }
+      #s-21 .s21-word__d { flex-basis: 100%; }
+    }
+    @media (max-width: 639px) {
+      #s-21 .s21-back { width: 100%; }
+      #s-21 .s21-word__w { font-size: 48px; }
+    }
+    @media (max-height: 820px) and (min-width: 1024px) {
+      #s-21 .s21-all { gap: 28px; }
+      #s-21 .s21-list { gap: 6px; }
+    }
+  </style>
+</section>

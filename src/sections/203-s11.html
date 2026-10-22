@@ -1,0 +1,250 @@
+<section id="s-11" class="slide" data-part="mcp" data-label="MCP gives every app the same plug" aria-labelledby="s11-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>11</b> One plug for all</p>
+        <h2 id="s11-title" class="h2">MCP gives every app the same plug.</h2>
+        <div class="term">
+          <p class="term__word">The universal plug</p>
+          <p class="term__tech">MCP</p>
+        </div>
+        <p>MCP stands for Model Context Protocol. You can forget the name.</p>
+        <p class="keyline">A service builds one MCP adapter, and any AI that speaks MCP can plug in.</p>
+      </div>
+      <div class="s11-visual tagged">
+        <span class="tag tag--corner">For illustration</span>
+        <div class="s11-stage" id="s11-stage">
+          <svg class="s11-svg" id="s11-svg" role="img" aria-label="Before: Your AI is joined to Email, Calendar, Your files and Public statistics through four differently shaped adapters."></svg>
+        </div>
+        <p class="sr-only" id="s11-caption" aria-live="polite" aria-atomic="true">Before: four apps, four different adapters.</p>
+        <div class="s11-controls">
+          <div class="seg" role="group" aria-label="Show the picture">
+            <button type="button" class="btn btn--choice" id="s11-before" aria-pressed="true"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Before</button>
+            <button type="button" class="btn btn--choice" id="s11-mcp" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>With MCP</button>
+          </div>
+          <button type="button" class="replay" id="s11-replay"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Replay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s11-i-ai" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    </defs>
+  </svg>
+  <style>
+    #s-11 .s11-stage { position: relative; width: 100%; }
+    #s-11 .s11-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    #s-11 .s11-t { font-family: var(--font-sans); font-size: 20px; font-weight: 500; fill: var(--ink); }
+    #s-11 .s11-t--ai { fill: var(--ink-on-dark); }
+    #s-11 .s11-lab { font-family: var(--font-sans); font-size: 18px; font-weight: 500; fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--surface-page); stroke-width: 6px; stroke-linejoin: round; transition: opacity var(--dur-2) var(--ease); }
+    #s-11 .s11-lab--in { text-anchor: start; stroke: none; font-size: 17px; font-weight: 400; fill: var(--ink-label); }
+    #s-11 .s11-ai__box { fill: var(--dragonfly-dark); }
+    #s-11 .s11-node__box { fill: var(--surface-card); stroke: var(--border-strong); stroke-width: 2; transition: stroke var(--dur-2) var(--ease), stroke-width var(--dur-2) var(--ease); }
+    #s-11 .s11-ico { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-11 .s11-cable { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; transition: stroke var(--dur-3) var(--ease), opacity var(--dur-2) var(--ease), stroke-width var(--dur-2) var(--ease); }
+    #s-11 .s11-body { fill: color-mix(in srgb, var(--c) 16%, var(--surface-card)); stroke: var(--c); stroke-width: 2; stroke-linejoin: round; }
+    #s-11 .s11-pin { fill: none; stroke: var(--c); stroke-width: 6; stroke-linecap: round; }
+    #s-11 .s11-pin--flat { stroke-width: 5; stroke-linecap: butt; }
+    #s-11 .s11-plug__in { transform-box: fill-box; transform-origin: center; transition: transform var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease); }
+    #s-11 .s11-hub__c { fill: var(--dragonfly); }
+    #s-11 .s11-hub__t { font-family: var(--font-mono); font-size: 22px; font-weight: 600; letter-spacing: 0.06em; fill: var(--surface-card); text-anchor: middle; }
+    #s-11 .s11-visual { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding-top: 48px; }
+    #s-11 .s11-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    #s-11 .s11-after, #s-11 .s11-lab--after { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.8); transition: opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease); }
+    #s-11 .s11-before { transform-box: fill-box; transform-origin: center; transition: opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease); }
+    #s-11 .s11-lab--after { transform: none; }
+    #s-11 .s11-stage.is-mcp .s11-before { opacity: 0; transform: scale(0.8); }
+    #s-11 .s11-stage.is-mcp .s11-lab--before { opacity: 0; }
+    #s-11 .s11-stage.is-mcp .s11-after, #s-11 .s11-stage.is-mcp .s11-lab--after { opacity: 1; transform: none; }
+    #s-11 .s11-stage.is-mcp .s11-cable { stroke: var(--dragonfly); }
+    #s-11 .s11-hub { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      #s-11 .s11-svg { transition: opacity 160ms ease !important; }
+    }
+  </style>
+  <script>(() => {
+  const root = document.getElementById('s-11');
+  const svg = root.querySelector('#s11-svg'), stage = root.querySelector('#s11-stage');
+  const caption = root.querySelector('#s11-caption');
+  const bBefore = root.querySelector('#s11-before'), bMcp = root.querySelector('#s11-mcp'), bReplay = root.querySelector('#s11-replay');
+  /* Shared visual language for sections 9, 10 and 11: same "Your AI" node, same four apps, same four adapter shapes. */
+  const NS = 'http://www.w3.org/2000/svg';
+  const APPS = [
+    { k: 'email',    name: 'Email', adapter: 'Email adapter',             icon: 'i-mail',      c: 'var(--dragonfly)',      shape: 'round',    shapeName: 'round two-pin' },
+    { k: 'calendar', name: 'Calendar', adapter: 'Calendar adapter',          icon: 'i-calendar',  c: 'var(--lens-geo)',       shape: 'flat',     shapeName: 'flat three-pin' },
+    { k: 'files',    name: 'Your files', adapter: 'Files adapter',        icon: 'i-folder',    c: 'var(--lens-scenario)',  shape: 'square',   shapeName: 'square' },
+    { k: 'stats',    name: 'Public statistics', adapter: 'Statistics adapter', icon: 'i-bar-chart', c: 'var(--lens-systems)',   shape: 'triangle', shapeName: 'triangular' }
+  ];
+  /* Plug shapes are drawn with the contact tip at x=0, pointing right, body to the left. */
+  const SHAPES = {
+    round:    '<circle class="s11-body" cx="-52" cy="0" r="26"/><path class="s11-pin" d="M-26 -10H-4M-26 10H-4"/>',
+    flat:     '<rect class="s11-body" x="-78" y="-24" width="52" height="48" rx="8"/><path class="s11-pin s11-pin--flat" d="M-26 -13L-3 -22M-26 0H-3M-26 13L-3 22"/>',
+    square:   '<rect class="s11-body" x="-78" y="-26" width="52" height="52" rx="3"/><rect class="s11-body" x="-26" y="-12" width="24" height="24" rx="2"/>',
+    triangle: '<path class="s11-body" d="M-78 0L-26 -29V29Z"/><path class="s11-pin" d="M-26 -15H-4M-26 0H-4M-26 15H-4"/>',
+    mcp:      '<rect class="s11-body" x="-78" y="-26" width="52" height="52" rx="16"/><rect class="s11-body" x="-28" y="-11" width="30" height="22" rx="11"/>'
+  };
+  function splitName(n, narrow) { return (!narrow && n.length > 12) ? n.split(' ') : [n]; }
+
+  function layout(narrow, hasHub) {
+    if (!narrow) {
+      const ys = [66, 170, 274, 378], A = { x: 130, y: 222 }, tipX = 478, Px = 400;
+      return {
+        narrow, W: 700, H: 444, A, hub: { x: 270, y: 222, r: 40 },
+        ai: { x: 0, y: 162, w: 130, h: 120, col: true },
+        rows: ys.map(y => {
+          const P = { x: Px, y }, d = Px - A.x;
+          return { y, P, tip: { x: tipX, y }, node: { x: tipX + 2, y: y - 42, w: 220, h: 84 },
+            lab: { x: tipX - 8, y: y + 52, end: true },
+            c1: { x: A.x + d * 0.5, y: A.y }, c2: { x: Px - d * 0.5, y },
+            c3: { x: 270 + 56, y: 222 }, c4: { x: Px - 56, y },
+            hit: { x: Px - 16, y: y - 52, w: 700 - (Px - 16), h: 104 } };
+        }),
+        h1: { x: A.x + 44, y: A.y }, h2: { x: 270 - 44, y: 222 }
+      };
+    }
+    const ys = hasHub ? [244, 344, 444, 544] : [150, 250, 350, 450], A = { x: 75, y: 60 }, H = { x: 75, y: 144 };
+    return {
+      narrow, W: 360, H: ys[3] + 48, A, hub: { x: H.x, y: H.y, r: 32 },
+      ai: { x: 0, y: 0, w: 150, h: 60, col: false },
+      rows: ys.map((y, i) => {
+        const P = { x: 52, y }, As = { x: 40 - i * 10, y: 60 }, mx = (As.x + P.x) / 2;
+        return { y, P, A: As, tip: { x: 130, y }, node: { x: 132, y: y - 38, w: 228, h: 76 },
+          lab: { x: 132 + 58, y: y + 22, inside: true },
+          c1: { x: As.x, y: y - 50 }, c2: { x: mx, y },
+          c3: { x: As.x, y: H.y + (y - H.y) * 0.45 }, c4: { x: mx, y },
+          hit: { x: 0, y: y - 48, w: 360, h: 96 } };
+      }),
+      h1: { x: A.x, y: A.y + 30 }, h2: { x: H.x, y: H.y - 30 }
+    };
+  }
+  const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+  const lerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+  const f = n => Math.round(n * 10) / 10;
+  const pt = p => f(p.x) + ' ' + f(p.y);
+  /* Each cable is two cubic halves A -> V -> P. Before: the halves of one smooth curve. After: A -> hub -> P. */
+  function cablePts(L, r) {
+    const A = r.A || L.A, P = r.P, c1 = r.c1, c2 = r.c2;
+    const p01 = mid(A, c1), p12 = mid(c1, c2), p23 = mid(c2, P), p012 = mid(p01, p12), p123 = mid(p12, p23), V = mid(p012, p123);
+    return {
+      before: [A, p01, p012, V, p123, p23, P],
+      after: [L.A, L.h1, L.h2, L.hub, r.c3, r.c4, P]
+    };
+  }
+  function cableD(b, a, t) {
+    const q = b.map((p, i) => lerp(p, a[i], t));
+    return 'M' + pt(q[0]) + 'C' + pt(q[1]) + ' ' + pt(q[2]) + ' ' + pt(q[3]) + 'C' + pt(q[4]) + ' ' + pt(q[5]) + ' ' + pt(q[6]);
+  }
+  function iconUse(id, x, y, s, colour) {
+    return '<g class="s11-ico" style="stroke:' + colour + '"><use href="#' + id + '" x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '"/></g>';
+  }
+  /* Build the whole diagram into svg. opts.mcp adds the hub and the "after" plug shapes. Returns handles. */
+  function buildDiagram(svg, L, opts) {
+    svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
+    let cab = '', plugs = '', nodes = '';
+    L.rows.forEach((r, i) => {
+      const a = APPS[i];
+      cab += '<g class="s11-row" data-i="' + i + '"><path class="s11-cable" style="--c:' + a.c + '"/></g>';
+      let p = '<g class="s11-row" data-i="' + i + '"><g transform="translate(' + r.tip.x + ' ' + r.tip.y + ')"><g class="s11-plug"><g class="s11-plug__in">' +
+        '<g class="s11-before" style="--c:' + a.c + '">' + SHAPES[a.shape] + '</g>' +
+        (opts.mcp ? '<g class="s11-after" style="--c:var(--dragonfly)">' + SHAPES.mcp + '</g>' : '') +
+        '</g></g></g>' +
+        '<text class="s11-lab s11-lab--before' + (r.lab.inside ? ' s11-lab--in' : '') + '"' + (r.lab.end ? ' style="text-anchor:end"' : '') + ' x="' + r.lab.x + '" y="' + r.lab.y + '">' + a.adapter + '</text>' +
+        (opts.mcp ? '<text class="s11-lab s11-lab--after' + (r.lab.inside ? ' s11-lab--in' : '') + '"' + (r.lab.end ? ' style="text-anchor:end"' : '') + ' x="' + r.lab.x + '" y="' + r.lab.y + '">MCP adapter</text>' : '') + '</g>';
+      plugs += p;
+      const n = r.node, parts = splitName(a.name, L.narrow), tx = n.x + 58;
+      let txt = '';
+      if (parts.length === 1) txt = '<text class="s11-t" x="' + tx + '" y="' + (n.y + n.h / 2 + (L.narrow ? -3 : 7)) + '">' + parts[0] + '</text>';
+      else txt = '<text class="s11-t" x="' + tx + '" y="' + (n.y + n.h / 2 - 3) + '">' + parts[0] + '</text><text class="s11-t" x="' + tx + '" y="' + (n.y + n.h / 2 + 21) + '">' + parts[1] + '</text>';
+      nodes += '<g class="s11-row s11-node" data-i="' + i + '" style="--c:' + a.c + '"><rect class="s11-node__box" x="' + n.x + '" y="' + n.y + '" width="' + n.w + '" height="' + n.h + '" rx="8"/>' +
+        iconUse(a.icon, n.x + 16, n.y + n.h / 2 - 15, 30, 'var(--ink)') + txt + '</g>';
+    });
+    const ai = L.ai;
+    const aiHtml = '<g class="s11-ai"><rect class="s11-ai__box" x="' + ai.x + '" y="' + ai.y + '" width="' + ai.w + '" height="' + ai.h + '" rx="8"/>' +
+      (ai.col
+        ? iconUse('s11-i-ai', ai.x + ai.w / 2 - 19, ai.y + 20, 38, 'var(--dragonfly-light)') + '<text class="s11-t s11-t--ai" x="' + (ai.x + ai.w / 2) + '" y="' + (ai.y + 92) + '" text-anchor="middle">Your AI</text>'
+        : iconUse('s11-i-ai', ai.x + 22, ai.y + 15, 30, 'var(--dragonfly-light)') + '<text class="s11-t s11-t--ai" x="' + (ai.x + 64) + '" y="' + (ai.y + 38) + '">Your AI</text>') + '</g>';
+    const hub = opts.mcp ? '<g class="s11-hub"><circle class="s11-hub__c" r="' + L.hub.r + '"/><text class="s11-hub__t" y="8">MCP</text></g>' : '';
+    svg.innerHTML = '<g class="s11-cables">' + cab + '</g>' + hub + '<g class="s11-nodes">' + nodes + '</g><g class="s11-plugs">' + plugs + '</g>' + aiHtml;
+    const cables = [...svg.querySelectorAll('.s11-cable')];
+    const pts = L.rows.map(r => cablePts(L, r));
+    const hubEl = svg.querySelector('.s11-hub');
+    return {
+      setT(t) {
+        cables.forEach((c, i) => c.setAttribute('d', cableD(pts[i].before, pts[i].after, t)));
+        if (hubEl) {
+          const o = Math.max(0, Math.min(1, (t - 0.3) / 0.5)), s = 0.6 + 0.4 * o;
+          hubEl.style.opacity = o;
+          hubEl.setAttribute('transform', 'translate(' + L.hub.x + ' ' + L.hub.y + ') scale(' + f(s) + ')');
+        }
+      }
+    };
+  }
+  const TEXT = {
+    before: 'Before: four apps, four different adapters.',
+    mcp: 'With MCP: one plug shape for every app.'
+  };
+  const LABEL = {
+    before: 'Before: Your AI is joined to Email, Calendar, Your files and Public statistics through four differently shaped adapters.',
+    mcp: 'With MCP: Your AI is joined to a central MCP hub, which connects to the same four apps through four identical adapters.'
+  };
+  let mode = 'before', t = 0, narrow = null, d = null, token = 0, raf = 0;
+  const ease = k => k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+
+  function make() {
+    const n = (stage.clientWidth || 600) < 520;
+    if (n === narrow && d) return;
+    narrow = n; root.classList.toggle('is-narrow', n);
+    d = buildDiagram(svg, layout(n, true), { mcp: true });
+    d.setT(t);
+  }
+  function label(m) {
+    caption.textContent = TEXT[m];
+    svg.setAttribute('aria-label', LABEL[m]);
+    bBefore.setAttribute('aria-pressed', m === 'before' ? 'true' : 'false');
+    bMcp.setAttribute('aria-pressed', m === 'mcp' ? 'true' : 'false');
+  }
+  function setInstant(m) {
+    token++; cancelAnimationFrame(raf);
+    mode = m; t = m === 'mcp' ? 1 : 0;
+    stage.classList.toggle('is-mcp', m === 'mcp');
+    d.setT(t); label(m);
+  }
+  function go(m) {
+    const my = ++token;
+    cancelAnimationFrame(raf);
+    mode = m; label(m);
+    const to = m === 'mcp' ? 1 : 0;
+    if (DT.reduced) {
+      /* Crossfade the whole picture instead of moving it. */
+      svg.style.opacity = '0';
+      setTimeout(() => {
+        if (my !== token) return;
+        t = to; d.setT(t); stage.classList.toggle('is-mcp', m === 'mcp'); svg.style.opacity = '1';
+      }, 180);
+      return;
+    }
+    svg.style.opacity = '';
+    stage.classList.toggle('is-mcp', m === 'mcp');
+    const from = t, dur = 1000 * Math.abs(to - from), t0 = performance.now();
+    if (dur <= 0) { t = to; d.setT(t); return; }
+    const frame = now => {
+      if (my !== token) return;
+      const k = Math.min(1, (now - t0) / dur);
+      t = from + (to - from) * ease(k);
+      d.setT(t);
+      if (k < 1) raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+  }
+  bBefore.addEventListener('click', () => { if (mode !== 'before') go('before'); });
+  bMcp.addEventListener('click', () => { if (mode !== 'mcp') go('mcp'); });
+  bReplay.addEventListener('click', () => {
+    setInstant('before'); svg.style.opacity = '1';
+    const my = token;
+    setTimeout(() => { if (my === token) go('mcp'); }, DT.reduced ? 350 : 500);
+  });
+  if ('ResizeObserver' in window) new ResizeObserver(make).observe(stage);
+  make();
+  })();</script>
+</section>

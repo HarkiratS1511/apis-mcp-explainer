@@ -1,0 +1,297 @@
+<section id="s-16" class="slide" data-part="mcp" data-label="Signing in safely" aria-labelledby="s16-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>16</b> Signing in safely</p>
+        <h2 id="s16-title" class="h2">You sign in. The&nbsp;AI never sees your password.</h2>
+        <p class="keyline">It’s like a hotel key card: it opens only the rooms you agreed to.</p>
+        <div class="callout callout--warn">
+          <p class="callout__kicker">A firm rule</p>
+          <p>If an AI ever asks for your username and password, the answer is no.</p>
+        </div>
+      </div>
+
+      <div class="card s16-stage">
+        <span class="tag tag--corner">Example</span>
+
+        <div class="s16-row">
+          <span class="s16-ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+          <span class="s16-name">Calendar</span>
+          <span class="s16-act">
+            <button type="button" class="btn btn--primary btn--small" id="s16-connect" aria-haspopup="dialog" aria-expanded="false" aria-label="Connect Calendar">Connect</button>
+            <span class="s16-status" id="s16-status" tabindex="-1" hidden><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Connected</span>
+          </span>
+        </div>
+
+        <div class="s16-area">
+          <p class="s16-hint" id="s16-hint">Nothing is connected yet. Press Connect to begin.</p>
+
+          <div id="s16-win" class="s16-win" role="dialog" aria-modal="false" aria-labelledby="s16-win-title" tabindex="-1" hidden>
+            <div class="s16-chrome">
+              <span class="s16-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="s16-chrome__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Calendar sign-in</span>
+              <span class="s16-chrome__label">Example sign-in window</span>
+            </div>
+            <div class="s16-win__body">
+              <h3 id="s16-win-title" class="s16-wt">Your AI wants to read your calendar</h3>
+              <div class="s16-lists">
+                <div>
+                  <p class="s16-lists__k">It can</p>
+                  <p class="s16-li"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>See the times and titles of your events</p>
+                </div>
+                <div>
+                  <p class="s16-lists__k">It can’t</p>
+                  <p class="s16-li"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Change or delete anything</p>
+                  <p class="s16-li"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Open your email or files</p>
+                </div>
+              </div>
+              <p class="s16-win__note">You sign in here, with your calendar service. The AI only receives a key card.</p>
+              <div class="btn-row">
+                <button type="button" class="btn btn--secondary" id="s16-cancel">Cancel</button>
+                <button type="button" class="btn btn--primary" id="s16-allow">Allow</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="s16-issued" class="s16-issued" hidden>
+            <div class="s16-key" id="s16-key" role="group" aria-label="Key card issued: Calendar only, cancel it any time" tabindex="-1">
+              <span class="s16-key__ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-key"/></svg></span>
+              <span class="s16-key__txt">
+                <span class="s16-key__k">Key card</span>
+                <span class="s16-key__t">Calendar only · Cancel it any time</span>
+              </span>
+            </div>
+
+            <div class="s16-doors">
+              <button type="button" class="s16-door" id="s16-door-cal" data-state="closed">
+                <svg class="s16-doorsvg" viewBox="0 0 120 130" aria-hidden="true" focusable="false">
+                  <rect class="s16-room" x="22" y="10" width="76" height="116" rx="3"/>
+                  <use class="s16-room__ico" href="#i-calendar" x="42" y="42" width="36" height="36"/>
+                  <g class="s16-leaf"><rect x="22" y="10" width="76" height="116" rx="3"/><circle cx="86" cy="70" r="4"/></g>
+                  <path d="M10 126h100"/>
+                </svg>
+                <span class="s16-door__name"><svg class="icon s16-door__state" aria-hidden="true"><use href="#i-door-closed"/></svg>Calendar</span>
+                <span class="s16-door__txt" id="s16-door-cal-txt">Try the key card</span>
+              </button>
+              <button type="button" class="s16-door" id="s16-door-mail" data-state="locked">
+                <svg class="s16-doorsvg" viewBox="0 0 120 130" aria-hidden="true" focusable="false">
+                  <rect class="s16-room" x="22" y="10" width="76" height="116" rx="3"/>
+                  <g class="s16-leaf s16-leaf--lock"><rect x="22" y="10" width="76" height="116" rx="3"/><use href="#i-lock" x="46" y="42" width="28" height="28"/></g>
+                  <path d="M10 126h100"/>
+                </svg>
+                <span class="s16-door__name"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Email</span>
+                <span class="s16-door__txt" id="s16-door-mail-txt">Try the key card</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="s16-bottom">
+          <p class="s16-msg" id="s16-msg"></p>
+          <button type="button" class="btn-reset" id="s16-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-16 .s16-stage { display: flex; flex-direction: column; gap: 16px; --card-pad: clamp(20px, 1.8vw, 28px); }
+    #s-16 .s16-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; }
+    #s-16 .s16-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    #s-16 .s16-ico { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-lg); color: var(--ink-heading); }
+    #s-16 .s16-name { font-size: var(--fs-lead); font-weight: 500; color: var(--ink-heading); }
+    #s-16 .s16-act { display: flex; justify-content: flex-end; }
+    #s-16 .s16-act [hidden] { display: none; }
+    #s-16 .s16-status {
+      display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 18px;
+      background: var(--surface-muted); border: 1px solid var(--border-strong); border-radius: var(--radius-full);
+      font-size: var(--fs-ui); font-weight: 600; color: var(--ink);
+    }
+    #s-16 .s16-status .icon { width: 1.2em; height: 1.2em; stroke-width: 2; padding: 3px; box-sizing: content-box; background: var(--ink); color: var(--ink-on-dark); border-radius: var(--radius-full); }
+    #s-16 .s16-status:focus { outline: none; }
+    #s-16 .s16-status:focus-visible { outline: 3px solid var(--dragonfly); outline-offset: 3px; }
+
+    #s-16 .s16-area { min-height: 330px; display: flex; flex-direction: column; justify-content: center; }
+    #s-16 .s16-area [hidden] { display: none; }
+    #s-16 .s16-hint { max-width: none; text-align: center; padding: 40px 20px; background: var(--surface-muted); border-radius: var(--radius-lg); color: var(--ink-heading); }
+
+    /* The pretend browser window */
+    #s-16 .s16-win { background: var(--surface-card); border: 2px solid var(--ink-label); border-radius: var(--radius-lg); overflow: hidden; animation: s16-in var(--dur-2) var(--ease); }
+    #s-16 .s16-win:focus { outline: none; }
+    #s-16 .s16-win:focus-visible { outline: 3px solid var(--dragonfly); outline-offset: 3px; }
+    #s-16 .s16-chrome { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 10px 16px; background: var(--surface-muted); border-bottom: 1px solid var(--border-strong); }
+    #s-16 .s16-dots { display: inline-flex; gap: 6px; }
+    #s-16 .s16-dots i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ring); display: block; }
+    #s-16 .s16-chrome__url { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px; background: var(--surface-card); border: 1px solid var(--border-strong); border-radius: var(--radius-full); font-size: var(--fs-label); color: var(--ink); }
+    #s-16 .s16-chrome__label { margin-left: auto; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-label); }
+    #s-16 .s16-win__body { display: grid; gap: 16px; padding: clamp(16px, 1.6vw, 24px); }
+    #s-16 .s16-wt { font-size: clamp(24px, 1.9vw, 30px); max-width: none; line-height: 1.2; }
+    #s-16 .s16-lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
+    #s-16 .s16-lists__k { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); margin-bottom: 4px; }
+    #s-16 .s16-li { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-body); line-height: 1.35; padding: 4px 0; }
+    #s-16 .s16-li .icon { margin-top: 0.2em; width: 1.1em; height: 1.1em; stroke-width: 2; }
+    #s-16 .s16-win__note { font-size: var(--fs-body); color: var(--ink-secondary); max-width: none; }
+
+    /* Key card and doors */
+    #s-16 .s16-issued { display: grid; gap: 20px; }
+    #s-16 .s16-key { display: flex; align-items: center; gap: 20px; padding: 18px 24px; background: var(--dragonfly-dark); color: var(--ink-on-dark); border-radius: var(--radius-lg); animation: s16-in var(--dur-3) var(--ease); }
+    #s-16 .s16-key:focus { outline: none; }
+    #s-16 .s16-key:focus-visible { outline: 3px solid var(--dragonfly); outline-offset: 3px; }
+    #s-16 .s16-key__ico { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 60px; height: 60px; border: 2px solid var(--dragonfly-light); border-radius: 50%; color: var(--dragonfly-light); }
+    #s-16 .s16-key__txt { display: grid; gap: 2px; min-width: 0; }
+    #s-16 .s16-key__k { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dragonfly-light); }
+    #s-16 .s16-key__t { font-size: var(--fs-lead); font-weight: 500; line-height: 1.25; color: var(--ink-on-dark); }
+
+    #s-16 .s16-doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    #s-16 .s16-door {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 16px 16px; cursor: pointer; min-height: 56px;
+      background: var(--surface-card); color: var(--ink); border: 2px solid var(--border-strong); border-radius: var(--radius-lg);
+      transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+    }
+    #s-16 .s16-door:hover { border-color: var(--ring); background: var(--surface-muted); }
+    #s-16 .s16-door[data-state="open"] { border-color: var(--dragonfly); background: var(--surface-card); }
+    #s-16 .s16-door__name { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-lead); font-weight: 500; color: var(--ink-heading); }
+    #s-16 .s16-door__txt { font-size: var(--fs-ui); color: var(--ink-secondary); }
+    #s-16 .s16-doorsvg { width: 96px; height: auto; max-height: 104px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-16 .s16-room { fill: var(--surface-muted); transition: fill var(--dur-3) var(--ease); }
+    #s-16 .s16-room__ico { opacity: 0; stroke: var(--ink); transition: opacity var(--dur-3) var(--ease); }
+    #s-16 .s16-leaf { fill: var(--surface-card); transform-box: fill-box; transform-origin: left center; transition: transform var(--dur-3) var(--ease); }
+    #s-16 .s16-leaf circle { fill: var(--ink); }
+    #s-16 .s16-leaf--lock use { stroke: var(--ink); }
+    #s-16 .s16-door[data-state="open"] .s16-room { fill: var(--dragonfly-light); }
+    #s-16 .s16-door[data-state="open"] .s16-room__ico { opacity: 1; }
+    #s-16 .s16-door[data-state="open"] .s16-leaf { transform: scaleX(0.2); }
+    #s-16 .s16-door.is-shake .s16-leaf { animation: s16-shake var(--dur-2) var(--ease); }
+
+    #s-16 .s16-msg { min-height: 1.55em; max-width: none; flex: 1 1 260px; font-size: var(--fs-body); font-weight: 500; color: var(--ink-heading); }
+
+    @keyframes s16-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @keyframes s16-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-5px); } 45% { transform: translateX(5px); } 70% { transform: translateX(-3px); } }
+
+    @media (max-width: 560px) {
+      #s-16 .s16-area { min-height: 0; }
+      #s-16 .s16-lists { grid-template-columns: minmax(0, 1fr); }
+      #s-16 .s16-chrome__label { margin-left: 0; flex-basis: 100%; }
+      #s-16 .s16-row { grid-template-columns: auto minmax(0, 1fr); }
+      #s-16 .s16-act { grid-column: 1 / -1; justify-content: stretch; }
+      #s-16 .s16-act .btn, #s-16 .s16-status { width: 100%; justify-content: center; }
+      #s-16 .s16-ico { width: 48px; height: 48px; }
+      #s-16 .s16-key { padding: 16px; gap: 14px; }
+      #s-16 .s16-key__ico { width: 52px; height: 52px; }
+      #s-16 .s16-doors { gap: 12px; }
+      #s-16 .s16-door { padding-inline: 8px; }
+      #s-16 .s16-doorsvg { width: 80px; }
+    }
+  </style>
+  <script>(()=>{
+    const root = document.getElementById('s-16');
+    const $ = (id) => root.querySelector('#' + id);
+    const connect = $('s16-connect'), status = $('s16-status');
+    const hint = $('s16-hint'), win = $('s16-win'), issued = $('s16-issued'), key = $('s16-key');
+    const cancel = $('s16-cancel'), allow = $('s16-allow'), reset = $('s16-reset');
+    const doorCal = $('s16-door-cal'), doorMail = $('s16-door-mail');
+    const msg = $('s16-msg');
+    let state = 'idle';
+
+    function say(text) { msg.textContent = text; DT.announce(text); }
+
+    function setWindow(open) {
+      win.hidden = !open;
+      if (open) win.setAttribute('open', ''); else win.removeAttribute('open');
+      connect.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function resetDoors() {
+      doorCal.dataset.state = 'closed';
+      doorCal.querySelector('.s16-door__state use').setAttribute('href', '#i-door-closed');
+      root.querySelector('#s16-door-cal-txt').textContent = 'Try the key card';
+      root.querySelector('#s16-door-mail-txt').textContent = 'Try the key card';
+      doorMail.classList.remove('is-shake');
+    }
+
+    function toIdle(text, announce) {
+      state = 'idle';
+      setWindow(false);
+      issued.hidden = true;
+      hint.hidden = false;
+      hint.textContent = text;
+      connect.hidden = false; status.hidden = true;
+      resetDoors();
+      msg.textContent = '';
+      if (announce) DT.announce(announce);
+    }
+    function openWindow() {
+      if (state === 'issued') return;
+      if (state === 'dialog') { win.focus(); return; }
+      state = 'dialog';
+      hint.hidden = true;
+      setWindow(true);
+      msg.textContent = '';
+      win.focus({ preventScroll: false });
+      DT.announce('Example sign-in window opened. Your AI wants to read your calendar. Choose Cancel or Allow.');
+    }
+    function doCancel(leaving) {
+      if (state !== 'dialog') return;
+      toIdle('Nothing was shared.');
+      if (leaving === true) return;
+      connect.focus();
+      DT.announce('Cancelled. Nothing was shared.');
+    }
+    function doAllow() {
+      if (state !== 'dialog') return;
+      state = 'issued';
+      setWindow(false);
+      hint.hidden = true;
+      issued.hidden = false;
+      connect.hidden = true; status.hidden = false;
+      resetDoors();
+      msg.textContent = 'Try the key card on each door.';
+      key.focus({ preventScroll: true });
+      DT.announce('Allowed. A key card was issued: Calendar only, cancel it any time. Try it on the two doors.');
+    }
+
+    connect.addEventListener('click', openWindow);
+    cancel.addEventListener('click', () => doCancel());
+    allow.addEventListener('click', doAllow);
+    win.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && state === 'dialog') { e.preventDefault(); doCancel(); }
+    });
+
+    /* Leaving the section (presenter jump, or plain scrolling) closes the window quietly, without taking focus. */
+    document.addEventListener('dt:jump', (e) => {
+      const to = e && e.detail && e.detail.to;
+      if (state === 'dialog' && to !== 's-16') doCancel(true);
+    });
+    if ('IntersectionObserver' in window) {
+      const steps = []; for (let i = 0; i <= 20; i++) steps.push(i / 20);
+      new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (state !== 'dialog') return;
+          const need = Math.min(en.boundingClientRect.height, window.innerHeight) * 0.3;
+          if (!en.isIntersecting || en.intersectionRect.height < need) doCancel(true);
+        });
+      }, { threshold: steps }).observe(root);
+    }
+
+    doorCal.addEventListener('click', () => {
+      if (state !== 'issued') return;
+      if (doorCal.dataset.state !== 'open') {
+        doorCal.dataset.state = 'open';
+        doorCal.querySelector('.s16-door__state use').setAttribute('href', '#i-door-open');
+        root.querySelector('#s16-door-cal-txt').textContent = 'Opened with your key card';
+      }
+      say('The key card opens the Calendar door.');
+    });
+    doorMail.addEventListener('click', () => {
+      if (state !== 'issued') return;
+      root.querySelector('#s16-door-mail-txt').textContent = 'Stays locked';
+      doorMail.classList.remove('is-shake');
+      void doorMail.offsetWidth;
+      doorMail.classList.add('is-shake');
+      say('This key card only opens Calendar.');
+    });
+    doorMail.addEventListener('animationend', () => doorMail.classList.remove('is-shake'));
+    doorMail.querySelector('.s16-leaf').addEventListener('animationend', () => doorMail.classList.remove('is-shake'));
+
+    reset.addEventListener('click', () => {
+      toIdle('Nothing is connected yet. Press Connect to begin.', 'Back to the start. Nothing is connected.');
+    });
+  })();</script>
+</section>

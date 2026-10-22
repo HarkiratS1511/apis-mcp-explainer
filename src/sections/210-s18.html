@@ -1,0 +1,124 @@
+<section id="s-18" class="slide" data-part="mcp" data-label="Open standard" aria-labelledby="s18-title">
+  <div class="wrap">
+    <div class="stack-lg">
+      <div class="stack">
+        <p class="secnum"><b>18</b> An open standard</p>
+        <h2 id="s18-title" class="h2">MCP no longer belongs to one company.</h2>
+        <p class="keyline">A shared industry standard, like USB. That’s why most AI tools now support it.</p>
+      </div>
+
+      <ol class="s18-line" aria-label="MCP timeline, three points">
+        <li class="s18-pt" id="s18-p1">
+          <span class="s18-track" aria-hidden="true"><span class="s18-dot"></span></span>
+          <div class="s18-card">
+            <button type="button" class="s18-btn" aria-pressed="false" aria-describedby="s18-t1">
+              <span class="s18-date">Nov 2024</span>
+            </button>
+            <p class="s18-text" id="s18-t1">Anthropic, the company behind Claude, releases MCP as an open standard.</p>
+          </div>
+        </li>
+        <li class="s18-pt" id="s18-p2">
+          <span class="s18-track" aria-hidden="true"><span class="s18-dot"></span></span>
+          <div class="s18-card">
+            <button type="button" class="s18-btn" aria-pressed="false" aria-describedby="s18-t2">
+              <span class="s18-date">2025</span>
+            </button>
+            <p class="s18-text" id="s18-t2">OpenAI and Google add support in their own AI tools.</p>
+          </div>
+        </li>
+        <li class="s18-pt" id="s18-p3">
+          <span class="s18-track" aria-hidden="true"><span class="s18-dot"></span></span>
+          <div class="s18-card">
+            <button type="button" class="s18-btn" aria-pressed="false" aria-describedby="s18-t3">
+              <span class="s18-date">Dec 2025</span>
+            </button>
+            <p class="s18-text" id="s18-t3">Anthropic hands MCP to the Agentic AI Foundation, part of the Linux Foundation, co-founded by Anthropic, OpenAI and Block.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="note">Press a date to highlight it. Press it again to clear.</p>
+    </div>
+  </div>
+  <style>
+    #s-18 .h2 { max-width: 30ch; }
+
+    #s-18 .s18-line {
+      --dot: 22px;
+      list-style: none; position: relative;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 40px);
+    }
+    /* the hairline track runs behind the dots */
+    #s-18 .s18-line::before {
+      content: ""; position: absolute; left: 0; right: 0; top: calc(var(--dot) / 2);
+      height: 0; border-top: 1px solid var(--ink-label);
+    }
+    #s-18 .s18-pt { position: relative; display: grid; grid-template-rows: auto 1fr; row-gap: 20px; min-width: 0; border-radius: var(--radius-lg); }
+    #s-18 .s18-track { display: block; height: var(--dot); }
+    #s-18 .s18-dot {
+      display: block; width: var(--dot); height: var(--dot); border-radius: var(--radius-full);
+      background: var(--dragonfly); border: 4px solid var(--surface-page);
+      outline: 0 solid var(--dragonfly); outline-offset: 0;
+      transition: outline-width var(--dur-2) var(--ease), outline-offset var(--dur-2) var(--ease);
+    }
+    #s-18 .s18-pt.is-on .s18-dot { outline: 2px solid var(--dragonfly); outline-offset: 3px; }
+
+    #s-18 .s18-card { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+    #s-18 .s18-card {
+      --card-pad: clamp(20px, 2vw, 32px);
+      background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: var(--card-pad);
+      transition: border-color var(--dur-2) var(--ease);
+    }
+    #s-18 .s18-pt.is-on .s18-card { border: 2px solid var(--dragonfly); padding: calc(var(--card-pad) - 1px); }
+
+    #s-18 .s18-btn {
+      display: block; width: 100%; min-height: 56px; padding: 0; margin: 0; text-align: left; cursor: pointer;
+      background: none; border: 0; color: var(--ink-heading); border-radius: var(--radius-md);
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* the whole card is the hit area */
+    #s-18 .s18-btn::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); }
+    #s-18 .s18-btn:focus-visible { outline: none; }
+    #s-18 .s18-pt:has(.s18-btn:focus-visible) { outline: 3px solid var(--dragonfly); outline-offset: 4px; }
+    #s-18 .s18-date {
+      display: block; font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.025em;
+      font-size: clamp(40px, 3.5vw, 66px); line-height: 1;
+    }
+    #s-18 .s18-text { color: var(--ink-secondary); font-size: var(--fs-body); max-width: 32ch; transition: color var(--dur-2) var(--ease); }
+    #s-18 .s18-pt.is-on .s18-text { color: var(--ink); font-weight: 500; }
+    #s-18 .s18-pt:hover .s18-card { border-color: var(--ring); }
+    #s-18 .s18-pt.is-on:hover .s18-card { border-color: var(--dragonfly); }
+
+    @media (max-width: 860px) {
+      #s-18 .s18-line { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+      #s-18 .s18-line::before { left: calc(var(--dot) / 2); right: auto; top: 33px; bottom: 0; height: auto; width: 0; border-top: 0; border-left: 1px solid var(--ink-label); }
+      #s-18 .s18-pt { grid-template-rows: none; grid-template-columns: var(--dot) minmax(0, 1fr); column-gap: 16px; align-items: start; }
+      #s-18 .s18-track { padding-top: 22px; height: auto; }
+      #s-18 .s18-date { font-size: clamp(40px, 11vw, 56px); }
+      #s-18 .s18-text { max-width: none; }
+    }
+  </style>
+  <script>
+    (() => {
+      const root = document.getElementById('s-18');
+      const pts = Array.from(root.querySelectorAll('.s18-pt'));
+      function select(pt, on) {
+        pts.forEach((p) => {
+          const active = on && p === pt;
+          p.classList.toggle('is-on', active);
+          p.querySelector('.s18-btn').setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (on) {
+          const date = pt.querySelector('.s18-date').textContent;
+          DT.announce(date + ' selected. ' + pt.querySelector('.s18-text').textContent);
+        } else {
+          DT.announce('Selection cleared. All three points stay visible.');
+        }
+      }
+      pts.forEach((pt) => {
+        const btn = pt.querySelector('.s18-btn');
+        btn.addEventListener('click', () => select(pt, btn.getAttribute('aria-pressed') !== 'true'));
+      });
+    })();
+  </script>
+</section>

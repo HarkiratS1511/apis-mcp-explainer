@@ -1,0 +1,212 @@
+<section id="s-06" class="slide" data-part="apis" data-label="There&rsquo;s no master key" aria-labelledby="s06-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>06</b> No master key</p>
+        <h2 id="s06-title" class="h2">There&rsquo;s no master key.</h2>
+        <p class="keyline">Each service hands out its own key.</p>
+      </div>
+
+      <div class="card s06-board">
+        <span class="tag tag--corner">For illustration</span>
+        <p class="s06-step"><b>1</b> Choose a key</p>
+        <div class="s06-keys" role="group" aria-label="Keys">
+          <button type="button" class="btn btn--choice s06-key" data-key="weather" aria-pressed="false" style="--c: var(--dragonfly)">
+            <svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>
+            <svg class="icon s06-key__icon" aria-hidden="true"><use href="#i-key"/></svg>
+            <span>Weather<span class="sr-only"> key</span></span>
+          </button>
+          <button type="button" class="btn btn--choice s06-key" data-key="maps" aria-pressed="false" style="--c: var(--lens-geo)">
+            <svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>
+            <svg class="icon s06-key__icon" aria-hidden="true"><use href="#i-key"/></svg>
+            <span>Maps<span class="sr-only"> key</span></span>
+          </button>
+          <button type="button" class="btn btn--choice s06-key" data-key="stats" aria-pressed="false" style="--c: var(--lens-systems)">
+            <svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>
+            <svg class="icon s06-key__icon" aria-hidden="true"><use href="#i-key"/></svg>
+            <span>Statistics<span class="sr-only"> key</span></span>
+          </button>
+        </div>
+
+        <p class="s06-step"><b>2</b> Choose a door</p>
+        <div class="s06-doors" role="group" aria-label="Doors">
+          <button type="button" class="s06-door" data-door="stats" style="--c: var(--lens-systems)">
+            <svg viewBox="0 0 160 216" aria-hidden="true" focusable="false">
+              <rect class="s06-plate" x="48" y="2" width="64" height="44" rx="6"/>
+              <g class="s06-ic" transform="translate(64 8)"><use href="#i-bar-chart" width="32" height="32"/></g>
+              <rect class="s06-inside" x="20" y="56" width="120" height="156" rx="3"/>
+              <g class="s06-ic s06-in-ic" transform="translate(60 112)"><use href="#i-check" width="40" height="40"/></g>
+              <g class="s06-leaf">
+                <rect class="s06-leaf__body" x="20" y="56" width="120" height="156" rx="3"/>
+                <rect class="s06-leaf__inset" x="36" y="72" width="88" height="54" rx="2"/>
+                <rect class="s06-leaf__inset" x="36" y="138" width="88" height="56" rx="2"/>
+                <circle class="s06-knob" cx="124" cy="136" r="6"/>
+              </g>
+              <line class="s06-floor" x1="6" y1="212" x2="154" y2="212"/>
+            </svg>
+            <span class="s06-door__label">Statistics<span class="sr-only"> door, closed</span></span>
+          </button>
+          <button type="button" class="s06-door" data-door="weather" style="--c: var(--dragonfly)">
+            <svg viewBox="0 0 160 216" aria-hidden="true" focusable="false">
+              <rect class="s06-plate" x="48" y="2" width="64" height="44" rx="6"/>
+              <g class="s06-ic" transform="translate(64 8)"><use href="#i-cloud-sun" width="32" height="32"/></g>
+              <rect class="s06-inside" x="20" y="56" width="120" height="156" rx="3"/>
+              <g class="s06-ic s06-in-ic" transform="translate(60 112)"><use href="#i-check" width="40" height="40"/></g>
+              <g class="s06-leaf">
+                <rect class="s06-leaf__body" x="20" y="56" width="120" height="156" rx="3"/>
+                <rect class="s06-leaf__inset" x="36" y="72" width="88" height="54" rx="2"/>
+                <rect class="s06-leaf__inset" x="36" y="138" width="88" height="56" rx="2"/>
+                <circle class="s06-knob" cx="124" cy="136" r="6"/>
+              </g>
+              <line class="s06-floor" x1="6" y1="212" x2="154" y2="212"/>
+            </svg>
+            <span class="s06-door__label">Weather<span class="sr-only"> door, closed</span></span>
+          </button>
+          <button type="button" class="s06-door" data-door="maps" style="--c: var(--lens-geo)">
+            <svg viewBox="0 0 160 216" aria-hidden="true" focusable="false">
+              <rect class="s06-plate" x="48" y="2" width="64" height="44" rx="6"/>
+              <g class="s06-ic" transform="translate(64 8)"><use href="#i-map-pin" width="32" height="32"/></g>
+              <rect class="s06-inside" x="20" y="56" width="120" height="156" rx="3"/>
+              <g class="s06-ic s06-in-ic" transform="translate(60 112)"><use href="#i-check" width="40" height="40"/></g>
+              <g class="s06-leaf">
+                <rect class="s06-leaf__body" x="20" y="56" width="120" height="156" rx="3"/>
+                <rect class="s06-leaf__inset" x="36" y="72" width="88" height="54" rx="2"/>
+                <rect class="s06-leaf__inset" x="36" y="138" width="88" height="56" rx="2"/>
+                <circle class="s06-knob" cx="124" cy="136" r="6"/>
+              </g>
+              <line class="s06-floor" x1="6" y1="212" x2="154" y2="212"/>
+            </svg>
+            <span class="s06-door__label">Maps<span class="sr-only"> door, closed</span></span>
+          </button>
+        </div>
+
+        <div class="s06-foot">
+          <p class="s06-msg" id="s06-msg" role="status" aria-live="polite" data-kind="info"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span id="s06-msgtext">Choose a key, then choose a door.</span></p>
+          <button type="button" class="btn-reset" id="s06-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #s-06 .s06-board { display: grid; gap: clamp(12px, 1.8vh, 22px); --card-pad: clamp(20px, 2vw, 32px); padding-top: 16px; }
+    #s-06 .s06-board > .s06-step:first-of-type { min-height: 32px; display: flex; align-items: center; padding-right: 180px; }
+    #s-06 .s06-step { margin: 0; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-06 .s06-step b { color: var(--dragonfly); margin-right: 10px; }
+
+    #s-06 .s06-keys, #s-06 .s06-doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 16px); }
+
+    #s-06 .s06-key { position: relative; flex-direction: column; gap: 6px; min-height: clamp(76px, 9.5vh, 112px); padding: 14px 8px 12px; font-weight: 500; font-size: var(--fs-body); }
+    #s-06 .s06-key .btn__check { position: absolute; top: 8px; left: auto; right: 8px; transform: none; width: 20px; height: 20px; }
+    #s-06 .s06-key__icon { width: 38px; height: 38px; color: var(--c); }
+    #s-06 .s06-key[aria-pressed="true"] { border-color: var(--ink); background: var(--surface-muted); }
+
+    #s-06 .s06-door {
+      display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 6px 10px;
+      background: transparent; border: 2px solid transparent; border-radius: var(--radius-lg); cursor: pointer; min-width: 0;
+      font-family: var(--font-sans); font-size: var(--fs-ui); font-weight: 500; color: var(--ink);
+      transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+    }
+    #s-06 .s06-door:hover { background: var(--surface-muted); border-color: var(--border-strong); }
+    #s-06 .s06-door svg { display: block; width: 100%; max-width: 190px; height: auto; max-height: clamp(130px, 21vh, 260px); }
+    #s-06 .s06-door__label { line-height: 1.2; }
+
+    #s-06 .s06-plate { fill: var(--surface-card); stroke: var(--c); stroke-width: 2; }
+    #s-06 .s06-ic { color: var(--c); }
+    #s-06 .s06-ic use { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-06 .s06-inside { fill: color-mix(in srgb, var(--c) 16%, var(--surface-card)); stroke: var(--c); stroke-width: 2; }
+    #s-06 .s06-in-ic { opacity: 0; transition: opacity var(--dur-2) var(--ease); }
+    #s-06 .s06-in-ic use { stroke-width: 2.4; }
+    #s-06 .s06-leaf { transform-box: fill-box; transform-origin: 0 50%; transition: transform var(--dur-3) var(--ease); }
+    #s-06 .s06-leaf__body { fill: var(--surface-card); stroke: var(--c); stroke-width: 2; }
+    #s-06 .s06-leaf__inset { fill: color-mix(in srgb, var(--c) 10%, var(--surface-card)); stroke: var(--c); stroke-width: 1.5; }
+    #s-06 .s06-knob { fill: var(--c); }
+    #s-06 .s06-floor { stroke: var(--ink-label); stroke-width: 3; stroke-linecap: round; }
+    #s-06 .s06-door[data-open="true"] .s06-leaf { transform: scaleX(0.2) skewY(-4deg); }
+    #s-06 .s06-door[data-open="true"] .s06-in-ic { opacity: 1; }
+    #s-06 .s06-door.is-rattle svg { animation: s06-rattle var(--dur-2) var(--ease); }
+    @keyframes s06-rattle {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-10px); }
+      32% { transform: translateX(9px); }
+      50% { transform: translateX(-7px); }
+      68% { transform: translateX(5px); }
+      84% { transform: translateX(-2px); }
+    }
+
+    #s-06 .s06-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; padding-top: 6px; border-top: 1px solid var(--border); }
+    #s-06 .s06-foot { padding-top: clamp(12px, 1.6vh, 18px); }
+    #s-06 .s06-msg { display: flex; gap: 12px; align-items: flex-start; flex: 1 1 280px; min-height: 3.2em; margin: 0; font-size: var(--fs-body); line-height: 1.4; color: var(--ink); }
+    #s-06 .s06-msg .icon { margin-top: 0.12em; width: 1.2em; height: 1.2em; color: var(--ink-label); }
+    #s-06 .s06-msg[data-kind="ok"] .icon { color: var(--dragonfly); }
+    #s-06 .s06-msg[data-kind="no"] .icon { color: var(--ink); }
+
+    @media (max-width: 640px) {
+      #s-06 .s06-key { font-size: 18px; padding-inline: 4px; }
+      #s-06 .s06-key__icon { width: 30px; height: 30px; }
+      #s-06 .s06-door { font-size: 18px; padding-inline: 2px; }
+      #s-06 .s06-foot .btn-reset { width: 100%; }
+      #s-06 .s06-board > .tag--corner { position: static; justify-self: end; }
+      #s-06 .s06-board > .s06-step:first-of-type { padding-right: 0; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-06');
+    const keys = [...root.querySelectorAll('[data-key]')];
+    const doors = [...root.querySelectorAll('[data-door]')];
+    const msg = root.querySelector('#s06-msg');
+    const msgText = root.querySelector('#s06-msgtext');
+    const NAMES = { weather: 'Weather', maps: 'Maps', stats: 'Statistics' };
+    const ICONS = { info: '#i-info', ok: '#i-check', no: '#i-lock' };
+    let selected = null;
+
+    function say(kind, text) {
+      msg.dataset.kind = kind;
+      msg.querySelector('use').setAttribute('href', ICONS[kind]);
+      msgText.textContent = text;
+    }
+    function selectKey(btn) {
+      const same = selected === btn.dataset.key;
+      selected = same ? null : btn.dataset.key;
+      keys.forEach(k => k.setAttribute('aria-pressed', String(k.dataset.key === selected)));
+      say('info', selected ? 'The ' + NAMES[selected] + ' key is in your hand. Now choose a door.' : 'Choose a key, then choose a door.');
+    }
+    function setSr(door, open) {
+      const s = door.querySelector('.sr-only');
+      s.textContent = ' door, ' + (open ? 'open' : 'closed');
+    }
+    function rattle(door) {
+      if (DT.reduced) return;
+      door.classList.remove('is-rattle');
+      void door.offsetWidth;
+      door.classList.add('is-rattle');
+      const done = () => door.classList.remove('is-rattle');
+      door.addEventListener('animationend', done, { once: true });
+      setTimeout(done, 700);
+    }
+    function tryDoor(door) {
+      const name = door.dataset.door;
+      if (door.dataset.open === 'true') { say('info', 'That door is already open.'); return; }
+      if (!selected) { say('info', 'Choose a key first.'); return; }
+      if (selected === name) {
+        door.dataset.open = 'true';
+        setSr(door, true);
+        const all = doors.every(d => d.dataset.open === 'true');
+        say('ok', all ? 'All three doors are open. Each one needed its own key.' : 'The ' + NAMES[name] + ' key fits. The ' + NAMES[name] + ' door opens.');
+      } else {
+        rattle(door);
+        say('no', 'This key doesn’t open this one. Try another door.');
+      }
+    }
+    function reset() {
+      selected = null;
+      keys.forEach(k => k.setAttribute('aria-pressed', 'false'));
+      doors.forEach(d => { delete d.dataset.open; d.classList.remove('is-rattle'); setSr(d, false); });
+      say('info', 'The doors are closed. Choose a key, then choose a door.');
+    }
+    keys.forEach(k => k.addEventListener('click', () => selectKey(k)));
+    doors.forEach(d => d.addEventListener('click', () => tryDoor(d)));
+    root.querySelector('#s06-reset').addEventListener('click', reset);
+  })();</script>
+</section>

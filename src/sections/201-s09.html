@@ -1,0 +1,227 @@
+<section id="s-09" class="slide" data-part="mcp" data-label="Every app has its own socket" aria-labelledby="s09-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>09</b> One socket per app</p>
+        <h2 id="s09-title" class="h2">Every app has its own socket.</h2>
+        <p>Your AI reaches each app through an adapter made only for that app.</p>
+        <p class="keyline">Like travelling overseas with a bag of plugs, one for every country.</p>
+      </div>
+      <div class="s09-visual tagged">
+        <span class="tag tag--corner">For illustration</span>
+        <div class="s09-stage" id="s09-stage">
+          <svg class="s09-svg" id="s09-svg" role="img" aria-label="Your AI on the left, joined to four apps on the right: Email, Calendar, Your files and Public statistics. Each app is reached through a differently shaped adapter."></svg>
+        </div>
+        <p class="note s09-caption" id="s09-caption" aria-live="polite" aria-atomic="true">Press an app, or go through them one at a time.</p>
+        <div class="s09-controls">
+          <button type="button" class="btn btn--primary" id="s09-step">Show each adapter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <button type="button" class="btn-reset" id="s09-all" hidden>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s09-i-ai" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    </defs>
+  </svg>
+  <style>
+    #s-09 .s09-stage { position: relative; width: 100%; }
+    #s-09 .s09-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    #s-09 .s09-t { font-family: var(--font-sans); font-size: 20px; font-weight: 500; fill: var(--ink); }
+    #s-09 .s09-t--ai { fill: var(--ink-on-dark); }
+    #s-09 .s09-lab { font-family: var(--font-sans); font-size: 18px; font-weight: 500; fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--surface-page); stroke-width: 6px; stroke-linejoin: round; transition: opacity var(--dur-2) var(--ease); }
+    #s-09 .s09-lab--in { text-anchor: start; stroke: none; font-size: 17px; font-weight: 400; fill: var(--ink-label); }
+    #s-09 .s09-ai__box { fill: var(--dragonfly-dark); }
+    #s-09 .s09-node__box { fill: var(--surface-card); stroke: var(--border-strong); stroke-width: 2; transition: stroke var(--dur-2) var(--ease), stroke-width var(--dur-2) var(--ease); }
+    #s-09 .s09-ico { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    #s-09 .s09-cable { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; transition: stroke var(--dur-3) var(--ease), opacity var(--dur-2) var(--ease), stroke-width var(--dur-2) var(--ease); }
+    #s-09 .s09-body { fill: color-mix(in srgb, var(--c) 16%, var(--surface-card)); stroke: var(--c); stroke-width: 2; stroke-linejoin: round; }
+    #s-09 .s09-pin { fill: none; stroke: var(--c); stroke-width: 6; stroke-linecap: round; }
+    #s-09 .s09-pin--flat { stroke-width: 5; stroke-linecap: butt; }
+    #s-09 .s09-plug__in { transform-box: fill-box; transform-origin: center; transition: transform var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease); }
+    #s-09 .s09-hub__c { fill: var(--dragonfly); }
+    #s-09 .s09-hub__t { font-family: var(--font-mono); font-size: 22px; font-weight: 600; letter-spacing: 0.06em; fill: var(--surface-card); text-anchor: middle; }
+    #s-09 .s09-visual { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding-top: 48px; }
+    #s-09 .s09-caption { max-width: none; min-height: 1.5em; }
+    #s-09 .s09-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    #s-09 .s09-controls [hidden] { display: none; }
+    #s-09 .s09-hit { position: absolute; padding: 0; margin: 0; background: transparent; border: 0; border-radius: 10px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background-color var(--dur-1) var(--ease); }
+    #s-09 .s09-hit:hover { background: color-mix(in srgb, var(--c) 9%, transparent); }
+    #s-09 .s09-hit[aria-pressed="true"] { background: color-mix(in srgb, var(--c) 7%, transparent); }
+    #s-09 .s09-stage.has-sel .s09-row:not(.is-sel) :is(.s09-cable, .s09-plug) { opacity: 0.25; }
+    #s-09 .s09-row.is-sel .s09-cable { stroke-width: 5; }
+    #s-09 .s09-row.is-sel .s09-plug__in { transform: scale(1.2); }
+    #s-09 .s09-row.is-sel .s09-node__box { stroke: var(--c); stroke-width: 2; }
+    #s-09 .s09-row.is-plugging .s09-plug__in { animation: s09-plugin var(--dur-3) var(--ease); }
+    @keyframes s09-plugin { 0% { transform: translate(-26px, 0) scale(1.2); } 100% { transform: translate(0, 0) scale(1.2); } }
+    @media (max-width: 639px) {
+      #s-09 .s09-controls .btn { flex: 1 1 100%; }
+    }
+  </style>
+  <script>(() => {
+  const root = document.getElementById('s-09');
+  const svg = root.querySelector('#s09-svg'), stage = root.querySelector('#s09-stage');
+  const caption = root.querySelector('#s09-caption'), stepBtn = root.querySelector('#s09-step'), allBtn = root.querySelector('#s09-all');
+  /* Shared visual language for sections 9, 10 and 11: same "Your AI" node, same four apps, same four adapter shapes. */
+  const NS = 'http://www.w3.org/2000/svg';
+  const APPS = [
+    { k: 'email',    name: 'Email', adapter: 'Email adapter',             icon: 'i-mail',      c: 'var(--dragonfly)',      shape: 'round',    shapeName: 'round two-pin' },
+    { k: 'calendar', name: 'Calendar', adapter: 'Calendar adapter',          icon: 'i-calendar',  c: 'var(--lens-geo)',       shape: 'flat',     shapeName: 'flat three-pin' },
+    { k: 'files',    name: 'Your files', adapter: 'Files adapter',        icon: 'i-folder',    c: 'var(--lens-scenario)',  shape: 'square',   shapeName: 'square' },
+    { k: 'stats',    name: 'Public statistics', adapter: 'Statistics adapter', icon: 'i-bar-chart', c: 'var(--lens-systems)',   shape: 'triangle', shapeName: 'triangular' }
+  ];
+  /* Plug shapes are drawn with the contact tip at x=0, pointing right, body to the left. */
+  const SHAPES = {
+    round:    '<circle class="s09-body" cx="-52" cy="0" r="26"/><path class="s09-pin" d="M-26 -10H-4M-26 10H-4"/>',
+    flat:     '<rect class="s09-body" x="-78" y="-24" width="52" height="48" rx="8"/><path class="s09-pin s09-pin--flat" d="M-26 -13L-3 -22M-26 0H-3M-26 13L-3 22"/>',
+    square:   '<rect class="s09-body" x="-78" y="-26" width="52" height="52" rx="3"/><rect class="s09-body" x="-26" y="-12" width="24" height="24" rx="2"/>',
+    triangle: '<path class="s09-body" d="M-78 0L-26 -29V29Z"/><path class="s09-pin" d="M-26 -15H-4M-26 0H-4M-26 15H-4"/>',
+    mcp:      '<rect class="s09-body" x="-78" y="-26" width="52" height="52" rx="16"/><rect class="s09-body" x="-28" y="-11" width="30" height="22" rx="11"/>'
+  };
+  function splitName(n, narrow) { return (!narrow && n.length > 12) ? n.split(' ') : [n]; }
+
+  function layout(narrow, hasHub) {
+    if (!narrow) {
+      const ys = [66, 170, 274, 378], A = { x: 130, y: 222 }, tipX = 478, Px = 400;
+      return {
+        narrow, W: 700, H: 444, A, hub: { x: 270, y: 222, r: 40 },
+        ai: { x: 0, y: 162, w: 130, h: 120, col: true },
+        rows: ys.map(y => {
+          const P = { x: Px, y }, d = Px - A.x;
+          return { y, P, tip: { x: tipX, y }, node: { x: tipX + 2, y: y - 42, w: 220, h: 84 },
+            lab: { x: tipX - 8, y: y + 52, end: true },
+            c1: { x: A.x + d * 0.5, y: A.y }, c2: { x: Px - d * 0.5, y },
+            c3: { x: 270 + 56, y: 222 }, c4: { x: Px - 56, y },
+            hit: { x: Px - 16, y: y - 52, w: 700 - (Px - 16), h: 104 } };
+        }),
+        h1: { x: A.x + 44, y: A.y }, h2: { x: 270 - 44, y: 222 }
+      };
+    }
+    const ys = hasHub ? [244, 344, 444, 544] : [150, 250, 350, 450], A = { x: 75, y: 60 }, H = { x: 75, y: 144 };
+    return {
+      narrow, W: 360, H: ys[3] + 48, A, hub: { x: H.x, y: H.y, r: 32 },
+      ai: { x: 0, y: 0, w: 150, h: 60, col: false },
+      rows: ys.map((y, i) => {
+        const P = { x: 52, y }, As = { x: 40 - i * 10, y: 60 }, mx = (As.x + P.x) / 2;
+        return { y, P, A: As, tip: { x: 130, y }, node: { x: 132, y: y - 38, w: 228, h: 76 },
+          lab: { x: 132 + 58, y: y + 22, inside: true },
+          c1: { x: As.x, y: y - 50 }, c2: { x: mx, y },
+          c3: { x: As.x, y: H.y + (y - H.y) * 0.45 }, c4: { x: mx, y },
+          hit: { x: 0, y: y - 48, w: 360, h: 96 } };
+      }),
+      h1: { x: A.x, y: A.y + 30 }, h2: { x: H.x, y: H.y - 30 }
+    };
+  }
+  const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+  const lerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+  const f = n => Math.round(n * 10) / 10;
+  const pt = p => f(p.x) + ' ' + f(p.y);
+  /* Each cable is two cubic halves A -> V -> P. Before: the halves of one smooth curve. After: A -> hub -> P. */
+  function cablePts(L, r) {
+    const A = r.A || L.A, P = r.P, c1 = r.c1, c2 = r.c2;
+    const p01 = mid(A, c1), p12 = mid(c1, c2), p23 = mid(c2, P), p012 = mid(p01, p12), p123 = mid(p12, p23), V = mid(p012, p123);
+    return {
+      before: [A, p01, p012, V, p123, p23, P],
+      after: [L.A, L.h1, L.h2, L.hub, r.c3, r.c4, P]
+    };
+  }
+  function cableD(b, a, t) {
+    const q = b.map((p, i) => lerp(p, a[i], t));
+    return 'M' + pt(q[0]) + 'C' + pt(q[1]) + ' ' + pt(q[2]) + ' ' + pt(q[3]) + 'C' + pt(q[4]) + ' ' + pt(q[5]) + ' ' + pt(q[6]);
+  }
+  function iconUse(id, x, y, s, colour) {
+    return '<g class="s09-ico" style="stroke:' + colour + '"><use href="#' + id + '" x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '"/></g>';
+  }
+  /* Build the whole diagram into svg. opts.mcp adds the hub and the "after" plug shapes. Returns handles. */
+  function buildDiagram(svg, L, opts) {
+    svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
+    let cab = '', plugs = '', nodes = '';
+    L.rows.forEach((r, i) => {
+      const a = APPS[i];
+      cab += '<g class="s09-row" data-i="' + i + '"><path class="s09-cable" style="--c:' + a.c + '"/></g>';
+      let p = '<g class="s09-row" data-i="' + i + '"><g transform="translate(' + r.tip.x + ' ' + r.tip.y + ')"><g class="s09-plug"><g class="s09-plug__in">' +
+        '<g class="s09-before" style="--c:' + a.c + '">' + SHAPES[a.shape] + '</g>' +
+        (opts.mcp ? '<g class="s09-after" style="--c:var(--dragonfly)">' + SHAPES.mcp + '</g>' : '') +
+        '</g></g></g>' +
+        '<text class="s09-lab s09-lab--before' + (r.lab.inside ? ' s09-lab--in' : '') + '"' + (r.lab.end ? ' style="text-anchor:end"' : '') + ' x="' + r.lab.x + '" y="' + r.lab.y + '">' + a.adapter + '</text>' +
+        (opts.mcp ? '<text class="s09-lab s09-lab--after' + (r.lab.inside ? ' s09-lab--in' : '') + '"' + (r.lab.end ? ' style="text-anchor:end"' : '') + ' x="' + r.lab.x + '" y="' + r.lab.y + '">MCP adapter</text>' : '') + '</g>';
+      plugs += p;
+      const n = r.node, parts = splitName(a.name, L.narrow), tx = n.x + 58;
+      let txt = '';
+      if (parts.length === 1) txt = '<text class="s09-t" x="' + tx + '" y="' + (n.y + n.h / 2 + (L.narrow ? -3 : 7)) + '">' + parts[0] + '</text>';
+      else txt = '<text class="s09-t" x="' + tx + '" y="' + (n.y + n.h / 2 - 3) + '">' + parts[0] + '</text><text class="s09-t" x="' + tx + '" y="' + (n.y + n.h / 2 + 21) + '">' + parts[1] + '</text>';
+      nodes += '<g class="s09-row s09-node" data-i="' + i + '" style="--c:' + a.c + '"><rect class="s09-node__box" x="' + n.x + '" y="' + n.y + '" width="' + n.w + '" height="' + n.h + '" rx="8"/>' +
+        iconUse(a.icon, n.x + 16, n.y + n.h / 2 - 15, 30, 'var(--ink)') + txt + '</g>';
+    });
+    const ai = L.ai;
+    const aiHtml = '<g class="s09-ai"><rect class="s09-ai__box" x="' + ai.x + '" y="' + ai.y + '" width="' + ai.w + '" height="' + ai.h + '" rx="8"/>' +
+      (ai.col
+        ? iconUse('s09-i-ai', ai.x + ai.w / 2 - 19, ai.y + 20, 38, 'var(--dragonfly-light)') + '<text class="s09-t s09-t--ai" x="' + (ai.x + ai.w / 2) + '" y="' + (ai.y + 92) + '" text-anchor="middle">Your AI</text>'
+        : iconUse('s09-i-ai', ai.x + 22, ai.y + 15, 30, 'var(--dragonfly-light)') + '<text class="s09-t s09-t--ai" x="' + (ai.x + 64) + '" y="' + (ai.y + 38) + '">Your AI</text>') + '</g>';
+    const hub = opts.mcp ? '<g class="s09-hub"><circle class="s09-hub__c" r="' + L.hub.r + '"/><text class="s09-hub__t" y="8">MCP</text></g>' : '';
+    svg.innerHTML = '<g class="s09-cables">' + cab + '</g>' + hub + '<g class="s09-nodes">' + nodes + '</g><g class="s09-plugs">' + plugs + '</g>' + aiHtml;
+    const cables = [...svg.querySelectorAll('.s09-cable')];
+    const pts = L.rows.map(r => cablePts(L, r));
+    const hubEl = svg.querySelector('.s09-hub');
+    return {
+      setT(t) {
+        cables.forEach((c, i) => c.setAttribute('d', cableD(pts[i].before, pts[i].after, t)));
+        if (hubEl) {
+          const o = Math.max(0, Math.min(1, (t - 0.3) / 0.5)), s = 0.6 + 0.4 * o;
+          hubEl.style.opacity = o;
+          hubEl.setAttribute('transform', 'translate(' + L.hub.x + ' ' + L.hub.y + ') scale(' + f(s) + ')');
+        }
+      }
+    };
+  }
+  const DEFAULT_TEXT = 'Press an app, or go through them one at a time.';
+  let sel = -1, narrow = null, hits = [];
+
+  function make() {
+    const w = stage.clientWidth || 600;
+    const n = w < 520;
+    if (n === narrow && hits.length) return;
+    narrow = n; root.classList.toggle('is-narrow', n);
+    const L = layout(n, false);
+    const d = buildDiagram(svg, L, { mcp: false });
+    d.setT(0);
+    stage.querySelectorAll('.s09-hit').forEach(b => b.remove());
+    hits = L.rows.map((r, i) => {
+      const a = APPS[i], b = document.createElement('button');
+      b.type = 'button'; b.className = 's09-hit'; b.style.setProperty('--c', a.c);
+      b.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-label', a.name + ': show its adapter');
+      b.style.left = (r.hit.x / L.W * 100) + '%'; b.style.top = (r.hit.y / L.H * 100) + '%';
+      b.style.width = (r.hit.w / L.W * 100) + '%'; b.style.height = (r.hit.h / L.H * 100) + '%';
+      b.addEventListener('click', () => select(sel === i ? -1 : i, true));
+      stage.appendChild(b);
+      return b;
+    });
+    paint(false);
+  }
+  function paint(animate) {
+    stage.classList.toggle('has-sel', sel >= 0);
+    svg.querySelectorAll('.s09-row').forEach(g => {
+      const on = +g.getAttribute('data-i') === sel;
+      g.classList.toggle('is-sel', on);
+      g.classList.remove('is-plugging');
+      if (on && animate && g.querySelector('.s09-plug')) { void g.getBoundingClientRect(); g.classList.add('is-plugging'); }
+    });
+    hits.forEach((b, i) => b.setAttribute('aria-pressed', i === sel ? 'true' : 'false'));
+  }
+  function select(i, fromHit) {
+    const hadFocus = document.activeElement === allBtn;
+    sel = i;
+    paint(true);
+    caption.textContent = i < 0 ? DEFAULT_TEXT : APPS[i].name + ' needs its own adapter.';
+    allBtn.hidden = i < 0;
+    stepBtn.firstChild.nodeValue = i < 0 ? 'Show each adapter ' : 'Next adapter ';
+    if (i < 0 && hadFocus) stepBtn.focus();
+  }
+  stepBtn.addEventListener('click', () => select((sel + 1) % APPS.length));
+  allBtn.addEventListener('click', () => select(-1, 'all'));
+  if ('ResizeObserver' in window) new ResizeObserver(make).observe(stage);
+  make();
+  })();</script>
+</section>

@@ -1,0 +1,152 @@
+<section id="s-15" class="slide" data-part="mcp" data-label="Connectors" aria-labelledby="s15-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>15</b> Connectors</p>
+        <h2 id="s15-title" class="h2">Behind every Connect&nbsp;button is&nbsp;MCP.</h2>
+        <p class="keyline">MCP is the plumbing. A connector is the tap.</p>
+        <div class="s15-terms">
+          <div class="term"><p class="term__word">The tap</p><p class="term__tech">Connector</p></div>
+          <div class="term"><p class="term__word">The plumbing</p><p class="term__tech">MCP</p></div>
+        </div>
+        <p class="note">In Claude: tap + then Connectors to add, manage or turn them on. Menus move around, so look for ‘Connectors’.</p>
+      </div>
+
+      <div class="card s15-panel">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+          <defs>
+            <symbol id="s15-i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+          </defs>
+        </svg>
+        <span class="tag tag--corner">Example</span>
+        <div class="s15-head">
+          <h3 class="h3">Connectors</h3>
+        </div>
+        <ul class="s15-list" aria-label="Connectors">
+          <li class="s15-row" data-name="Google Drive" data-on="true">
+            <span class="s15-ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-folder"/></svg></span>
+            <span class="s15-name">Google Drive</span>
+            <span class="s15-act">
+              <button type="button" class="btn btn--primary btn--small s15-btn" aria-label="Connect Google Drive" hidden>Connect</button>
+              <span class="s15-status" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Connected</span>
+            </span>
+          </li>
+          <li class="s15-row" data-name="Calendar" data-on="false">
+            <span class="s15-ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+            <span class="s15-name">Calendar</span>
+            <span class="s15-act">
+              <button type="button" class="btn btn--primary btn--small s15-btn" aria-label="Connect Calendar">Connect</button>
+              <span class="s15-status" tabindex="-1" hidden><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Connected</span>
+            </span>
+          </li>
+          <li class="s15-row" data-name="Canva" data-on="false">
+            <span class="s15-ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#s15-i-palette"/></svg></span>
+            <span class="s15-name">Canva</span>
+            <span class="s15-act">
+              <button type="button" class="btn btn--primary btn--small s15-btn" aria-label="Connect Canva">Connect</button>
+              <span class="s15-status" tabindex="-1" hidden><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Connected</span>
+            </span>
+          </li>
+          <li class="s15-row" data-name="Data Commons" data-on="false">
+            <span class="s15-ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-bar-chart"/></svg></span>
+            <span class="s15-name">Data Commons</span>
+            <span class="s15-act">
+              <button type="button" class="btn btn--primary btn--small s15-btn" aria-label="Connect Data Commons">Connect</button>
+              <span class="s15-status" tabindex="-1" hidden><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Connected</span>
+            </span>
+          </li>
+        </ul>
+        <div class="s15-foot">
+          <p class="note s15-foot__note">Nothing real happens here.</p>
+          <button type="button" class="btn-reset" id="s15-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-15 .s15-terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 520px; }
+    #s-15 .s15-panel { --card-pad: clamp(20px, 2vw, 32px); }
+    #s-15 .s15-head { padding-bottom: 16px; border-bottom: 1px solid var(--border-strong); }
+    #s-15 .s15-list { list-style: none; }
+    #s-15 .s15-row {
+      display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px 20px;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+    }
+    #s-15 .s15-ico {
+      display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px;
+      background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-lg); color: var(--ink-heading);
+    }
+    #s-15 .s15-name { font-size: var(--fs-lead); font-weight: 500; color: var(--ink-heading); line-height: 1.25; }
+    #s-15 .s15-act { display: flex; justify-content: flex-end; min-width: 168px; }
+    #s-15 .s15-act [hidden] { display: none; }
+    #s-15 .s15-btn { min-width: 150px; }
+    #s-15 .s15-status {
+      display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 18px;
+      background: var(--surface-muted); border: 1px solid var(--border-strong); border-radius: var(--radius-full);
+      font-size: var(--fs-ui); font-weight: 600; color: var(--ink);
+      animation: s15-pop var(--dur-2) var(--ease);
+    }
+    #s-15 .s15-status .icon { width: 1.2em; height: 1.2em; stroke-width: 2; padding: 3px; box-sizing: content-box; background: var(--ink); color: var(--ink-on-dark); border-radius: var(--radius-full); }
+    #s-15 .s15-status:focus { outline: none; }
+    #s-15 .s15-status:focus-visible { outline: 3px solid var(--dragonfly); outline-offset: 3px; }
+    @keyframes s15-pop { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
+    #s-15 .s15-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding-top: 20px; }
+    @media (max-width: 560px) {
+      #s-15 .s15-terms { gap: 16px; }
+      #s-15 .s15-row { gap: 8px 12px; }
+      #s-15 .s15-act { min-width: 0; }
+      #s-15 .s15-btn { min-width: 0; }
+      #s-15 .s15-status { padding-inline: 12px; gap: 8px; }
+      #s-15 .s15-name { font-size: var(--fs-body); }
+      #s-15 .s15-ico { width: 48px; height: 48px; }
+    }
+  </style>
+  <script>(()=>{
+    const root = document.getElementById('s-15');
+    const rows = Array.from(root.querySelectorAll('.s15-row'));
+    const resetBtn = root.querySelector('#s15-reset');
+    const gen = new WeakMap();
+
+    function parts(row) {
+      return { btn: row.querySelector('.s15-btn'), status: row.querySelector('.s15-status') };
+    }
+    function show(row, on) {
+      const { btn, status } = parts(row);
+      const name = row.dataset.name;
+      row.dataset.on = on ? 'true' : 'false';
+      btn.hidden = on; status.hidden = !on;
+      btn.removeAttribute('aria-disabled'); btn.removeAttribute('aria-busy');
+      btn.textContent = 'Connect';
+      btn.setAttribute('aria-label', 'Connect ' + name);
+    }
+    async function connect(row) {
+      if (row.dataset.on === 'true' || row.dataset.busy === 'true') return;
+      const { btn, status } = parts(row);
+      const name = row.dataset.name;
+      const g = (gen.get(row) || 0) + 1; gen.set(row, g);
+      row.dataset.busy = 'true';
+      btn.setAttribute('aria-disabled', 'true'); btn.setAttribute('aria-busy', 'true');
+      btn.textContent = 'Connecting…';
+      btn.setAttribute('aria-label', 'Connecting ' + name);
+      await DT.wait(1200);
+      if (gen.get(row) !== g) return;
+      const hadFocus = document.activeElement === btn;
+      delete row.dataset.busy;
+      show(row, true);
+      if (hadFocus) status.focus({ preventScroll: true });
+      DT.announce(name + ' is now connected. This was only an example.');
+    }
+    function resetAll() {
+      rows.forEach(r => {
+        gen.set(r, (gen.get(r) || 0) + 1);
+        delete r.dataset.busy;
+        show(r, r.dataset.name === 'Google Drive');
+      });
+      DT.announce('Back to the start. Only Google Drive is connected.');
+    }
+    rows.forEach(r => {
+      parts(r).btn.addEventListener('click', () => connect(r));
+    });
+    resetBtn.addEventListener('click', resetAll);
+  })();</script>
+</section>

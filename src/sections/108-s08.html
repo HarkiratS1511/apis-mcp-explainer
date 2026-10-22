@@ -1,0 +1,224 @@
+<section id="s-08" class="slide" data-part="apis" data-label="Order too often and the counter closes" aria-labelledby="s08-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>08</b> Rate limits</p>
+        <h2 id="s08-title" class="h2">Order too often and the counter closes.</h2>
+        <p>A service’s ordering counter only takes so many orders a minute <span class="s08-tech">Rate limit</span>. Go over, and it says ‘try later’.</p>
+        <div class="callout">
+          <p class="callout__kicker">A real story from an AI course</p>
+          <p>An AI checked an auction site so often that the site blocked the person&rsquo;s whole account.</p>
+        </div>
+      </div>
+
+      <div class="s08-shop">
+        <div class="card s08-front">
+          <svg class="s08-awning" viewBox="0 0 600 46" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="s08-st s08-st--a" d="M0 0H60V26A30 18 0 0 1 0 26Z"/>
+            <path class="s08-st s08-st--b" d="M60 0H120V26A30 18 0 0 1 60 26Z"/>
+            <path class="s08-st s08-st--a" d="M120 0H180V26A30 18 0 0 1 120 26Z"/>
+            <path class="s08-st s08-st--b" d="M180 0H240V26A30 18 0 0 1 180 26Z"/>
+            <path class="s08-st s08-st--a" d="M240 0H300V26A30 18 0 0 1 240 26Z"/>
+            <path class="s08-st s08-st--b" d="M300 0H360V26A30 18 0 0 1 300 26Z"/>
+            <path class="s08-st s08-st--a" d="M360 0H420V26A30 18 0 0 1 360 26Z"/>
+            <path class="s08-st s08-st--b" d="M420 0H480V26A30 18 0 0 1 420 26Z"/>
+            <path class="s08-st s08-st--a" d="M480 0H540V26A30 18 0 0 1 480 26Z"/>
+            <path class="s08-st s08-st--b" d="M540 0H600V26A30 18 0 0 1 540 26Z"/>
+          </svg>
+          <div class="s08-in tagged">
+            <span class="tag tag--corner">For illustration</span>
+            <div class="s08-row s08-row--between">
+              <p class="s08-status" id="s08-status" data-open="true"><svg class="icon" aria-hidden="true"><use href="#i-door-open"/></svg><span id="s08-statustext">Counter open</span></p>
+              <p class="s08-count">Orders this minute: <b id="s08-n">0</b> of 6</p>
+            </div>
+            <ol class="s08-tickets" id="s08-tickets" aria-label="Order tickets"></ol>
+            <div class="s08-clock">
+              <p class="s08-clock__text" id="s08-clock">The clock starts at your first order.</p>
+              <div class="s08-bar" aria-hidden="true"><i id="s08-fill"></i></div>
+            </div>
+            <p class="s08-msg" id="s08-msg">Press a button to place an order.</p>
+            <p class="note s08-note">The limit here is 6 orders a minute, sped up to 15 seconds.</p>
+          </div>
+        </div>
+        <div class="btn-row s08-btns">
+          <button type="button" class="btn btn--primary" id="s08-once">Order once</button>
+          <button type="button" class="btn btn--secondary" id="s08-ai"><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg>Let the AI order</button>
+          <button type="button" class="btn-reset" id="s08-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #s-08 .s08-tech { display: inline-block; margin-left: 6px; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dragonfly); vertical-align: 0.1em; }
+    #s-08 .s08-shop { display: grid; gap: clamp(14px, 2vh, 20px); min-width: 0; }
+    #s-08 .s08-front { padding: 0; overflow: hidden; }
+    #s-08 .s08-awning { display: block; width: 100%; height: clamp(34px, 4.4vh, 46px); }
+    #s-08 .s08-st { stroke: var(--dragonfly); stroke-width: 2; vector-effect: non-scaling-stroke; }
+    #s-08 .s08-st--a { fill: var(--dragonfly-light); }
+    #s-08 .s08-st--b { fill: var(--surface-card); }
+    #s-08 .s08-in { display: grid; gap: clamp(10px, 1.6vh, 16px); padding: 56px clamp(16px, 2vw, 32px) clamp(16px, 2vw, 26px); }
+    #s-08 .s08-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    #s-08 .s08-row--between { justify-content: space-between; }
+
+    #s-08 .s08-status { display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 6px 16px; border: 2px solid var(--dragonfly); border-radius: var(--radius-full); background: color-mix(in srgb, var(--dragonfly) 8%, var(--surface-card)); font-size: var(--fs-ui); font-weight: 500; line-height: 1.3; color: var(--ink); }
+    #s-08 .s08-status[data-open="false"] { border-color: var(--lens-business); background: color-mix(in srgb, var(--lens-business) 12%, var(--surface-card)); }
+    #s-08 .s08-count { margin: 0; font-size: var(--fs-body); line-height: 1.3; color: var(--ink); }
+    #s-08 .s08-count b { font-weight: 600; font-size: 1.15em; font-variant-numeric: tabular-nums; }
+
+    #s-08 .s08-tickets { list-style: none; margin: 0; padding: clamp(10px, 1.2vw, 16px); display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(62px, 7.6vh, 84px); gap: 10px; background: var(--surface-muted); border-radius: var(--radius-lg); }
+    #s-08 .s08-slot { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 0; padding: 4px; border: 2px dashed var(--border-strong); border-radius: var(--radius-md); text-align: center; line-height: 1.15; }
+    #s-08 .s08-slot--ok { border: 2px solid var(--dragonfly); background: color-mix(in srgb, var(--dragonfly) 8%, var(--surface-card)); color: var(--ink); animation: s08-pop var(--dur-1) var(--ease) both; }
+    #s-08 .s08-slot--late { border: 2px dashed var(--lens-business); background: color-mix(in srgb, var(--lens-business) 12%, var(--surface-card)); color: var(--ink); animation: s08-pop var(--dur-1) var(--ease) both; }
+    #s-08 .s08-slot--still { animation: none; }
+    #s-08 .s08-num { font-family: var(--font-serif); font-size: clamp(24px, 2vw, 30px); line-height: 1; color: var(--ink-heading); }
+    #s-08 .s08-late { font-size: var(--fs-label); font-weight: 600; line-height: 1.1; color: var(--ink); white-space: nowrap; }
+    #s-08 .s08-sub { font-size: var(--fs-label); line-height: 1.1; color: var(--ink-label); white-space: nowrap; }
+    @keyframes s08-pop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+
+    #s-08 .s08-clock__text { margin: 0 0 8px; font-size: var(--fs-body); line-height: 1.3; color: var(--ink); min-height: 1.3em; }
+    #s-08 .s08-bar { height: 12px; border-radius: var(--radius-full); background: var(--surface-muted); border: 1px solid var(--border-strong); overflow: hidden; }
+    #s-08 .s08-bar i { display: block; height: 100%; width: 0; background: var(--dragonfly); }
+    #s-08 .s08-bar[data-closed="true"] i { background: var(--lens-business); }
+    #s-08 .s08-msg { margin: 0; min-height: 3em; font-size: var(--fs-body); line-height: 1.5; color: var(--ink); }
+    #s-08 .s08-btns .btn { min-width: 0; }
+    #s-08 .s08-note { margin: 0; }
+
+    @media (max-width: 640px) {
+      #s-08 .s08-tickets { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 66px; gap: 8px; }
+      #s-08 .s08-btns .btn, #s-08 .s08-btns .btn-reset { width: 100%; }
+      #s-08 .s08-sub { font-size: 15px; }
+      #s-08 .s08-slot { padding-inline: 6px; }
+      #s-08 .s08-msg { min-height: 4.5em; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-08');
+    const LIMIT = 6, WINDOW = 15000, SLOTS = 12, AI_ORDERS = 12, AI_GAP = 150;
+    const el = id => root.querySelector('#' + id);
+    const list = el('s08-tickets'), nEl = el('s08-n');
+    const statusEl = el('s08-status'), statusText = el('s08-statustext');
+    const clockEl = el('s08-clock'), fill = el('s08-fill'), bar = fill.parentNode, msgEl = el('s08-msg');
+    const onceBtn = el('s08-once'), aiBtn = el('s08-ai'), resetBtn = el('s08-reset');
+
+    const slots = [];
+    for (let i = 0; i < SLOTS; i++) {
+      const li = document.createElement('li');
+      li.className = 's08-slot';
+      li.setAttribute('aria-hidden', 'true');
+      list.appendChild(li); slots.push(li);
+    }
+
+    let accepted = 0, total = 0, roundEnd = 0, timer = 0, token = 0, running = false;
+    const tickets = [];
+
+    function paintSlot(i, fresh) {
+      const li = slots[i], t = tickets[i];
+      if (!t) { li.className = 's08-slot'; li.textContent = ''; li.setAttribute('aria-hidden', 'true'); return; }
+      li.removeAttribute('aria-hidden');
+      li.className = 's08-slot ' + (t.ok ? 's08-slot--ok' : 's08-slot--late') + (fresh ? '' : ' s08-slot--still');
+      li.textContent = '';
+      const a = document.createElement('span'), b = document.createElement('span');
+      if (t.ok) {
+        a.className = 's08-num'; a.textContent = String(t.n);
+        b.className = 's08-sub'; b.textContent = 'Accepted';
+      } else {
+        a.className = 's08-late'; a.textContent = 'Try later';
+        b.className = 's08-sub'; b.textContent = i === SLOTS - 1 && tickets.length > SLOTS ? '+' + (tickets.length - SLOTS) + ' more' : 'Order ' + t.n;
+      }
+      li.append(a, b);
+    }
+    function paintStatus() {
+      const open = accepted < LIMIT;
+      statusEl.dataset.open = String(open);
+      statusEl.querySelector('use').setAttribute('href', open ? '#i-door-open' : '#i-door-closed');
+      statusText.textContent = open ? 'Counter open' : 'Counter closed: try later';
+      bar.dataset.closed = String(!open);
+      nEl.textContent = String(accepted);
+    }
+    function tick() {
+      const rem = Math.max(0, roundEnd - Date.now());
+      const secs = Math.ceil(rem / 1000);
+      const frac = DT.reduced ? secs / (WINDOW / 1000) : rem / WINDOW;
+      fill.style.width = (frac * 100).toFixed(1) + '%';
+      clockEl.textContent = (accepted >= LIMIT ? 'Counter reopens in ' : 'New minute starts in ') + secs + (secs === 1 ? ' second' : ' seconds');
+      if (rem <= 0 && !running) reopen('');
+    }
+    function startRound() {
+      roundEnd = Date.now() + WINDOW;
+      clearInterval(timer);
+      timer = setInterval(tick, 200);
+      tick();
+    }
+    function clearRound() {
+      clearInterval(timer); timer = 0; roundEnd = 0;
+      accepted = 0; total = 0; tickets.length = 0;
+      for (let i = 0; i < SLOTS; i++) paintSlot(i, false);
+      fill.style.width = '0%';
+      clockEl.textContent = 'The clock starts at your first order.';
+      paintStatus();
+    }
+    function isCurrent() {
+      try { return !!DT.sections && DT.sections[DT.current()] === root; } catch (e) { return true; }
+    }
+    function reopen(prefix) {
+      token++; running = false; aiBtn.removeAttribute('aria-disabled'); onceBtn.removeAttribute('aria-disabled');
+      clearRound();
+      msgEl.textContent = (prefix ? prefix + ' ' : '') + 'The counter has reopened.';
+      if (isCurrent()) DT.announce(msgEl.textContent);
+    }
+    function order() {
+      if (!roundEnd) startRound();
+      total++;
+      const ok = accepted < LIMIT;
+      if (ok) accepted++;
+      tickets.push(ok ? { ok: true, n: accepted } : { ok: false, n: total });
+      const i = Math.min(tickets.length, SLOTS) - 1;
+      paintSlot(i, true);
+      paintStatus();
+      tick();
+      return ok;
+    }
+    function orderOnce() {
+      if (running) return;
+      const ok = order();
+      let text;
+      if (ok) text = accepted >= LIMIT ? 'Order ' + accepted + ' accepted. That is the limit for this minute.' : 'Order ' + accepted + ' accepted.';
+      else text = 'Too many orders. The counter says: try later.';
+      msgEl.textContent = text;
+      DT.announce(ok ? text + ' ' + accepted + ' of ' + LIMIT + ' used.' : text);
+    }
+    async function aiOrder() {
+      if (running) return;
+      running = true; const my = ++token;
+      aiBtn.setAttribute('aria-disabled', 'true'); onceBtn.setAttribute('aria-disabled', 'true');
+      msgEl.textContent = 'The AI is ordering as fast as it can…';
+      const before = total;
+      let ok = 0, late = 0;
+      for (let i = 0; i < AI_ORDERS; i++) {
+        if (my !== token) return;
+        if (order()) ok++; else late++;
+        if (i < AI_ORDERS - 1 && !DT.reduced) await DT.wait(AI_GAP);
+      }
+      if (my !== token) return;
+      running = false;
+      aiBtn.removeAttribute('aria-disabled'); onceBtn.removeAttribute('aria-disabled');
+      const text = 'The AI sent ' + AI_ORDERS + (before ? ' more' : '') + ' orders. ' + (ok ? 'The counter took ' + ok + ' and' : 'The counter') + ' said ‘try later’ to ' + late + '.';
+      if (roundEnd && Date.now() >= roundEnd) { reopen(text); return; }
+      msgEl.textContent = text;
+      DT.announce(text);
+    }
+    function resetAll() {
+      token++; running = false;
+      aiBtn.removeAttribute('aria-disabled'); onceBtn.removeAttribute('aria-disabled');
+      clearRound();
+      msgEl.textContent = 'Cleared. Press a button to place an order.';
+      DT.announce('Counter cleared.');
+    }
+    onceBtn.addEventListener('click', orderOnce);
+    aiBtn.addEventListener('click', aiOrder);
+    resetBtn.addEventListener('click', resetAll);
+    paintStatus();
+  })();</script>
+</section>

@@ -1,0 +1,235 @@
+<section id="s-04" class="slide" data-part="apis" data-label="Build a weather order" aria-labelledby="s04-title">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s04-i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+      <symbol id="s04-i-rain" viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/></symbol>
+    </defs>
+  </svg>
+  <div class="wrap">
+    <div class="s04-head">
+      <p class="secnum"><b>04</b> Try it yourself</p>
+      <h2 id="s04-title" class="h2">Build a weather order.</h2>
+      <p class="keyline s04-keyline">What comes back isn’t a web page. It’s neat, labelled information.</p>
+    </div>
+
+    <div class="s04-controls">
+      <div class="s04-field">
+        <p class="s04-lab" id="s04-lab-place">Place</p>
+        <div class="seg" role="group" aria-labelledby="s04-lab-place" data-group="place">
+          <button type="button" class="btn btn--choice" aria-pressed="true" data-v="Sydney"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Sydney</button>
+          <button type="button" class="btn btn--choice" aria-pressed="false" data-v="Melbourne"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Melbourne</button>
+          <button type="button" class="btn btn--choice" aria-pressed="false" data-v="Brisbane"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Brisbane</button>
+          <button type="button" class="btn btn--choice" aria-pressed="false" data-v="Perth"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Perth</button>
+        </div>
+      </div>
+      <div class="s04-field">
+        <p class="s04-lab" id="s04-lab-day">Day</p>
+        <div class="seg" role="group" aria-labelledby="s04-lab-day" data-group="day">
+          <button type="button" class="btn btn--choice" aria-pressed="false" data-v="Today"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Today</button>
+          <button type="button" class="btn btn--choice" aria-pressed="true" data-v="Tomorrow"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Tomorrow</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="s04-visual tagged">
+    <span class="tag tag--corner">Example</span>
+    <div class="s04-sendrow">
+      <button type="button" class="btn btn--primary" id="s04-send"><span id="s04-send-label">Send order</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+    </div>
+
+    <div class="s04-flow">
+      <div class="card s04-panel" id="s04-p1" data-on="false">
+        <div class="term"><p class="term__word">Your order</p><p class="term__tech">Request</p></div>
+        <div class="s04-body">
+          <p class="s04-ph">Press Send order</p>
+          <div class="s04-content s04-mono" id="s04-req"></div>
+        </div>
+      </div>
+
+      <div class="s04-conn" aria-hidden="true">
+        <svg viewBox="0 0 72 32" width="72" height="32">
+          <g>
+            <path class="s04-line" id="s04-path1" d="M4 16H66"/>
+            <path class="s04-arrow" d="M58 8l8 8-8 8"/>
+            <circle class="s04-dot" id="s04-dot1" r="8" cx="0" cy="0"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card s04-panel" id="s04-p2" data-on="false">
+        <div class="term"><p class="term__word">The delivery</p><p class="term__tech">Response</p></div>
+        <div class="s04-body">
+          <p class="s04-ph">Waiting for the order</p>
+          <div class="s04-content s04-mono" id="s04-res"></div>
+        </div>
+      </div>
+
+      <div class="s04-conn" aria-hidden="true">
+        <svg viewBox="0 0 72 32" width="72" height="32">
+          <g>
+            <path class="s04-line" id="s04-path2" d="M4 16H66"/>
+            <path class="s04-arrow" d="M58 8l8 8-8 8"/>
+            <circle class="s04-dot" id="s04-dot2" r="8" cx="0" cy="0"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card s04-panel" id="s04-p3" data-on="false">
+        <div class="term"><p class="term__word">What you see</p></div>
+        <div class="s04-body">
+          <p class="s04-ph">Waiting for the answer</p>
+          <div class="s04-content s04-seen">
+            <span class="s04-wxicon"><svg class="icon" aria-hidden="true"><use id="s04-wx-use" href="#s04-i-sun"/></svg></span>
+            <div>
+              <p class="s04-wx-main" id="s04-wx-main"></p>
+              <p class="s04-wx-sub" id="s04-wx-sub"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <style>
+    #s-04 .s04-head .keyline { max-width: none; }
+
+    #s-04 .s04-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px clamp(20px, 2vw, 32px); margin-top: clamp(24px, 3.5vh, 40px); }
+    #s-04 .s04-field { min-width: 0; }
+    #s-04 .s04-lab { margin: 0 0 10px; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4; color: var(--ink-label); }
+    #s-04 .seg { gap: 10px; }
+
+    #s-04 .s04-visual { margin-top: clamp(16px, 2.5vh, 28px); }
+    #s-04 .s04-visual > .tag--corner { top: 12px; right: 0; }
+    #s-04 .s04-sendrow { margin-bottom: clamp(16px, 2.5vh, 28px); }
+    #s-04 .s04-flow { scroll-margin-top: 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: 0; }
+    #s-04 .s04-panel { display: flex; flex-direction: column; gap: 16px; min-width: 0; transition: border-color var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease); }
+    #s-04 .s04-panel[data-on="false"] { background: var(--surface-page); border-style: dashed; border-color: var(--border-strong); }
+    #s-04 .s04-panel .term__word { font-size: clamp(24px, 1.9vw, 32px); }
+    #s-04 .s04-panel .term { min-height: calc(clamp(24px, 1.9vw, 32px) * 1.15 + 6px + var(--fs-label) * 1.4); }
+    #s-04 .s04-body { flex: 1; min-height: clamp(130px, 17vh, 190px); display: flex; flex-direction: column; justify-content: center; }
+    #s-04 .s04-ph { font-size: var(--fs-body); color: var(--ink-secondary); }
+    #s-04 .s04-panel[data-on="true"] .s04-ph { display: none; }
+    #s-04 .s04-content { display: none; }
+    #s-04 .s04-panel[data-on="true"] .s04-content { display: block; animation: s04-in var(--dur-2) var(--ease); }
+    #s-04 .s04-panel[data-on="true"] .s04-seen { display: flex; }
+    @keyframes s04-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    #s-04 .s04-mono { background: var(--surface-muted); border-radius: var(--radius-md); padding: clamp(14px, 1.4vw, 20px) clamp(14px, 1.6vw, 24px); font-family: var(--font-mono); font-size: var(--fs-body); font-weight: 500; line-height: 1.7; color: var(--ink); }
+    #s-04 .s04-mono p { max-width: none; white-space: nowrap; }
+    #s-04 .s04-k { color: var(--ink-label); }
+    #s-04 .s04-v { font-weight: 600; color: var(--ink); }
+
+    #s-04 .s04-seen { flex-direction: column; align-items: flex-start; gap: 14px; }
+    #s-04 .s04-wxicon { flex: none; display: inline-flex; align-items: center; justify-content: center; width: clamp(60px, 4.4vw, 76px); height: clamp(60px, 4.4vw, 76px); border-radius: var(--radius-full); background: var(--dragonfly-light); color: var(--dragonfly-dark); font-size: clamp(32px, 2.6vw, 44px); }
+    #s-04 .s04-wx-main { max-width: none; font-size: var(--fs-lead); font-weight: 500; line-height: 1.3; color: var(--ink-heading); }
+    #s-04 .s04-wx-sub { max-width: none; margin-top: 6px; font-size: var(--fs-ui); color: var(--ink-secondary); }
+
+    #s-04 .s04-conn { display: flex; align-items: center; justify-content: center; width: clamp(56px, 5vw, 88px); }
+    #s-04 .s04-conn svg { width: 100%; height: auto; overflow: visible; }
+    #s-04 .s04-line, #s-04 .s04-arrow { fill: none; stroke: var(--border-strong); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: stroke var(--dur-2) var(--ease); }
+    #s-04 .s04-conn.is-done .s04-line, #s-04 .s04-conn.is-done .s04-arrow { stroke: var(--dragonfly); }
+    #s-04 .s04-dot { fill: var(--dragonfly); opacity: 0; }
+    #s-04 .s04-conn.is-moving .s04-dot { opacity: 1; }
+
+    @media (max-height: 860px) and (min-width: 1024px) { #s-04 .s04-body { min-height: 110px; } }
+    @media (max-width: 1023px) {
+      #s-04 .s04-flow { grid-template-columns: minmax(0, 1fr); }
+      #s-04 .s04-conn { width: 100%; height: 64px; }
+      #s-04 .s04-conn svg { width: 64px; height: 32px; transform: rotate(90deg); }
+      #s-04 .s04-body { min-height: 0; }
+    }
+    @media (max-width: 639px) {
+      #s-04 .s04-controls { gap: 20px; }
+      #s-04 .s04-field { width: 100%; }
+      #s-04 .s04-visual { display: flex; flex-direction: column; }
+      #s-04 .s04-visual > .tag--corner { position: static; align-self: flex-end; order: 2; margin-bottom: 12px; }
+      #s-04 .s04-sendrow { order: 1; }
+      #s-04 .s04-flow { order: 3; }
+      #s-04 .seg .btn { flex: 1 1 calc(50% - 5px); }
+      #s-04 #s04-send { width: 100%; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-04');
+    const $ = (id) => root.querySelector('#' + id);
+    const sendBtn = $('s04-send'), sendLabel = $('s04-send-label');
+    const panels = [$('s04-p1'), $('s04-p2'), $('s04-p3')];
+    const conns = Array.from(root.querySelectorAll('.s04-conn'));
+    const dots = [$('s04-dot1'), $('s04-dot2')];
+    const paths = [$('s04-path1'), $('s04-path2')];
+    const sel = { place: 'Sydney', day: 'Tomorrow' };
+
+    /* Made-up example values: temperature, rain chance (%), wind, icon, plain words. */
+    const DATA = {
+      Sydney:    { Today: [26, 10, 'light',    'sun',  'mostly sunny'],            Tomorrow: [24, 60, 'light',    'rain', 'likely showers'] },
+      Melbourne: { Today: [17, 40, 'moderate', 'part', 'cloudy with a chance of a shower'], Tomorrow: [15, 70, 'moderate', 'rain', 'rainy and cool'] },
+      Brisbane:  { Today: [29, 20, 'light',    'sun',  'sunny and warm'],          Tomorrow: [28, 30, 'light',    'part', 'partly cloudy'] },
+      Perth:     { Today: [31, 5,  'moderate', 'sun',  'sunny and hot'],           Tomorrow: [27, 15, 'strong',   'sun',  'sunny and windy'] }
+    };
+    const ICON = { sun: '#s04-i-sun', part: '#i-cloud-sun', rain: '#s04-i-rain' };
+
+    function line(k, v) {
+      const p = document.createElement('p');
+      const a = document.createElement('span'); a.className = 's04-k'; a.textContent = k + ': ';
+      const b = document.createElement('span'); b.className = 's04-v'; b.textContent = v;
+      p.append(a, b);
+      return p;
+    }
+    function fill(box, rows) { box.replaceChildren(...rows.map((r) => line(r[0], r[1]))); }
+
+    let run = 0;
+    function reset() {
+      run++;
+      panels.forEach((p) => { p.dataset.on = 'false'; p.classList.remove('card--active'); });
+      conns.forEach((c) => c.classList.remove('is-done', 'is-moving'));
+      sendLabel.textContent = 'Send order';
+    }
+    function show(i) {
+      panels.forEach((p, j) => p.classList.toggle('card--active', j === i));
+      panels[i].dataset.on = 'true';
+    }
+
+    async function send() {
+      reset();
+      if (window.innerWidth < 1024) root.querySelector('.s04-flow').scrollIntoView({ block: 'start', behavior: DT.reduced ? 'auto' : 'smooth' });
+      const my = run;
+      const alive = () => my === run;
+      const d = DATA[sel.place][sel.day];
+      const day = sel.day.toLowerCase();
+      fill($('s04-req'), [['ask', 'forecast'], ['place', sel.place], ['day', day]]);
+      fill($('s04-res'), [['temperature', String(d[0])], ['rain chance', d[1] + '%'], ['wind', d[2]]]);
+      $('s04-wx-main').textContent = sel.day + ' in ' + sel.place + ': ' + d[0] + '°, ' + d[4] + '.';
+      $('s04-wx-sub').textContent = 'Rain chance ' + d[1] + '%. Wind: ' + d[2] + '.';
+      $('s04-wx-use').setAttribute('href', ICON[d[3]]);
+      sendLabel.textContent = 'Send again';
+
+      show(0);
+      await DT.wait(600); if (!alive()) return;
+      for (let k = 0; k < 2; k++) {
+        conns[k].classList.add('is-moving');
+        const ok = await DT.travel(dots[k], paths[k], 800);
+        if (!ok || !alive()) return;
+        conns[k].classList.remove('is-moving');
+        conns[k].classList.add('is-done');
+        show(k + 1);
+        if (k === 0) { await DT.wait(700); if (!alive()) return; }
+      }
+      DT.announce('Order sent. Your order asked for the forecast for ' + sel.place + ', ' + day + '. What came back was labelled information: temperature ' + d[0] + ', rain chance ' + d[1] + ' per cent, wind ' + d[2] + '. What you see: ' + sel.day + ' in ' + sel.place + ', ' + d[0] + ' degrees, ' + d[4] + '. This is example data.');
+    }
+
+    sendBtn.addEventListener('click', send);
+    root.querySelectorAll('.seg').forEach((g) => {
+      const name = g.dataset.group;
+      g.addEventListener('click', (e) => {
+        const b = e.target.closest('button');
+        if (!b || !g.contains(b)) return;
+        const changed = sel[name] !== b.dataset.v;
+        g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+        sel[name] = b.dataset.v;
+        if (changed) { reset(); DT.announce(name === 'place' ? 'Place: ' + b.dataset.v + '. Press Send order.' : 'Day: ' + b.dataset.v + '. Press Send order.'); }
+      });
+    });
+  })();</script>
+</section>

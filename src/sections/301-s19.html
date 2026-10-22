@@ -1,0 +1,209 @@
+<section id="s-19" class="slide" data-part="safe" data-label="Never all three" aria-labelledby="s19-title">
+  <div class="wrap">
+    <div class="split s19-split">
+      <div class="stack s19-left">
+        <p class="secnum"><b>19</b> The risky combination</p>
+        <h2 id="s19-title" class="h2">Never give an AI all three at once.</h2>
+
+        <div class="s19-switches" role="group" aria-label="What this AI can do">
+          <button type="button" class="switch s19-sw" role="switch" aria-checked="false" data-k="a">
+            <svg class="s19-mark" viewBox="0 0 28 28" aria-hidden="true"><circle class="s19-mark__c" cx="14" cy="14" r="11" style="--c: var(--dragonfly)"/></svg>
+            <span class="switch__track"><span class="switch__thumb"></span></span>
+            <span class="s19-sw__text"><span class="s19-sw__name">Reads outside content</span><span class="s19-sw__hint">Web pages, emails, PDFs</span></span>
+          </button>
+          <button type="button" class="switch s19-sw" role="switch" aria-checked="false" data-k="b">
+            <svg class="s19-mark" viewBox="0 0 28 28" aria-hidden="true"><circle class="s19-mark__c" cx="14" cy="14" r="11" style="--c: var(--lens-geo)"/></svg>
+            <span class="switch__track"><span class="switch__thumb"></span></span>
+            <span class="s19-sw__text"><span class="s19-sw__name">Sees your private data</span><span class="s19-sw__hint">Your files, messages, accounts</span></span>
+          </button>
+          <button type="button" class="switch s19-sw" role="switch" aria-checked="false" data-k="c">
+            <svg class="s19-mark" viewBox="0 0 28 28" aria-hidden="true"><circle class="s19-mark__c" cx="14" cy="14" r="11" style="--c: var(--lens-systems)"/></svg>
+            <span class="switch__track"><span class="switch__thumb"></span></span>
+            <span class="s19-sw__text"><span class="s19-sw__name">Can send things out</span><span class="s19-sw__hint">Emails, messages, posts</span></span>
+          </button>
+        </div>
+
+        <div id="s19-msg" class="callout s19-msg" aria-live="polite" aria-atomic="true">
+          <p class="callout__kicker" id="s19-kicker"><svg class="icon" aria-hidden="true"><use href="#i-shield-alert"/></svg><span id="s19-kick-t">What this means</span></p>
+          <p class="s19-msg__main" id="s19-main">Turn on the switches to see what an AI can do.</p>
+        </div>
+
+        <button type="button" class="btn-reset" id="s19-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+      </div>
+
+      <div class="s19-right">
+        <div class="s19-vwrap tagged"><span class="tag tag--corner">For illustration</span>
+        <svg class="s19-venn" id="s19-venn" viewBox="30 0 540 550" role="img" aria-labelledby="s19-vt" focusable="false">
+          <title id="s19-vt">Three circles that overlap. Nothing is switched on.</title>
+          <circle id="s19-ca" class="s19-c" cx="215" cy="215" r="165" style="--c: var(--dragonfly)"/>
+          <circle id="s19-cb" class="s19-c" cx="385" cy="215" r="165" style="--c: var(--lens-geo)"/>
+          <circle id="s19-cc" class="s19-c" cx="300" cy="362" r="165" style="--c: var(--lens-systems)"/>
+
+          <path id="s19-centre" class="s19-centre" d="M220 217.7 A165 165 0 0 1 380 217.7 A165 165 0 0 1 300 356.4 A165 165 0 0 1 220 217.7 Z"/>
+
+          <g id="s19-la" class="s19-lab" text-anchor="middle">
+            <text x="128" y="170">Reads</text><text x="128" y="205">outside</text><text x="128" y="240">content</text>
+          </g>
+          <g id="s19-lb" class="s19-lab" text-anchor="middle">
+            <text x="472" y="170">Sees</text><text x="472" y="205">private</text><text x="472" y="240">data</text>
+          </g>
+          <g id="s19-lc" class="s19-lab" text-anchor="middle">
+            <text x="300" y="440">Can send</text><text x="300" y="476">things out</text>
+          </g>
+
+          <g id="s19-warn" class="s19-warn" aria-hidden="true">
+            <svg x="272" y="244" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield-alert"/></svg>
+          </g>
+        </svg></div>
+
+        <div class="s19-expl">
+          <p class="s19-expl__t">A web page or email can hide instructions aimed at your AI. If it can also see your data and send things out, it could leak them.</p>
+          <p class="s19-known"><span class="s19-known__l">Known as</span><span class="term__tech">Prompt injection</span></p>
+          <p class="note">Idea: Simon Willison, &lsquo;the lethal trifecta&rsquo;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #s-19 .h2 { max-width: 18ch; }
+    #s-19 .s19-split { gap: clamp(28px, 3vw, 56px); }
+    #s-19 .s19-left { --stack: clamp(16px, 2.2vh, 24px); }
+
+    #s-19 .s19-switches { display: grid; gap: 12px; }
+    #s-19 .s19-sw {
+      width: 100%; gap: 16px; padding: 10px 20px; min-height: 76px;
+      background: var(--surface-card); border: 1px solid var(--border-strong); border-radius: var(--radius-lg);
+      transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+    }
+    #s-19 .s19-sw:hover { border-color: var(--ring); }
+    #s-19 .s19-sw[aria-checked="true"] { border: 2px solid var(--ink); padding: 9px 19px; }
+    #s-19 .s19-sw__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    #s-19 .s19-sw__name { font-size: var(--fs-body); font-weight: 500; line-height: 1.25; color: var(--ink); }
+    #s-19 .s19-sw__hint { font-size: var(--fs-ui); font-weight: 400; line-height: 1.3; color: var(--ink-secondary); }
+    #s-19 .s19-mark { flex: none; width: 28px; height: 28px; }
+    #s-19 .s19-mark__c { fill: color-mix(in srgb, var(--c) 10%, transparent); stroke: var(--c); stroke-width: 2; stroke-dasharray: 4 3; transition: fill var(--dur-2) var(--ease); }
+    #s-19 .s19-sw[aria-checked="true"] .s19-mark__c { fill: color-mix(in srgb, var(--c) 30%, transparent); stroke-width: 3; stroke-dasharray: none; }
+
+    #s-19 .s19-msg { min-height: 6.6em; display: flex; flex-direction: column; justify-content: center; transition: border-color var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease); }
+    #s-19 .s19-msg .callout__kicker { display: flex; align-items: center; gap: 10px; }
+    #s-19 .s19-msg .callout__kicker .icon { display: none; width: 1.3em; height: 1.3em; }
+    #s-19 .s19-msg.callout--warn { border-width: 2px; }
+    #s-19 .s19-msg.callout--warn .callout__kicker .icon { display: inline-block; }
+    #s-19 .s19-msg__main { font-size: var(--fs-body); color: var(--ink); max-width: 36ch; }
+    #s-19 .s19-msg.callout--warn .s19-msg__main { font-weight: 500; }
+    #s-19 .s19-msg__sub { margin-top: 6px; color: var(--ink-secondary); max-width: 40ch; }
+
+    #s-19 .s19-right { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2vh, 24px); }
+    #s-19 .s19-venn { display: block; width: 100%; height: auto; max-height: 58vh; }
+
+    #s-19 .s19-c { fill: transparent; stroke: var(--ink-label); stroke-width: 2; stroke-dasharray: 9 8; opacity: 0.7; transition: fill var(--dur-2) var(--ease), stroke var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease); }
+    #s-19 .s19-c.is-on { fill: color-mix(in srgb, var(--c) 24%, transparent); stroke: var(--c); stroke-width: 3.5; stroke-dasharray: none; opacity: 1; }
+    #s-19 .s19-lab { font-family: var(--font-sans); font-size: 28px; font-weight: 500; fill: var(--ink-label); transition: fill var(--dur-2) var(--ease); }
+    #s-19 .s19-lab.is-on { fill: var(--ink); font-weight: 600; }
+
+    #s-19 .s19-centre { fill: var(--lens-risk); fill-opacity: 0; stroke: var(--lens-risk); stroke-width: 3; stroke-opacity: 0; transition: fill-opacity var(--dur-2) var(--ease), stroke-opacity var(--dur-2) var(--ease); }
+    #s-19 .s19-centre.is-risk { fill-opacity: 0.92; stroke-opacity: 1; }
+    #s-19 .s19-warn { color: var(--surface-card); opacity: 0; transition: opacity var(--dur-2) var(--ease); }
+    #s-19 .s19-warn.is-risk { opacity: 1; }
+
+    #s-19 .s19-expl { width: 100%; border-top: 1px solid var(--border-strong); padding-top: clamp(12px, 1.8vh, 20px); display: grid; gap: 8px; }
+    #s-19 .s19-expl__t { color: var(--ink); max-width: 56ch; }
+    #s-19 .s19-expl .note { margin: 0; }
+    #s-19 .s19-known { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; max-width: none; }
+    #s-19 .s19-known__l { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-19 .s19-known .term__tech { margin: 0; }
+    #s-19 .s19-vwrap { width: 100%; }
+
+    @media (min-width: 1024px) and (max-height: 900px) {
+      #s-19 .s19-left { --stack: 12px; }
+      #s-19 .s19-switches { gap: 8px; }
+      #s-19 .s19-sw { min-height: 60px; padding-block: 2px; }
+      #s-19 .s19-sw[aria-checked="true"] { padding-block: 1px; }
+      #s-19 .s19-sw__hint { font-size: 18px; }
+      #s-19 .s19-msg { min-height: 110px; padding-block: 10px; }
+      #s-19 .s19-msg .callout__kicker { line-height: 1.2; }
+      #s-19 .s19-venn { max-height: 50vh; }
+    }
+    @media (max-width: 1023px) {
+      #s-19 .h2 { max-width: 24ch; }
+      #s-19 .s19-split { gap: 20px; }
+      #s-19 .s19-left, #s-19 .s19-right { display: contents; }
+      #s-19 .s19-left > * { margin-top: 0; }
+      #s-19 .secnum { order: 1; }
+      #s-19 .h2 { order: 2; }
+      #s-19 .s19-vwrap { order: 3; max-width: 560px; justify-self: center; }
+      #s-19 .s19-venn { max-height: none; }
+      #s-19 .s19-switches { order: 4; }
+      #s-19 .s19-msg { order: 5; }
+      #s-19 .btn-reset { order: 6; justify-self: start; }
+      #s-19 .s19-expl { order: 7; margin-top: 12px; }
+    }
+    @media (max-width: 639px) {
+      #s-19 .s19-sw { padding-inline: 14px; gap: 12px; }
+      #s-19 .s19-sw[aria-checked="true"] { padding-inline: 13px; }
+      #s-19 .s19-mark { display: none; }
+      #s-19 .btn-reset { width: 100%; }
+    }
+  </style>
+  <script>
+    (() => {
+      const root = document.getElementById('s-19');
+      const sw = Array.from(root.querySelectorAll('.s19-sw'));
+      const circles = { a: root.querySelector('#s19-ca'), b: root.querySelector('#s19-cb'), c: root.querySelector('#s19-cc') };
+      const labels = { a: root.querySelector('#s19-la'), b: root.querySelector('#s19-lb'), c: root.querySelector('#s19-lc') };
+      const names = { a: 'Reads outside content', b: 'Sees your private data', c: 'Can send things out' };
+      const centre = root.querySelector('#s19-centre');
+      const warn = root.querySelector('#s19-warn');
+      const msg = root.querySelector('#s19-msg');
+      const kick = root.querySelector('#s19-kick-t');
+      const main = root.querySelector('#s19-main');
+      const vt = root.querySelector('#s19-vt');
+      const reset = root.querySelector('#s19-reset');
+
+      const TEXT = [
+        { k: 'What this means', t: 'Turn on the switches to see what an AI can do.', s: '' },
+        { k: 'What this means', t: 'That’s manageable.', s: 'One ability on its own is easy to keep an eye on.' },
+        { k: 'What this means', t: 'Still manageable.', s: 'Just don’t add the third.' },
+        { k: 'Warning', t: 'This is the risky combination.', s: 'Keep at least one switch off.' }
+      ];
+
+      function render() {
+        const on = {};
+        sw.forEach((b) => { on[b.dataset.k] = b.getAttribute('aria-checked') === 'true'; });
+        Object.keys(circles).forEach((k) => {
+          circles[k].classList.toggle('is-on', on[k]);
+          labels[k].classList.toggle('is-on', on[k]);
+        });
+        const n = Object.values(on).filter(Boolean).length;
+        const risk = n === 3;
+        centre.classList.toggle('is-risk', risk);
+        warn.classList.toggle('is-risk', risk);
+        msg.classList.toggle('callout--warn', risk);
+        const t = TEXT[n];
+        kick.textContent = t.k;
+        main.textContent = t.t;
+        let sub = msg.querySelector('.s19-msg__sub');
+        if (t.s) {
+          if (!sub) { sub = document.createElement('p'); sub.className = 's19-msg__sub'; msg.appendChild(sub); }
+          sub.textContent = t.s;
+        } else if (sub) { sub.remove(); }
+        const onNames = Object.keys(on).filter((k) => on[k]).map((k) => names[k]);
+        vt.textContent = 'Three overlapping circles. ' + (onNames.length ? 'Switched on: ' + onNames.join(', ') + '. ' : 'Nothing is switched on. ')
+          + (risk ? 'The centre where all three overlap is marked as the risky combination.' : '');
+        return n;
+      }
+
+      sw.forEach((b) => {
+        b.addEventListener('click', () => {
+          b.setAttribute('aria-checked', b.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+          render();
+        });
+      });
+      reset.addEventListener('click', () => {
+        sw.forEach((b) => b.setAttribute('aria-checked', 'false'));
+        render();
+      });
+      render();
+    })();
+  </script>
+</section>

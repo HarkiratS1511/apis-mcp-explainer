@@ -1,0 +1,193 @@
+<section id="s-07" class="slide" data-part="apis" data-label="Some keys need more care" aria-labelledby="s07-title">
+  <div class="wrap">
+    <div class="split">
+      <div class="stack">
+        <p class="secnum"><b>07</b> Some keys need more care</p>
+        <h2 id="s07-title" class="h2">Some keys need more care.</h2>
+        <p>A key that only looks at public things is low risk. A key that can spend money, reach private things or act in your name is high risk. Sort six example keys.</p>
+      </div>
+
+      <div class="s07-game">
+        <div class="card s07-card">
+          <span class="tag tag--corner">Example</span>
+          <div class="s07-head">
+            <p class="s07-progress" id="s07-progress">Key 1 of 6</p>
+            <div class="s07-dots" id="s07-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div id="s07-play">
+            <div class="s07-key">
+              <span class="s07-key__icon" aria-hidden="true"><svg class="icon"><use href="#i-key"/></svg></span>
+              <p class="s07-key__text" id="s07-keytext"></p>
+            </div>
+            <div class="s07-answers" role="group" aria-labelledby="s07-keytext">
+              <button type="button" class="btn btn--choice s07-ans" data-ans="low" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Low risk</button>
+              <button type="button" class="btn btn--choice s07-ans" data-ans="high" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>High risk</button>
+            </div>
+            <div class="s07-fb" id="s07-fb" aria-live="polite">
+              <p class="s07-fb__text" id="s07-fbtext">Have a guess. It&rsquo;s fine to be wrong.</p>
+              <button type="button" class="btn btn--primary" id="s07-next" hidden>Next key <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            </div>
+          </div>
+          <div id="s07-end" hidden>
+            <p class="s07-end__title" id="s07-endtitle" tabindex="-1">All six keys are sorted.</p>
+            <p class="s07-end__text">Keys that can spend money or reach private things go in the High risk bin.</p>
+            <button type="button" class="btn-reset" id="s07-again"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button>
+          </div>
+        </div>
+
+        <div class="s07-bins">
+          <div class="s07-bin s07-bin--low">
+            <p class="s07-bin__title"><svg class="icon" aria-hidden="true"><use href="#i-unlock"/></svg>Low risk</p>
+            <p class="s07-bin__rule">Fine to paste into a chat</p>
+            <ul class="s07-chips" id="s07-low" aria-label="Low risk keys"></ul>
+          </div>
+          <div class="s07-bin s07-bin--high">
+            <p class="s07-bin__title"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>High risk</p>
+            <p class="s07-bin__rule">Keep it in a password manager (an app that stores passwords safely), never a chat or a text file</p>
+            <ul class="s07-chips" id="s07-high" aria-label="High risk keys"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #s-07 .s07-game { display: grid; gap: clamp(10px, 1.5vh, 18px); min-width: 0; }
+    #s-07 .s07-head { display: flex; align-items: center; gap: 8px 20px; flex-wrap: wrap; min-height: 32px; padding-right: 130px; }
+    #s-07 .s07-progress { margin: 0; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-07 .s07-dots { display: flex; gap: 6px; flex: 1; }
+    #s-07 .s07-dots i { width: 28px; height: 8px; border-radius: 2px; background: var(--border-strong); }
+    #s-07 .s07-dots i.is-done { background: var(--dragonfly); }
+    #s-07 .s07-dots i.is-now { background: var(--surface-card); box-shadow: none; outline: 2px solid var(--dragonfly); outline-offset: -2px; }
+
+    #s-07 .s07-card { display: grid; gap: clamp(10px, 1.5vh, 16px); --card-pad: clamp(20px, 2vw, 32px); padding-top: 14px; }
+    #s-07 #s07-play { display: grid; gap: clamp(12px, 1.8vh, 20px); }
+    #s-07 .s07-key { display: flex; align-items: center; gap: 20px; min-height: calc(var(--fs-h3) * 2.3); }
+    #s-07 .s07-key__icon { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: var(--radius-full); background: color-mix(in srgb, var(--dragonfly) 10%, var(--surface-card)); border: 2px solid var(--dragonfly); color: var(--dragonfly); font-size: 28px; }
+    #s-07 .s07-key__text { margin: 0; max-width: 26ch; font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.18; letter-spacing: -0.02em; color: var(--ink-heading); text-wrap: balance; }
+
+    #s-07 .s07-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    #s-07 .s07-ans { min-height: 60px; font-size: var(--fs-body); justify-content: center; }
+    #s-07 .s07-ans[aria-disabled="true"] { background: var(--surface-card); color: var(--ink); border-color: var(--border-strong); cursor: default; transform: none; }
+    #s-07 .s07-ans[aria-disabled="true"]:not([aria-pressed="true"]) { color: var(--ink-secondary); }
+    #s-07 .s07-ans[aria-disabled="true"][aria-pressed="true"] { border-color: var(--ink); background: var(--surface-muted); }
+
+    #s-07 .s07-fb { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; min-height: calc(var(--fs-body) * 1.5 * 2); padding-top: clamp(12px, 1.6vh, 18px); border-top: 1px solid var(--border); }
+    #s-07 .s07-fb__text { margin: 0; flex: 1 1 260px; line-height: 1.5; color: var(--ink); }
+    #s-07 .s07-fb[data-state="idle"] .s07-fb__text { color: var(--ink-secondary); }
+
+    #s-07 #s07-end { display: grid; gap: 14px; justify-items: start; align-content: center; min-height: 260px; }
+    #s-07 #s07-end[hidden] { display: none; }
+    #s-07 .s07-end__title { margin: 0; font-family: var(--font-serif); font-size: var(--fs-h3); line-height: 1.18; letter-spacing: -0.02em; color: var(--ink-heading); }
+    #s-07 .s07-end__title:focus { outline: none; }
+    #s-07 #s07-play[hidden], #s-07 #s07-next[hidden] { display: none; }
+
+    #s-07 .s07-bins { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    #s-07 .s07-bin { --c: var(--lens-systems); min-width: 0; padding: 10px 14px 10px; border: 2px solid var(--c); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--c) 7%, var(--surface-card)); }
+    #s-07 .s07-bin--high { --c: var(--lens-risk); }
+    #s-07 .s07-bin__title { display: flex; align-items: center; gap: 8px; margin: 0; font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-heading); }
+    #s-07 .s07-bin__rule { margin: 2px 0 8px; font-size: var(--fs-ui); line-height: 1.35; color: var(--ink); min-height: 2.7em; }
+    #s-07 .s07-chips { list-style: none; display: flex; flex-direction: column; gap: 6px; min-height: 128px; margin: 0; padding: 6px 10px; border: 2px dashed color-mix(in srgb, var(--c) 45%, var(--surface-card)); border-radius: var(--radius-md); justify-content: flex-end; }
+    #s-07 .s07-chip { display: flex; align-items: center; min-height: 34px; padding: 3px 12px; background: var(--surface-card); border: 1px solid var(--border-strong); border-radius: var(--radius-md); font-size: var(--fs-ui); line-height: 1.25; color: var(--ink); animation: s07-drop var(--dur-3) var(--ease) both; }
+    #s-07 .s07-chip.is-still { animation: none; }
+    @keyframes s07-drop {
+      0% { opacity: 0; transform: translateY(-44px); }
+      60% { opacity: 1; transform: translateY(0); }
+      80% { transform: translateY(-4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      #s-07 .s07-answers { grid-template-columns: 1fr; }
+      #s-07 .s07-key { gap: 14px; }
+      #s-07 .s07-key__icon { width: 44px; height: 44px; font-size: 22px; }
+      #s-07 .s07-dots i { width: 20px; }
+      #s-07 .s07-bins { grid-template-columns: 1fr; }
+      #s-07 .s07-chips { min-height: 64px; }
+      #s-07 .s07-bin__rule { min-height: 0; }
+      #s-07 .s07-fb .btn { width: 100%; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-07');
+    const ITEMS = [
+      { text: 'A free statistics key that can’t spend money', short: 'Free statistics key', risk: 'low', why: 'it’s free and can’t spend money, so there is little to lose if it leaks.' },
+      { text: 'A key linked to your credit card', short: 'Credit card key', risk: 'high', why: 'whoever holds it could spend your money.' },
+      { text: 'A key that can read your email', short: 'Email-reading key', risk: 'high', why: 'it opens up your private messages.' },
+      { text: 'A free weather key with a daily limit', short: 'Free weather key', risk: 'low', why: 'it’s free and limited, so the worst case is it stops for the day.' },
+      { text: 'A key that can post on your social media', short: 'Social media key', risk: 'high', why: 'someone could post in your name.' },
+      { text: 'A free key for public transport timetables', short: 'Free timetable key', risk: 'low', why: 'it only looks up public information.' }
+    ];
+    const el = id => root.querySelector('#' + id);
+    const play = el('s07-play'), end = el('s07-end');
+    const keyText = el('s07-keytext'), prog = el('s07-progress');
+    const dots = [...el('s07-dots').children];
+    const ans = [...root.querySelectorAll('.s07-ans')];
+    const fb = el('s07-fb'), fbText = el('s07-fbtext'), next = el('s07-next');
+    const bins = { low: el('s07-low'), high: el('s07-high') };
+    let idx = 0, answered = false;
+
+    function paintDots() {
+      dots.forEach((d, i) => { d.className = i < idx || (i === idx && answered) ? 'is-done' : (i === idx ? 'is-now' : ''); });
+    }
+    function show() {
+      const it = ITEMS[idx];
+      answered = false;
+      keyText.textContent = it.text;
+      prog.textContent = 'Key ' + (idx + 1) + ' of ' + ITEMS.length;
+      ans.forEach(b => { b.setAttribute('aria-pressed', 'false'); b.removeAttribute('aria-disabled'); });
+      fb.dataset.state = 'idle';
+      fbText.textContent = 'Have a guess. It’s fine to be wrong.';
+      next.hidden = true;
+      next.firstChild.nodeValue = (idx === ITEMS.length - 1 ? 'Finish' : 'Next key') + ' ';
+      paintDots();
+    }
+    function addChip(it) {
+      const li = document.createElement('li');
+      li.className = 's07-chip';
+      li.textContent = it.short;
+      bins[it.risk].appendChild(li);
+    }
+    function answer(choice) {
+      if (answered) return;
+      answered = true;
+      const it = ITEMS[idx];
+      ans.forEach(b => { b.setAttribute('aria-disabled', 'true'); b.setAttribute('aria-pressed', String(b.dataset.ans === choice)); });
+      const label = it.risk === 'low' ? 'low risk' : 'high risk';
+      fbText.textContent = (choice === it.risk ? 'Yes, ' + label + ': ' : 'Not quite. This one is ' + label + ': ') + it.why;
+      fb.dataset.state = 'done';
+      addChip(it);
+      next.hidden = false;
+      paintDots();
+      next.focus({ preventScroll: true });
+    }
+    function advance() {
+      if (!answered) return;
+      if (idx === ITEMS.length - 1) {
+        idx = ITEMS.length;
+        play.hidden = true; end.hidden = false;
+        prog.textContent = 'All six sorted';
+        dots.forEach(d => { d.className = 'is-done'; });
+        DT.announce('All six keys are sorted. Three are low risk and three are high risk.');
+        el('s07-again').focus({ preventScroll: true });
+        return;
+      }
+      idx++;
+      show();
+      ans[0].focus({ preventScroll: true });
+    }
+    function restart() {
+      idx = 0;
+      bins.low.textContent = ''; bins.high.textContent = '';
+      end.hidden = true; play.hidden = false;
+      show();
+      DT.announce('Starting again. Key 1 of 6.');
+      ans[0].focus({ preventScroll: true });
+    }
+    ans.forEach(b => b.addEventListener('click', () => answer(b.dataset.ans)));
+    next.addEventListener('click', advance);
+    el('s07-again').addEventListener('click', restart);
+    show();
+  })();</script>
+</section>

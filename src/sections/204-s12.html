@@ -1,0 +1,141 @@
+<section id="s-12" class="slide slide--sky slide--center" data-part="mcp" data-label="USB-C for AI" aria-labelledby="s12-title">
+  <div class="wrap">
+    <div class="s12-in">
+      <p class="secnum"><b>12</b> The big idea</p>
+      <h2 id="s12-title" class="s12-title"><span class="s12-line">Think of MCP as</span> <em class="grad">USB-C for AI.</em></h2>
+
+    </div>
+  </div>
+  <figure class="s12-fig" id="s12-fig">
+        <svg id="s12-svg" viewBox="0 0 900 280" role="img" aria-labelledby="s12-svgt" focusable="false">
+          <title id="s12-svgt">A USB-C plug on a cable sliding into the port on the edge of a device</title>
+          <!-- inside of the port, visible through the opening -->
+          <path class="s12-pocket" d="M560 124H624A16 16 0 0 1 624 156H560Z"/>
+          <!-- plug and cable: origin is the tip of the plug -->
+          <g id="s12-plug" class="s12-plug">
+            <path class="s12-cable" d="M-250 0C-380 0 -420 70 -560 70H-3000"/>
+            <rect class="s12-body" x="-232" y="-34" width="142" height="68" rx="16"/>
+            <rect class="s12-relief" x="-266" y="-23" width="44" height="46" rx="10"/>
+            <rect class="s12-mark" x="-196" y="-9" width="50" height="18" rx="9"/>
+            <rect class="s12-neck" x="-100" y="-19" width="30" height="38" rx="6"/>
+            <rect class="s12-shell" x="-76" y="-12" width="76" height="24" rx="12"/>
+            <rect class="s12-tongue" x="-58" y="-3" width="44" height="6" rx="3"/>
+          </g>
+          <!-- device edge with the port cut into it -->
+          <path class="s12-device" d="M588 30H3000V250H588A28 28 0 0 1 560 222V156H624A16 16 0 0 0 624 124H560V58A28 28 0 0 1 588 30Z"/>
+          <line class="s12-ui" x1="680" y1="82" x2="860" y2="82"/>
+          <line class="s12-ui" x1="680" y1="198" x2="800" y2="198"/>
+          <g id="s12-badge" class="s12-badge">
+            <circle cx="770" cy="140" r="28"/>
+            <path d="m757 140 9 9 17-18"/>
+          </g>
+        </svg>
+      </figure>
+
+  <div class="wrap">
+    <div class="s12-in">
+      <div class="s12-foot">
+        <p class="s12-text">Before USB-C, every gadget had its own charger. Now one plug fits nearly everything.</p>
+        <div class="s12-ctl">
+          <button type="button" class="replay" id="s12-again"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Plug it in again</button>
+          <p class="s12-status" id="s12-status" role="status" aria-live="polite"><svg class="icon s12-ico-on" aria-hidden="true"><use href="#i-check"/></svg><span id="s12-status-text">Not connected</span></p>
+        </div>
+      </div>
+      <p class="note s12-note">The comparison Anthropic, MCP’s creator, uses itself.</p>
+    </div>
+  </div>
+  <style>
+    #s-12 .s12-in { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    #s-12 .s12-title {
+      margin-top: clamp(14px, 2.4vh, 28px); max-width: none; color: var(--ink-heading);
+      font-size: clamp(42px, 4.8vw, 88px); line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;
+    }
+    #s-12 .s12-line { display: block; }
+    #s-12 .grad { display: block; width: fit-content; margin-inline: auto; }
+
+    #s-12 .s12-fig { margin: clamp(8px, 2vh, 28px) 0 0; width: 100%; --s12-away: 300px; }
+    #s-12 .s12-fig svg { display: block; width: 100%; height: auto; max-height: min(25vh, 300px); margin-inline: auto; }
+    #s-12 .s12-fig svg * { vector-effect: none; }
+    #s-12 .s12-plug {
+      transform: translate(calc(634px - var(--s12-away)), 140px);
+      transition: transform var(--dur-3) var(--ease);
+    }
+    #s-12 .s12-fig.is-plugged .s12-plug { transform: translate(634px, 140px); }
+    #s-12 .s12-fig.is-reset .s12-plug, #s-12 .s12-fig.is-reset .s12-badge { transition: none; }
+
+    #s-12 .s12-pocket { fill: var(--dragonfly-dark); }
+    #s-12 .s12-device { fill: var(--surface-card); stroke: var(--ink-heading); stroke-width: 3; stroke-linejoin: round; }
+    #s-12 .s12-ui { stroke: var(--border-strong); stroke-width: 8; stroke-linecap: round; }
+    #s-12 .s12-cable { fill: none; stroke: var(--dragonfly-dark); stroke-width: 12; stroke-linecap: round; }
+    #s-12 .s12-body, #s-12 .s12-relief, #s-12 .s12-neck { fill: var(--dragonfly-dark); stroke: var(--dragonfly-dark); stroke-width: 3; stroke-linejoin: round; }
+    #s-12 .s12-mark { fill: none; stroke: var(--dragonfly-light); stroke-width: 4; }
+    #s-12 .s12-shell { fill: var(--surface-card); stroke: var(--dragonfly-dark); stroke-width: 3; }
+    #s-12 .s12-tongue { fill: var(--dragonfly-dark); }
+    #s-12 .s12-badge { opacity: 0; transition: opacity var(--dur-2) var(--ease); }
+    #s-12 .s12-badge circle { fill: var(--surface-card); stroke: var(--cobalt); stroke-width: 3; }
+    #s-12 .s12-badge path { fill: none; stroke: var(--cobalt); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    #s-12 .s12-fig.is-connected .s12-badge { opacity: 1; }
+
+    #s-12 .s12-foot { margin-top: clamp(14px, 2.6vh, 32px); display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2.4vh, 28px); }
+    #s-12 .s12-text { font-size: var(--fs-lead); line-height: 1.4; color: var(--ink); max-width: 36ch; text-wrap: balance; }
+    #s-12 .s12-ctl { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; }
+    #s-12 .s12-status { display: inline-flex; align-items: center; gap: 10px; min-width: 11.5em; font-size: var(--fs-ui); font-weight: 500; color: var(--ink-heading); max-width: none; }
+    #s-12 .s12-status .icon { opacity: 0; transition: opacity var(--dur-2) var(--ease); color: var(--cobalt); }
+    #s-12 .s12-status.is-on .icon { opacity: 1; }
+    #s-12 .s12-note { margin-top: clamp(14px, 2.4vh, 28px); }
+
+    @media (max-width: 640px) {
+      #s-12 .s12-fig { --s12-away: 190px; }
+      #s-12 .s12-fig svg { max-height: none; }
+      #s-12 .s12-cable { stroke-width: 18; }
+      #s-12 .s12-device, #s-12 .s12-shell { stroke-width: 5; }
+      #s-12 .s12-ctl { flex-direction: column; width: 100%; }
+      #s-12 .s12-ctl .replay { width: 100%; }
+      #s-12 .s12-status { min-width: 0; }
+    }
+  </style>
+  <script>(() => {
+    const root = document.getElementById('s-12');
+    const fig = root.querySelector('#s12-fig');
+    const svg = root.querySelector('#s12-svg');
+    const status = root.querySelector('#s12-status');
+    const statusText = root.querySelector('#s12-status-text');
+    const btn = root.querySelector('#s12-again');
+    let run = 0;
+
+    /* On a phone, crop the drawing so the plug and port stay large. */
+    const mq = window.matchMedia('(max-width: 640px)');
+    const fit = () => svg.setAttribute('viewBox', mq.matches ? '170 10 730 260' : '0 0 900 280');
+    fit();
+    if (mq.addEventListener) mq.addEventListener('change', fit);
+
+    const setStatus = (text, on) => { statusText.textContent = text; status.classList.toggle('is-on', on); };
+
+    function plugged() {
+      fig.classList.add('is-plugged', 'is-connected');
+      setStatus('Connected', true);
+    }
+
+    async function play() {
+      const id = ++run;
+      if (DT.reduced) { plugged(); return; }
+      /* Unplug at once, then slide in. Safe to press again mid-slide. */
+      fig.classList.add('is-reset');
+      fig.classList.remove('is-plugged', 'is-connected');
+      setStatus('Not connected', false);
+      void fig.getBoundingClientRect();
+      fig.classList.remove('is-reset');
+      await DT.wait(500);
+      if (id !== run) return;
+      fig.classList.add('is-plugged');
+      setStatus('Plugging in', false);
+      await DT.wait(900);
+      if (id !== run) return;
+      plugged();
+    }
+
+    btn.addEventListener('click', play);
+    if (DT.reduced) plugged();
+    DT.onEnter(root.querySelector('.s12-fig'), play, { threshold: 0.6 });
+  })();</script>
+</section>

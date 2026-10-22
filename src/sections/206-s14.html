@@ -1,0 +1,162 @@
+<section id="s-14" class="slide" data-part="mcp" data-label="Look up or take action" aria-labelledby="s14-title">
+  <div class="wrap">
+    <div class="s14-in">
+      <div class="s14-head stack" style="--stack:14px">
+        <p class="secnum"><b>14</b> Two kinds of job</p>
+        <h2 id="s14-title" class="h2 s14-title">Look things up, or take action.</h2>
+        <p class="lead">Some jobs only look. Others change things. You choose which the AI may do.</p>
+      </div>
+
+      <div class="s14-cols">
+        <div class="s14-col" role="group" aria-labelledby="s14-look-h">
+          <div class="s14-col__head">
+            <div class="term"><p class="term__word" id="s14-look-h">Look things up</p><p class="term__tech">Read</p></div>
+          </div>
+          <p class="s14-state"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Looking only. Nothing is changed.</p>
+          <ul class="s14-list">
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Find a document</span><span class="s14-desc">Searches your files and shows the result.</span></span>
+            </li>
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Check your calendar</span><span class="s14-desc">Looks at your events. Changes nothing.</span></span>
+            </li>
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#i-bar-chart"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Pull official statistics</span><span class="s14-desc">Fetches official figures and the source.</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="s14-col s14-col--act is-locked" id="s14-act" role="group" aria-labelledby="s14-act-h">
+          <div class="s14-col__head">
+            <div class="term"><p class="term__word" id="s14-act-h">Take action</p><p class="term__tech">Write</p></div>
+          </div>
+          <div class="s14-lockrow">
+            <button type="button" class="switch" id="s14-switch" role="switch" aria-checked="false" aria-describedby="s14-note"><span class="switch__track"><span class="switch__thumb"></span></span><span class="switch__label">Allow actions</span></button>
+            <p class="s14-lockstate" id="s14-lockstate">
+              <span class="s14-lockico"><svg class="icon s14-i-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="icon s14-i-unlock" aria-hidden="true"><use href="#i-unlock"/></svg></span>
+              <span id="s14-lockword">Locked</span>
+            </p>
+          </div>
+          <ul class="s14-list">
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Book a meeting</span><span class="s14-desc">Adds an event to your calendar.</span></span>
+              <span class="s14-pad"><svg class="icon s14-i-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="icon s14-i-unlock" aria-hidden="true"><use href="#i-unlock"/></svg></span>
+            </li>
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Draft an email for you to check</span><span class="s14-desc">Writes it. You read it and press send.</span></span>
+              <span class="s14-pad"><svg class="icon s14-i-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="icon s14-i-unlock" aria-hidden="true"><use href="#i-unlock"/></svg></span>
+            </li>
+            <li class="s14-item">
+              <span class="s14-ic"><svg class="icon" aria-hidden="true"><use href="#s14-i-pen"/></svg></span>
+              <span class="s14-txt"><span class="s14-name">Make a design</span><span class="s14-desc">Creates a design from your request.</span></span>
+              <span class="s14-pad"><svg class="icon s14-i-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="icon s14-i-unlock" aria-hidden="true"><use href="#i-unlock"/></svg></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="keyline" id="s14-note">Only if you allow it, one step at a time.</p>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="s14-i-pen" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></symbol>
+    </defs>
+  </svg>
+
+  <style>
+    #s-14 .s14-in { display: flex; flex-direction: column; gap: clamp(16px, 2.4vh, 32px); }
+    #s-14 .s14-title { max-width: none; }
+    #s-14 .lead { max-width: none; }
+    #s-14 .term { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; }
+    #s-14 .term__tech { margin-top: 0; }
+    #s-14 .s14-cols { display: grid; grid-template-columns: 1fr; gap: clamp(16px, 2vw, 32px); align-items: stretch; }
+    @media (min-width: 900px) { #s-14 .s14-cols { grid-template-columns: 1fr 1fr; } }
+
+    #s-14 .s14-col {
+      position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; gap: 16px; min-width: 0;
+      background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: clamp(16px, 1.6vw, 28px);
+    }
+    #s-14 .s14-col > * { position: relative; z-index: 1; }
+    #s-14 .s14-col__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    #s-14 .term__word { max-width: none; }
+
+
+    #s-14 .s14-state, #s-14 .s14-lockstate {
+      display: flex; align-items: center; gap: 10px; min-height: 48px; max-width: none;
+      font-size: var(--fs-ui); font-weight: 500; line-height: 1.3; color: var(--ink-heading);
+    }
+    #s-14 .s14-state { font-weight: 500; }
+    #s-14 .s14-state .icon { color: var(--dragonfly); }
+    #s-14 .s14-lockrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+    #s-14 .s14-lockstate { min-height: 56px; background: var(--surface-card); border: 1px solid var(--border-strong); border-radius: var(--radius-full); padding: 0 18px 0 14px; }
+    #s-14 .s14-lockico, #s-14 .s14-pad { position: relative; display: inline-block; width: 1.4em; height: 1.4em; flex: none; }
+    #s-14 .s14-lockico .icon, #s-14 .s14-pad .icon { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity var(--dur-2) var(--ease); }
+    #s-14 .s14-i-unlock { opacity: 0; }
+    #s-14 .s14-col:not(.is-locked) .s14-i-unlock { opacity: 1; }
+    #s-14 .s14-col:not(.is-locked) .s14-i-lock { opacity: 0; }
+    #s-14 .s14-col:not(.is-locked) .s14-lockico .icon { color: var(--dragonfly); }
+
+    #s-14 .s14-list { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    #s-14 .s14-item {
+      flex: 1; display: flex; align-items: center; gap: clamp(14px, 1.4vw, 22px);
+      background: var(--surface-card); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: clamp(10px, 1vw, 16px) clamp(14px, 1.4vw, 22px);
+      transition: border-color var(--dur-2) var(--ease);
+    }
+    #s-14 .s14-ic {
+      display: grid; place-items: center; flex: none; width: clamp(48px, 3.6vw, 60px); height: clamp(48px, 3.6vw, 60px); border-radius: var(--radius-full);
+      background: var(--surface-card); color: var(--ink-heading); border: 2px solid var(--ink-label); font-size: clamp(24px, 1.8vw, 30px);
+      transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+    }
+    #s-14 .s14-col--act.is-locked .s14-ic { border-style: dashed; }
+    #s-14 .s14-col--act:not(.is-locked) .s14-ic { background: var(--ink); color: var(--ink-on-dark); border-color: var(--ink); }
+    #s-14 .s14-col--act:not(.is-locked) { background: var(--surface-card); border-color: var(--border-strong); }
+    #s-14 .s14-col--act:not(.is-locked) .s14-item { border-color: var(--border-strong); }
+    #s-14 .s14-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+    #s-14 .s14-name { font-family: var(--font-serif); font-size: clamp(21px, 1.4vw, 26px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ink-heading); }
+    #s-14 .s14-desc { font-size: var(--fs-ui); line-height: 1.35; color: var(--ink-secondary); }
+    #s-14 .s14-pad { color: var(--ink-label); font-size: clamp(22px, 1.6vw, 28px); }
+
+
+    @media (max-height: 900px) and (min-width: 900px) {
+      #s-14 .s14-in { gap: 18px; }
+      #s-14 .s14-col { padding: 16px 22px; gap: 10px; }
+      #s-14 .s14-list { gap: 8px; }
+      #s-14 .s14-item { padding: 8px 16px; }
+      #s-14 .s14-state { min-height: 40px; }
+      #s-14 .s14-lockstate { min-height: 44px; }
+      #s-14 .s14-ic { width: 44px; height: 44px; font-size: 22px; }
+      #s-14 .s14-head { --stack: 8px !important; }
+    }
+    @media (max-width: 639px) {
+      #s-14 .s14-lockrow { flex-direction: column; align-items: stretch; }
+      #s-14 .s14-lockstate { justify-content: center; }
+      #s-14 .s14-item { padding: 12px; }
+    }
+  </style>
+
+  <script>(() => {
+    const root = document.getElementById('s-14');
+    const col = root.querySelector('#s14-act');
+    const sw = root.querySelector('#s14-switch');
+    const word = root.querySelector('#s14-lockword');
+
+    const TEXT_ON = 'Only if you allow it, one step at a time.';
+
+    function set(on) {
+      sw.setAttribute('aria-checked', on ? 'true' : 'false');
+      col.classList.toggle('is-locked', !on);
+      word.textContent = on ? 'Unlocked' : 'Locked';
+      DT.announce(on ? 'Actions allowed. Take action is unlocked. ' + TEXT_ON : 'Actions off. Take action is locked.');
+    }
+    sw.addEventListener('click', () => set(sw.getAttribute('aria-checked') !== 'true'));
+  })();</script>
+</section>

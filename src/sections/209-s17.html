@@ -1,0 +1,132 @@
+<section id="s-17" class="slide" data-part="mcp" data-label="Same question, two answers" aria-labelledby="s17-title">
+  <div class="wrap">
+    <div class="s17-grid">
+      <div class="s17-head stack">
+        <p class="secnum"><b>17</b> Two ways to ask</p>
+        <h2 id="s17-title" class="h2">Same question, two&nbsp;answers.</h2>
+        <div class="s17-bubble tagged">
+          <span class="s17-bubble__k">Your question</span>
+          <span class="s17-bubble__q"><span class="sr-only">Question: </span>What’s the unemployment rate in Victoria?</span>
+          <span class="tag tag--corner">Example</span>
+        </div>
+        <div class="s17-btns">
+          <button type="button" class="btn btn--choice" id="s17-ask-web" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Ask with a web search</button>
+          <button type="button" class="btn btn--choice" id="s17-ask-mcp" aria-pressed="false"><svg class="icon btn__check" aria-hidden="true"><use href="#i-check"/></svg>Ask through an MCP connection</button>
+        </div>
+      </div>
+
+      <div class="s17-cards stack">
+        <div class="s17-slot" id="s17-slot-web">
+          <p class="s17-empty" id="s17-empty-web">The web search answer appears here.</p>
+          <article class="s17-card s17-card--web" id="s17-card-web" aria-labelledby="s17-web-title" hidden>
+            <div class="s17-card__head">
+              <span class="s17-card__ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-search"/></svg></span>
+              <span class="s17-card__k">Web search</span>
+            </div>
+            <h3 id="s17-web-title" class="h3">Reads whatever comes up first.</h3>
+            <dl class="s17-dl">
+              <div><dt>Source</dt><dd>Often unclear</dd></div>
+              <div><dt>Date</dt><dd>Could be an old article</dd></div>
+            </dl>
+          </article>
+        </div>
+
+        <div class="s17-slot" id="s17-slot-mcp">
+          <p class="s17-empty" id="s17-empty-mcp">The MCP connection answer appears here.</p>
+          <article class="s17-card s17-card--mcp" id="s17-card-mcp" aria-labelledby="s17-mcp-title" hidden>
+            <div class="s17-card__head">
+              <span class="s17-card__ico"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-plug"/></svg></span>
+              <span class="s17-card__k">MCP connection</span>
+            </div>
+            <h3 id="s17-mcp-title" class="h3">Goes straight to official figures.</h3>
+            <dl class="s17-dl">
+              <div><dt>Source</dt><dd>Data Commons, a free Google service that gathers official figures from the Australian Bureau of Statistics (ABS), World Bank, UN and others. <a href="https://datacommons.org" target="_blank" rel="noopener">datacommons.org<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+              <div><dt>Date</dt><dd>Shown with the figure</dd></div>
+            </dl>
+          </article>
+        </div>
+        <div><button type="button" class="btn-reset" id="s17-reset"><svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Start again</button></div>
+      </div>
+
+      <p class="keyline s17-point">The point isn’t that the AI is smarter. It’s that you can check where the answer came from.</p>
+    </div>
+  </div>
+  <style>
+    #s-17 .s17-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 3vh, 32px) clamp(32px, 4vw, 72px); }
+    #s-17 .s17-grid > * { min-width: 0; }
+    @media (min-width: 1024px) {
+      #s-17 .s17-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; }
+      #s-17 .s17-cards { grid-column: 2; grid-row: 1 / span 2; }
+      #s-17 .s17-point { grid-column: 1; grid-row: 2; align-self: start; }
+    }
+    #s-17 .s17-head { --stack: 20px; }
+    #s-17 .s17-head .h2 { margin-bottom: 0; }
+    #s-17 .s17-cards { --stack: 16px; }
+    #s-17 .s17-bubble {
+      display: grid; gap: 4px; padding: 16px 24px; padding-right: 150px; background: var(--surface-card); border: 1px solid var(--border-strong); border-radius: var(--radius-lg);
+    }
+    #s-17 .s17-bubble__k { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+    #s-17 .s17-bubble__q { font-size: var(--fs-lead); font-weight: 500; line-height: 1.25; color: var(--ink-heading); }
+    #s-17 .s17-btns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    #s-17 .s17-btns .btn { width: 100%; }
+
+    #s-17 .s17-slot { display: grid; min-width: 0; }
+    #s-17 .s17-slot > * { grid-area: 1 / 1; }
+    #s-17 .s17-slot [hidden] { display: none; }
+    #s-17 .s17-empty {
+      display: flex; align-items: center; justify-content: center; text-align: center; max-width: none; min-height: 150px; padding: 24px;
+      border: 2px dashed var(--border-strong); border-radius: var(--radius-lg); color: var(--ink-secondary);
+    }
+    #s-17 .s17-card {
+      --card-pad: clamp(18px, 1.6vw, 28px);
+      display: grid; align-content: start; gap: 8px; padding: var(--card-pad); border-radius: var(--radius-lg);
+      animation: s17-in var(--dur-2) var(--ease);
+    }
+    #s-17 .s17-card--web { background: var(--surface-muted); border: 1px solid var(--border-strong); color: var(--ink); }
+    #s-17 .s17-card--mcp { background: var(--surface-card); border: 2px solid var(--dragonfly); padding: calc(var(--card-pad) - 1px); color: var(--ink); }
+    #s-17 .s17-card__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+    #s-17 .s17-card__ico { display: inline-flex; color: var(--ink-heading); }
+    #s-17 .s17-card__k { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); margin-right: auto; }
+    #s-17 .s17-card--mcp .s17-card__k { color: var(--dragonfly); }
+    #s-17 .s17-card .h3 { max-width: none; margin: 0; }
+    #s-17 .s17-dl { margin: 0; display: grid; gap: 0; }
+    #s-17 .s17-dl > div { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 4px 16px; padding: 8px 0; border-top: 1px solid var(--border-strong); }
+    #s-17 .s17-card--mcp .s17-dl > div { border-top-color: var(--border); }
+    #s-17 .s17-dl dt { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-label); padding-top: 0.25em; }
+    #s-17 .s17-dl dd { margin: 0; font-size: var(--fs-body); line-height: 1.4; }
+
+    @keyframes s17-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 560px) {
+      #s-17 .s17-bubble { padding-right: 24px; padding-top: 56px; }
+      #s-17 .s17-empty { min-height: 96px; }
+      #s-17 .s17-dl > div { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+  <script>(()=>{
+    const root = document.getElementById('s-17');
+    const $ = (id) => root.querySelector('#' + id);
+    const kinds = {
+      web: { btn: $('s17-ask-web'), card: $('s17-card-web'), empty: $('s17-empty-web'),
+             say: 'Web search answer shown. Source: unclear. Date: could be an old article.' },
+      mcp: { btn: $('s17-ask-mcp'), card: $('s17-card-mcp'), empty: $('s17-empty-mcp'),
+             say: 'MCP connection answer shown. Source: Data Commons, with a link. Date: shown with the figure.' }
+    };
+    function set(k, on) {
+      const o = kinds[k];
+      o.btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      o.card.hidden = !on; o.empty.hidden = on;
+    }
+    Object.keys(kinds).forEach(k => {
+      const o = kinds[k];
+      o.btn.addEventListener('click', () => {
+        const on = o.btn.getAttribute('aria-pressed') !== 'true';
+        set(k, on);
+        DT.announce(on ? o.say : (k === 'web' ? 'Web search answer hidden.' : 'MCP connection answer hidden.'));
+      });
+    });
+    $('s17-reset').addEventListener('click', () => {
+      set('web', false); set('mcp', false);
+      DT.announce('Start again. Both answers are hidden.');
+    });
+  })();</script>
+</section>
