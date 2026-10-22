@@ -12,8 +12,8 @@
           <span class="tag tag--corner">For illustration</span>
           <div id="s20-play" class="s20-play">
             <div class="s20-top">
-              <p class="s20-prog" id="s20-prog">Task 1 of 6</p>
-              <span class="s20-bars" id="s20-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <p class="s20-prog" id="s20-prog">Task 1 of 4</p>
+              <span class="s20-bars" id="s20-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
             </div>
             <div class="s20-taskbox" id="s20-taskbox"><h3 class="s20-task" id="s20-task" tabindex="-1">Summarise a long document</h3></div>
 
@@ -38,7 +38,7 @@
           </div>
 
           <div id="s20-done" class="s20-done" hidden>
-            <p class="s20-prog">All six placed</p>
+            <p class="s20-prog">All four placed</p>
             <h3 class="s20-donehead" id="s20-donehead" tabindex="-1">Same two questions, every time.</h3>
             <p class="s20-donetext">Can you undo it, and can you check it? The answers tell you how much to hand over.</p>
             <div class="btn-row">
@@ -247,8 +247,6 @@
       { t: 'Summarise a long document', s: 'Summarise document', q: 'go',    why: "Nothing changes, and you can read the summary against the original." },
       { t: 'Send an email to your bank', s: 'Email your bank', q: 'draft', why: "Once it’s sent, it’s sent. Read it, then send it yourself." },
       { t: 'Rename 100 photos', s: 'Rename photos',          q: 'spot',  why: "Too many to check one by one, but easy to change back. Look at a few." },
-      { t: 'Pay a bill', s: 'Pay a bill',                 q: 'draft', why: "Money can’t be unsent. Let it prepare the details, and you press pay." },
-      { t: 'Draft a birthday message', s: 'Birthday message',   q: 'go',    why: "You’ll read it before anyone else does." },
       { t: 'Delete old files', s: 'Delete old files',           q: 'self',  why: "Gone is gone, and it can’t know which files matter to you." }
     ];
     const quadFor = (undo, check) => Object.keys(QUADS).find(k => QUADS[k].undo === undo && QUADS[k].check === check);
@@ -427,7 +425,7 @@
         resEl.classList.add('is-off');
         $$('.s20-quad').forEach(q => q.classList.remove('is-ours', 'is-yours'));
         doneHead.focus({ preventScroll: true });
-        DT.announce('All six tasks placed. Start again to try them once more.');
+        DT.announce('All four tasks placed. Start again to try them once more.');
       }
     }
 
@@ -442,7 +440,7 @@
       showTask();
       reserve();
       taskEl.focus({ preventScroll: true });
-      DT.announce('Started again. Task 1 of 6: ' + TASKS[0].t);
+      DT.announce('Started again. Task 1 of ' + TASKS.length + ': ' + TASKS[0].t);
     }
 
     goBtn.addEventListener('click', () => {
